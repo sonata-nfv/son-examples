@@ -1,9 +1,16 @@
 #!/bin/bash
 
-# bridge interfaces and let snort listen to bridge (IDS)
+# remove IPs from input/output interface to prepare them for bridging
+ip addr flush dev $IFIN
+ip addr flush dev $IFOUT
+
+# bridge interfaces (layer 2) and let snort listen to bridge (IDS mode)
 brctl addbr br0
-brctl addif br0 d1-eth0 d1-eth1
+brctl addif br0 $IFIN $IFOUT
 ifconfig br0 up
-# run snort without additional outputs
-#snort -i br0 -N -K none > snort.log 2>&1 &
+
+sleep 1
+
+# run snort as background process
+snort -i br0 -D -q -K ascii -l /snort-logs
 
