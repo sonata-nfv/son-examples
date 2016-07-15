@@ -7,10 +7,26 @@ This repository contains VNF implementations that are used to demonstrate and sh
 
 ### Docker-based
 
-* iperf3
-* Snort IDS
+* `sonata-iperf3-vnf`: Iperf3 traffic generator
+* `sonata-snort-ids-vnf`: Snort 2.9 intrusion detection system
 
 
 ### VM Images
 
-* not yet
+* (nothing yet)
+
+
+## Build & Push
+
+To build the images do:
+
+```
+./build.sh [opt. target repository name]
+```
+
+
+To push the images do:
+
+```
+./push.sh [opt. target repository name]
+```
