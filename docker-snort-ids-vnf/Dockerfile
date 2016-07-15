@@ -6,6 +6,8 @@ ENV IFIN input
 ENV IFOUT output
 
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y -q \
+	net-tools \
+	iproute \
 	iptables \
 	arptables \
 	ebtables \

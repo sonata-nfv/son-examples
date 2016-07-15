@@ -7,6 +7,9 @@
 
 target_repo=${1-registry.sonata-nfv.eu:5000}
 
+# empty vnf
+docker build -t $target_repo/sonata-empty-vnf -f docker-empty-vnf/Dockerfile docker-empty-vnf
+
 # iperf3 vnf
 docker build -t $target_repo/sonata-iperf3-vnf -f docker-iperf3-vnf/Dockerfile docker-iperf3-vnf
 

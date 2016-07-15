@@ -6,6 +6,9 @@
 
 target_repo=${1-registry.sonata-nfv.eu:5000}
 
+# empty vnf
+docker push $target_repo/sonata-empty-vnf 
+
 # iperf3 vnf
 docker push $target_repo/sonata-iperf3-vnf 
 
