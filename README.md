@@ -8,7 +8,8 @@ This repository contains a couple of example service packages and their correspo
 
 Contains example service packages including their NSDs, VNFDs, etc. The packages are given as source code and have to be packed before they can be pushed to the Gatekeeper or emulator.
 
-* `none`: no example service packages yet
+* `sonata-empty-demo`: Simple service chain with three empty VNFs.
+* `sonata-snort-service`: Service with a single Snort VNF.
 
 ## VNFs (`vnfs/`)
 

@@ -4,6 +4,7 @@
 # automatically build VNF containers
 # (later we might also automatically build VM images that run these containers)
 #
+set -e
 
 target_repo=${1-registry.sonata-nfv.eu:5000}
 

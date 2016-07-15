@@ -1,0 +1,1 @@
+This folder contains SONATA service package examples.
