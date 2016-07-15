@@ -14,3 +14,5 @@ sleep 1
 # run snort as background process
 snort -i br0 -D -q -K ascii -l /snort-logs
 
+echo "Snort VNF started ..."
+
