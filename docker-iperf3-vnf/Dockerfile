@@ -4,6 +4,7 @@ MAINTAINER manuel.peuster@uni-paderborn.de
 RUN	apt-get update && apt-get install -y \
 	net-tools \
 	iproute \
+	inetutils-ping \
 	iperf3 \
 	nmap
 
