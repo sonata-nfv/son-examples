@@ -1,6 +1,6 @@
-[![Build Status](http://jenkins.sonata-nfv.eu/buildStatus/icon?job=son-vnf)](http://jenkins.sonata-nfv.eu/job/son-vnf)
+[![Build Status](http://jenkins.sonata-nfv.eu/buildStatus/icon?job=son-examples)](http://jenkins.sonata-nfv.eu/job/son-examples)
 
-# son-vnf
+# son-examples
 
 This repository contains a couple of example service packages and their corresponding VNFs that can be used to test the SONATA tool chain.
 
@@ -21,15 +21,13 @@ Contains example VNF implementations. Most of them are given as Docker container
 
 ### Build & Push
 
-To build the VNF images:
+In `vnfs/` do ...
 
 ```
 ./build.sh [opt. target repository name (default=registry.sonata-nfv.eu:5000)]
-```
 
-
-To push the VNF images:
-
-```
 ./push.sh [opt. target repository name (default=registry.sonata-nfv.eu:5000)]
 ```
+
+... to build (and push) the VNF images.
+
