@@ -8,6 +8,7 @@ ENV IFOUT output
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y -q \
 	net-tools \
 	iproute \
+	inetutils-ping \
 	iptables \
 	arptables \
 	ebtables \
