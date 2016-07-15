@@ -1,0 +1,24 @@
+
+---
+descriptor_version: "1.0"
+
+package_vendor: "eu.sonata-nfv.upb"
+package_name: "sonata-snort-service"
+package_version: "0.1"
+package_maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@upb.de"
+package_description: > 
+  "This is a simple example service that consists of
+  a single Snort VNF."
+
+entry_service_template: "/service_descriptors/snort-nsd.yml"
+sealed: true
+
+package_content:
+  - name: "/service_descriptors/snort-nsd.yml"
+    content-type: "application/sonata.service_descriptor"
+    md5: "a16ce1b66bd6d6916c8f994efca0d778"
+  - name: "/function_descriptors/snort-vnfd.yml"
+    content-type: "application/sonata.function_descriptor"
+    md5: "f99cb6eaf0cd0e4215a724893b55cf5c"
+
+

@@ -3,6 +3,7 @@
 #
 # push build results to registries/platform
 #
+set -e
 
 target_repo=${1-registry.sonata-nfv.eu:5000}
 
