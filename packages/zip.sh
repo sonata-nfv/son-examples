@@ -2,7 +2,7 @@
 
 #
 # This is a helper script to automatically pack (ZIP) the example services as they are.
-# However, this is only considered to be a helper for some scripts. You should consider to
+# However, this is only considered to be a helper for some scripts. You should 
 # use son-package instead.
 #
 set -e
