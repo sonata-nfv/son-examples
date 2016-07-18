@@ -6,14 +6,14 @@ This repository contains a couple of example service packages and their correspo
 
 ## Packages (`packages/`)
 
-** Deprecated: ** This will be removed and we will provide service examples as SDK compatible project folders in `projects/`.
+** Deprecated: ** This will be removed and we will provide service examples as SDK compatible project folders in `services/`.
 
 Contains example service packages including their NSDs, VNFDs, etc. The packages are given as source code and have to be packed before they can be pushed to the Gatekeeper or emulator.
 
 * `sonata-empty-demo`: Simple service chain with three empty VNFs.
 * `sonata-snort-service`: Service with a single Snort VNF.
 
-## Projects (`projects/`)
+## Projects (`services/`)
 
 TODO
 
