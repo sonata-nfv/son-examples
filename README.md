@@ -2,7 +2,7 @@
 
 # son-examples
 
-This repository contains several example network services and their corresponding VNFs that can be used to test the SONATA's SDK tools and SONATA's service platform.
+This repository contains several example network services and their corresponding VNFs that can be used to test SONATA's SDK tools and SONATA's service platform.
 
 ## Services (`service-projects/`)
 
