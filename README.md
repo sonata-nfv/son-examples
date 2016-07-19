@@ -70,6 +70,16 @@ Step-by-step instructions that show how to deploy the example services on `son-e
 
 * TODO (an example service for the service platform will be available soon)
 
+## CI/CD Integration
+
+This repository is integrated into SONATA's CI/CD workflow. The following unittests are executed whenever a pull request is created:
+
+* Build VNFs: Builds all Docker-based VNF images (`vnfs/build.sh`).
+* Push VNFs: Pushes all VNF images to SONATA's Docker registry (`vnfs/push.sh`).
+* Package services: Uses `son-package` to validate the service projects (`service-projects/pack.sh`).
+
+Note: The packaged services are not yet uploaded anywhere. We use packaging only to validate the service projects and their descriptors.
+
 ## License
 
 Son-examples is published under Apache 2.0 license. Please see the LICENSE file for more details.
