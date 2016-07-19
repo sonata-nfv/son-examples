@@ -13,7 +13,7 @@ Example service projects that include NSDs, VNFDs, etc. The projects are given a
 
 ### Naming scheme
 
-* `*-emu`: Service references Docker-based VNFs that can be executed in `son-emu`.
+* `*-emu`: Service references Docker-based VNFs that can be executed in [`son-emu`](https://github.com/sonata-nfv/son-emu).
 * `*-sp`: Service references VM-based VNFs that can be executed in SONATA's service platform.
 
 ### Packaging
@@ -26,8 +26,8 @@ First initialize a local SONATA workspace (if not already done):
 
 In `service-projects/` do:
 
-* `son-package --project sonata-empty-service -n sonata-empty-service`
-* `son-package --project sonata-snort-service -n sonata-snort-service`
+* `son-package --project sonata-empty-service-emu -n sonata-empty-service`
+* `son-package --project sonata-snort-service-emu -n sonata-snort-service`
 
 The created service packages can be found in:
 
@@ -36,7 +36,7 @@ The created service packages can be found in:
 
 ## VNFs (`vnfs/`)
 
-Contains example VNF implementations. Most of them are given as Docker container configurations so that they can directly be used in the emulator. But the Docker containers can also be included and executed within VM images to run them on the service platform.
+Example VNF implementations. Most of them are given as Docker container configurations so that they can directly be used in the emulator. But the Docker containers can also be included and executed within VM images to run them on the service platform.
 
 * `sonata-empty-vnf-docker`: Minimalistic empty VNF.
 * `sonata-iperf3-vnf-docker`: Iperf3 traffic generator.
@@ -59,7 +59,13 @@ In `vnfs/` do ...
 
 ## Usage
 
+### Deploy example service on [`son-emu`](https://github.com/sonata-nfv/son-emu)
+
 TODO
+
+### Deploy example service on SONATA's service platform
+
+* TODO (currently there is no example service for the platform)
 
 ## License
 
