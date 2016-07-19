@@ -3,7 +3,7 @@
 descriptor_version: "1.0"
 
 vendor: "eu.sonata-nfv"
-name: "sonata-demo"
+name: "sonata-empty-service"
 version: "0.1"
 author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
 description: "Example service with three chained empty VNFs"

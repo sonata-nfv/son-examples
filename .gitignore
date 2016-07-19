@@ -7,7 +7,7 @@
 /InstalledFiles
 /pkg/
 /tmp/
-*/target
+target/
 
 ## Environment normalization:
 /.bundle/

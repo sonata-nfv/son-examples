@@ -13,7 +13,7 @@ Contains example service packages including their NSDs, VNFDs, etc. The packages
 * `sonata-empty-demo`: Simple service chain with three empty VNFs.
 * `sonata-snort-service`: Service with a single Snort VNF.
 
-## Projects (`service-projects/`)
+## Services (`service-projects/`)
 
 TODO
 
