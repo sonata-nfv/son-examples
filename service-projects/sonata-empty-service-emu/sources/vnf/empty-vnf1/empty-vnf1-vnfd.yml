@@ -1,5 +1,3 @@
-# YAML description of a tcpdump docker container
-# used in the SONATA platform
 
 ---
 ##
@@ -7,20 +5,16 @@
 ## VNF descriptor.
 ##
 descriptor_version: "vnfd-schema-01"
-
 vendor: "eu.sonata-nfv"
-name: "tcpdump-vnf"
-version: "0.2"
-author: "Steven van Rossem, iMinds"
-description: >
-  "A first tcpdump VNF descriptor. The tcpdump
-   VNF acts as a traffic sink."
-
+name: "empty-vnf1"
+version: "0.1"
+author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
+description: "An empty sample VNF"
 ##
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
-  - id: "vdu01"
+  - id: "1"
     vm_image: "registry.sonata-nfv.eu:5000/sonata-empty-vnf"
     vm_image_format: "docker"
     resource_requirements:
@@ -59,7 +53,7 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:cp03"
-      - "output"
+      - "output   "
 
 ##
 ## The VNF connection points to the 

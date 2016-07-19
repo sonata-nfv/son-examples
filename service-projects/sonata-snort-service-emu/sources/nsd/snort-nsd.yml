@@ -1,12 +1,11 @@
 
 ---
-
 descriptor_version: "1.0"
 
-vendor: "eu.sonata-nfv.upb"
-name: "snort-service-nsd"
+vendor: "eu.sonata-nfv"
+name: "sonata-snort-service"
 version: "0.1"
-author: "Manuel Peuster, Paderborn University, manuel.peuster@upb.de"
+author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
 description: "Example Snort IDS service"
 
 ##
@@ -14,9 +13,9 @@ description: "Example Snort IDS service"
 ## is composed of.
 ##
 network_functions:
-  - vnf_id: "vnf_snort"
-    vnf_vendor: "eu.sonata-nfv.upb"
-    vnf_name: "snort"
+  - vnf_id: "snort_vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "snort-vnf"
     vnf_version: "0.1"
 
 ##
@@ -39,18 +38,18 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "vnf_snort:mgmt"
+      - "snort_vnf:mgmt"
       - "ns:mgmt"
-  - id: "input-snort"
+  - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
-      - "vnf_snort:input"
-  - id: "output-snort"
+      - "snort_vnf:input"
+  - id: "link-output"
     connectivity_type: "E-Line"
     connection_points_reference:
+      - "snort_vnf:output"
       - "ns:output"
-      - "vnf_snort:output"
 
 ##
 ## The forwarding graphs.
@@ -58,22 +57,22 @@ virtual_links:
 forwarding_graphs:
   - fg_id: "ns:fg01"
     number_of_endpoints: 2
-    number_of_virtual_links: 3
-    constituent_virtual_links:
+    number_of_virtual_links: 4
+    constituent_virtual_links: 
       - "mgmt"
-      - "input-snort"
-      - "output-snort"
+      - "link-input"
+      - "link-output"
     constituent_vnfs:
-      - "vnf_snort"
+      - "snort_vnf"
     network_forwarding_paths:
       - fp_id: "ns:fg01:fp01"
         policy: "none"
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "vnf_snort:input"
+          - connection_point_ref: "snort_vnf:input"
             position: 2
-          - connection_point_ref: "vnf_snort:output"
+          - connection_point_ref: "snort_vnf:output"
             position: 3
           - connection_point_ref: "ns:output"
             position: 4
