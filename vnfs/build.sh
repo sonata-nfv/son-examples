@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#
+# CI entry point
 # automatically build VNF containers
 # (later we might also automatically build VM images that run these containers)
 #

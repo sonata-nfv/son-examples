@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#
+# CI entry point
 # push build results to registries/platform
 #
 set -e
