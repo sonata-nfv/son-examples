@@ -1,0 +1,7 @@
+catalogues: [personal]
+description: "Example Snort IDS service"
+maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
+name: sonata-snort-service
+publish_to: [personal]
+vendor: eu.sonata-nfv.package
+version: '0.3'

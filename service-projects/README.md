@@ -9,4 +9,4 @@ Create
 Pack
 
 * son-package --project sonata-empty-service -n sonata-empty-service
-
+* son-package --project sonata-snort-service -n sonata-snort-service
