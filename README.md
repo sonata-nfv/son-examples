@@ -61,11 +61,14 @@ In `vnfs/` do ...
 
 ### Deploy example service on [`son-emu`](https://github.com/sonata-nfv/son-emu)
 
-TODO
+Step-by-step instructions that show how to deploy the example services on `son-emu` are given in `son-emu`'s project wiki:
+
+* [sonata-empty-service: Service package deployment and validation](https://github.com/sonata-nfv/son-emu/wiki/Example-2)
+* [sonata-snort-service: Snort IDS service package deployment and validation](https://github.com/sonata-nfv/son-emu/wiki/Example-3)
 
 ### Deploy example service on SONATA's service platform
 
-* TODO (currently there is no example service for the platform)
+* TODO (an example service for the service platform will be available soon)
 
 ## License
 
