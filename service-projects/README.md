@@ -1,12 +1,6 @@
 Example SONATA SDK projects implementing different example services.
 
-## Notes during development (clean this up later):
+## Naming scheme
 
-Create
-
-* son-workspace --project sonata-empty-service
-
-Pack
-
-* son-package --project sonata-empty-service -n sonata-empty-service
-* son-package --project sonata-snort-service -n sonata-snort-service
+* `*-emu`: Service references Docker-based VNFs that can be executed in `son-emu`.
+* `*-sp`: Service references VM-based VNFs that can be executed in SONATA's service platform.
