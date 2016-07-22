@@ -11,7 +11,7 @@ set -e
 #echo "deb http://registry.sonata-nfv.eu:8080 ubuntu-trusty main" | sudo tee -a /etc/apt/sources.list
 #sudo apt-get update
 #sudo apt-get install -y sonata-cli
-sudo apt-get remove -y sonata-cli
+#sudo apt-get remove -y sonata-cli
 
 # it might also be possible to run son-cli inside a dedicated Docker container. But the schema files seem to be missing.
 #docker pull registry.sonata-nfv.eu:5000/son-cli
@@ -23,12 +23,14 @@ virtualenv -p /usr/bin/python3.4 venv
 source venv/bin/activate
 python bootstrap.py
 bin/buildout
+python setup.py develop
 cd ..
 
 # create a test workspace
 son-workspace --init --workspace test_ws
 
 # package all example service projects
+which son-package
 son-package --workspace test_ws --project sonata-empty-service-emu -n sonata-empty-service
 son-package --workspace test_ws --project sonata-snort-service-emu -n sonata-snort-service
 
