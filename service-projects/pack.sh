@@ -10,6 +10,8 @@ set -e
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D0DF34A30A4FE3F8
 #echo "deb http://registry.sonata-nfv.eu:8080 ubuntu-trusty main" | sudo tee -a /etc/apt/sources.list
 sudo apt-get update
+sudo apt-get remove -y sonata-cli
+sudo apt-get autoremove
 sudo apt-get install -y sonata-cli
 
 # it might also be possible to run son-cli inside a dedicated Docker container. But the schema files seem to be missing.
