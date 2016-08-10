@@ -10,6 +10,7 @@ Example service projects that include NSDs, VNFDs, etc. The projects are given a
 
 * `sonata-empty-service-emu`: Simple service chain with three empty VNFs.
 * `sonata-snort-service-emu`: Service with a single Snort VNF.
+* `sonata-sdk-test-service-emu`: Service with 2 empty ubuntu VNFs chained to each other.
 
 ### Naming scheme
 
