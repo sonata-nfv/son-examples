@@ -1,0 +1,60 @@
+
+---
+##
+## Some general information regarding this
+## VNF descriptor.
+##
+descriptor_version: "vnfd-schema-01"
+vendor: "eu.sonata-nfv"
+name: "ubuntu-vnf1"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "An empty ubuntu VNF"
+##
+## The virtual deployment unit.
+##
+virtual_deployment_units:
+  - id: "1"
+    vm_image: "ubuntu:14.04"
+    vm_image_format: "docker"
+    resource_requirements:
+      cpu:
+        vcpus: 1
+      memory:
+        size: 2
+        size_unit: "GB"
+      storage:
+        size: 10
+        size_unit: "GB"
+    connection_points:
+      - id: "vdu01:cp01"
+        type: "interface"
+      - id: "vdu01:cp02"
+        type: "interface"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vdu01:cp01"
+      - "mgmt"
+  - id: "port"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:cp02"
+      - "port"
+
+##
+## The VNF connection points to the 
+## outside world.
+##
+connection_points:
+  - id: "mgmt"
+    type: "interface"
+  - id: "port"
+    type: "interface"
+
