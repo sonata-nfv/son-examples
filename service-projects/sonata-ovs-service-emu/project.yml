@@ -1,0 +1,7 @@
+catalogues: [personal]
+description: "Example service with an ovs switch and ryu openflow controller"
+maintainer: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+name: sonata-sdk-test-service
+publish_to: [personal]
+vendor: eu.sonata-nfv.package
+version: '0.1'

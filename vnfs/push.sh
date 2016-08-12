@@ -15,3 +15,9 @@ docker push $target_repo/sonata-iperf3-vnf
 
 # snort IDS vnf
 docker push $target_repo/sonata-snort-ids-vnf
+
+# snort ovs1 vnf
+docker push $target_repo/sonata-ovs1-vnf
+
+# snort ryu vnf
+docker push $target_repo/sonata-ryu-vnf
