@@ -1,0 +1,49 @@
+version: '2'
+
+# create volume to share data from son-cli to son-monitor containers
+volumes:
+  son_monitor_docker: {}
+  son_monitor_prometheus: {}
+  son_monitor_grafana: {}
+
+
+services:
+  son-cli:
+    image: registry.sonata-nfv.eu:5000/son-cli
+    container_name: son-cli
+    volumes:
+     # mounted volume for son-monitor files
+     - son_monitor_docker:/tmp/son-monitor/docker:rw
+     - son_monitor_prometheus:/tmp/son-monitor/prometheus:rw
+     - son_monitor_grafana:/tmp/son-monitor/grafana:rw
+     - "/var/run/docker.sock:/var/run/docker.sock"
+     - "./start_son_cli.sh:/start.sh"
+    network_mode: "host"
+    pid: "host"
+    privileged: true
+    command: [bash, /start.sh]
+
+  son-emu:
+    image: registry.sonata-nfv.eu:5000/son-emu
+    container_name: son-emu
+    stdin_open: true
+    tty: true
+    volumes:
+     - "/var/run/docker.sock:/var/run/docker.sock"
+     - "./son-emu_test_topo.py:/son-emu/src/emuvim/examples/son-emu_test_topo.py"
+    network_mode: "host"
+    pid: "host"
+    privileged: true
+    ports:
+     #REST api
+     - "5001:5001"
+     #dummy GK
+     - "5000:5000"
+    command: [python, /son-emu/src/emuvim/examples/son-emu_test_topo.py]
+
+  son-analyze:
+    image: registry.sonata-nfv.eu:5000/son-analyze
+    container_name: son-analyze
+    volumes:
+     - "./start_son_analyze.sh:/start.sh"
+    command: [bash, /start.sh]

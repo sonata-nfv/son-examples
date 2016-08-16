@@ -22,6 +22,7 @@ son-workspace --init --workspace test_ws
 which son-package
 son-package --workspace test_ws --project sonata-empty-service-emu -n sonata-empty-service
 son-package --workspace test_ws --project sonata-snort-service-emu -n sonata-snort-service
+son-package --workspace test_ws --project sonata-sdk-test-service-emu -n sonata-sdk-test-service
 
 # leave venv
 deactivate

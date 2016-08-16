@@ -10,6 +10,8 @@ Example service projects that include NSDs, VNFDs, etc. The projects are given a
 
 * `sonata-empty-service-emu`: Simple service chain with three empty VNFs.
 * `sonata-snort-service-emu`: Service with a single Snort VNF.
+* `sonata-sdk-test-service-emu`: Service with 2 empty ubuntu VNFs chained to each other.
+* `sonata-ovs-service-emu`: Service with an ovs switch and a Ryu openflow controller.
 
 ### Naming scheme
 
@@ -41,6 +43,8 @@ Example VNF implementations. Most of them are given as Docker container configur
 * `sonata-empty-vnf-docker`: Minimalistic empty VNF.
 * `sonata-iperf3-vnf-docker`: Iperf3 traffic generator.
 * `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system.
+* `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container).
+* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support to be included).
 
 ### Naming scheme
 
