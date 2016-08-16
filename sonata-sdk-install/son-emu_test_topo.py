@@ -43,11 +43,11 @@ import time
 
 logging.basicConfig(level=logging.INFO)
 
-exit = False
+net = None
 
 def create_topology1():
 
-    global exit
+    global net
 
     # create topology
     net = DCNetwork(controller=RemoteController, monitor=True, enable_learning = True)
@@ -76,13 +76,8 @@ def create_topology1():
     # start the emulation platform
     net.start()
     
-    #does not work from docker compose (cannot start container in interactive mode)
-    #cli = net.CLI()
-    # instead wait here:
-    logging.info("waiting for SIGTERM or SIGINT signal")
-    while not exit:
-        time.sleep(1)
-    logging.info("got SIG signal")
+    #Need to start container in interactive mode for this
+    cli = net.CLI()
     net.stop()
 
 def exit_gracefully(signum, frame):
@@ -90,10 +85,11 @@ def exit_gracefully(signum, frame):
     7. At shutdown, we should receive the unix signal here and shutdown gracefully
     """
 
-    global exit
+    global net
 
     logging.info('Signal handler called with signal {0}'.format(signum))
-    exit = True
+    # We need to cleanup here, otherwise this is not called upon exit
+    net.stop()
 
 
 def main():
