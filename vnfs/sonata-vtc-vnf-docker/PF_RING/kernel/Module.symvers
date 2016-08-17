@@ -1,0 +1,2 @@
+0x78c97075	pf_ring_inject_packet_to_ring	/home/ubuntu/PF_RING/kernel/pf_ring	EXPORT_SYMBOL
+0x2bc09a00	pf_ring_add_module_dependency	/home/ubuntu/PF_RING/kernel/pf_ring	EXPORT_SYMBOL
