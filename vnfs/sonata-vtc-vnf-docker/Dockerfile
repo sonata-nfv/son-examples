@@ -12,9 +12,6 @@ ENV HOME /root
 ADD PF_RING /vTC/PF_RING
 ADD nDPI /vTC/nDPI
 
-#WORKDIR /vTC/PF_RING/kernel
-#RUN make
-
 # build
 WORKDIR /vTC/nDPI
 RUN ./autogen.sh
@@ -22,5 +19,5 @@ RUN ./configure
 RUN make
 RUN make install
  
-WORKDIR /PF_RING/userland/examples
+WORKDIR /vTC/PF_RING/userland/examples
 #RUN make

@@ -53,3 +53,7 @@ after the container is successfully built, we run the vTC on the container
 **!!!IMPORTANT the -privileged parameter, otherwise it outputs eth0 no such device!!**
 
 sudo docker run -t -privileged -i ndpi ./pfbridge -a eth0 -b eth1
+
+to play around:
+
+docker run -it --rm --privileged vtc-test /bin/bash
