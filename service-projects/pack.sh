@@ -4,6 +4,9 @@
 # automatic packing of service projects to validate them
 # (uses son-cli tools installed directly from git)
 
+# be sure that old runs do not break things
+rm -rf test_ws son-cli
+
 set -e
 
 git clone https://github.com/sonata-nfv/son-cli.git
@@ -23,6 +26,7 @@ which son-package
 son-package --workspace test_ws --project sonata-empty-service-emu -n sonata-empty-service
 son-package --workspace test_ws --project sonata-snort-service-emu -n sonata-snort-service
 son-package --workspace test_ws --project sonata-sdk-test-service-emu -n sonata-sdk-test-service
+son-package --workspace test_ws --project sonata-vtc-service-emu -n sonata-vtc-service
 
 # leave venv
 deactivate

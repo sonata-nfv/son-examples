@@ -1,0 +1,82 @@
+
+---
+##
+## Some general information regarding this
+## VNF descriptor.
+##
+descriptor_version: "vnfd-schema-01"
+vendor: "eu.sonata-nfv"
+name: "vtc-vnf"
+version: "0.1"
+author: "George Xilouris, NCSRD"
+description: "Virtual traffic classifier (vTC) descriptor file. vTC uses ndpi library for the implementation of the vTC"
+##
+## The virtual deployment unit.
+##
+virtual_deployment_units:
+  - id: "vdu01"
+    description: "VNFC for the DPI functionality"
+    vm_image: "registry.sonata-nfv.eu:5000/sonata-vtc-vnf"
+    vm_image_format: "docker"
+    resource_requirements:
+      cpu:
+        vcpus: 1
+      memory:
+        size: 2
+        size_unit: "GB"
+      storage:
+        size: 5
+        size_unit: "GB"
+    monitoring_parameters:
+      - name: "vm_cpu_perc"
+        unit: "Percentage"
+      - name: "vm_mem_pers"
+        unit: "Percentage"
+      - name: "vm_net_rx_MB"
+        unit: "MB"
+      - name: "vm_net_tx_MB"
+        unit: "Mbps"
+    connection_points:
+      #Management interface
+      - id: "vdu01:eth0"
+        type: "interface" #this is the only interface that should get floating IP address. traffic for the other interfaces will be forwarded via the SDN controller" 
+        #access: "public" #signal the allocation of public IP from the allocated segment for this tenant. 
+      #Data-in interface
+      - id: "vdu01:eth1"
+        type: "interface"
+      #Data-out interfaces
+      - id: "vdu01:eth2"
+        type: "interface"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vdu01:eth0"
+      - "mgmt"
+  - id: "input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:eth1"
+      - "input"
+  - id: "output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:eth2"
+      - "output"
+
+##
+## The VNF connection points to the 
+## outside world.
+##
+connection_points:
+  - id: "mgmt"
+    type: "interface"
+  - id: "input"
+    type: "interface"
+  - id: "output"
+    type: "interface"
