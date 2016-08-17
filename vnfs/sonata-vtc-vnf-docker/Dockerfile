@@ -8,20 +8,19 @@ RUN apt-get clean -y
 # Fixes empty home
 ENV HOME /root
 
- 
-# Install the app
-RUN git clone https://akiskourtis:ptindpi@bitbucket.org/akiskourtis/dockerdpi.git
+# Copy the files
+ADD PF_RING /PF_RING
+ADD nDPI /nDPI
 
-#WORKDIR dockerdpi/PF_RING/kernel
+#WORKDIR /PF_RING/kernel
 #RUN make
 
-WORKDIR dockerdpi/nDPI
+# build
+WORKDIR /nDPI
 RUN ./autogen.sh
 RUN ./configure
 RUN make
 RUN make install
-
-#RUN insmod ./pf_ring.ko
  
-WORKDIR ../PF_RING/userland/examples
+WORKDIR /PF_RING/userland/examples
 #RUN make
