@@ -40,11 +40,12 @@ The created service packages can be found in:
 
 Example VNF implementations. Most of them are given as Docker container configurations so that they can directly be used in the emulator. But the Docker containers can also be included and executed within VM images to run them on the service platform.
 
-* `sonata-empty-vnf-docker`: Minimalistic empty VNF.
-* `sonata-iperf3-vnf-docker`: Iperf3 traffic generator.
-* `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system.
-* `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container).
-* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support to be included).
+* `sonata-empty-vnf-docker`: Minimalistic empty VNF (UPB).
+* `sonata-iperf3-vnf-docker`: Iperf3 traffic generator (UPB).
+* `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system (UPB).
+* `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container) (iMinds).
+* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support to be included) (iMinds).
+* `sonata-vtc-vnf-docker`: nDPI based traffic classifier (requieres PF_RING to be installed on the host machine) (NCSRD).
 
 ### Naming scheme
 
