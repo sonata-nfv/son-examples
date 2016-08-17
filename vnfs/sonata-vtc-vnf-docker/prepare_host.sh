@@ -16,10 +16,9 @@ make
 make install
 
 # load the module
-#insmod ./pf_ring.ko
+insmod ./pf_ring.ko
 
 # install the module persistently
-
 cp pf_ring.ko /lib/modules/$(uname -r)/kernel/drivers/net/
 #chmod +x /lib/modules/$(uname -r)/kernel/drivers/net/pf_ring.ko
 echo "pf_ring" >> /etc/modules
