@@ -9,14 +9,14 @@ RUN apt-get clean -y
 ENV HOME /root
 
 # Copy the files
-ADD PF_RING /PF_RING
-ADD nDPI /nDPI
+ADD PF_RING /vTC/PF_RING
+ADD nDPI /vTC/nDPI
 
-#WORKDIR /PF_RING/kernel
+#WORKDIR /vTC/PF_RING/kernel
 #RUN make
 
 # build
-WORKDIR /nDPI
+WORKDIR /vTC/nDPI
 RUN ./autogen.sh
 RUN ./configure
 RUN make
