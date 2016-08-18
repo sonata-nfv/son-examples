@@ -15,7 +15,7 @@ description: "An empty sample VNF"
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "registry.sonata-nfv.eu:5000/sonata-empty-vnf"
+    vm_image: "sonata-nfv/sonata-empty-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:
