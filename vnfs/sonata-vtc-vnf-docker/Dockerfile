@@ -6,7 +6,7 @@ ENV IFIN input
 ENV IFOUT output
  
 # Install dev tools
-RUN apt-get update && apt-get install -y git net-tools inetutils-ping iproute ca-certificates git-core ssh automake build-essential libnuma-dev libpcap-dev pkg-config libtool libjson0-dev libcurl4-gnutls-dev
+RUN apt-get update && apt-get install -y git net-tools inetutils-ping iproute screen ca-certificates git-core ssh automake build-essential libnuma-dev libpcap-dev pkg-config libtool libjson0-dev libcurl4-gnutls-dev
 RUN apt-get clean -y
  
 # Fixes empty home
