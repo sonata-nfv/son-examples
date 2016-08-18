@@ -6,7 +6,7 @@
 #
 set -e
 
-target_repo=${1-sonata-nfv}
+target_repo=${1-sonatanfv}
 
 # empty vnf
 docker build -t $target_repo/sonata-empty-vnf -f sonata-empty-vnf-docker/Dockerfile sonata-empty-vnf-docker

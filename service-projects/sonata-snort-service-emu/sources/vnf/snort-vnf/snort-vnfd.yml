@@ -15,7 +15,7 @@ description: "Snort IDS VNF that monitors traffic on br0 configured as L2 bridge
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "sonata-nfv/sonata-snort-ids-vnf"
+    vm_image: "sonatanfv/sonata-snort-ids-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:

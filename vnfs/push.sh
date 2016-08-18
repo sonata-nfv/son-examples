@@ -5,7 +5,7 @@
 #
 set -e
 
-target_repo=${1-sonata-nfv}
+target_repo=${1-sonatanfv}
 
 # empty vnf
 docker push $target_repo/sonata-empty-vnf 

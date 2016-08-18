@@ -16,7 +16,7 @@ description: "Virtual traffic classifier (vTC) descriptor file. vTC uses ndpi li
 virtual_deployment_units:
   - id: "vdu01"
     description: "VNFC for the DPI functionality"
-    vm_image: "sonata-nfv/sonata-vtc-vnf"
+    vm_image: "sonatanfv/sonata-vtc-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:
