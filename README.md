@@ -58,9 +58,9 @@ Example VNF implementations. Most of them are given as Docker container configur
 In `vnfs/` do ...
 
 ```
-./build.sh [opt. target repository name (default=registry.sonata-nfv.eu:5000)]
+./build.sh [opt. target repository name (default=sonata-nfv)]
 
-./push.sh [opt. target repository name (default=registry.sonata-nfv.eu:5000)]
+./push.sh [opt. target repository name (default=sonata-nfv)]
 ```
 
 ## Usage
