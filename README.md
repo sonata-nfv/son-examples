@@ -8,11 +8,11 @@ This repository contains several example network services and their correspondin
 
 Example service projects that include NSDs, VNFDs, etc. The projects are given as source code and have to be packed before they can be pushed to the service platform or the emulator.
 
-* `sonata-empty-service-emu`: Simple service chain with three empty VNFs (UPB).
-* `sonata-snort-service-emu`: Service with a single Snort VNF (UPB).
+* `sonata-empty-service-emu`: Simple service chain with three empty VNFs (UPB) [Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-2).
+* `sonata-snort-service-emu`: Service with a single Snort VNF (UPB)[Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-3).
 * `sonata-sdk-test-service-emu`: Service with 2 empty ubuntu VNFs chained to each other (iMinds).
 * `sonata-ovs-service-emu`: Service with an ovs switch and a Ryu openflow controller (iMinds).
-* `sonata-vtc-service-emu`: Service with single vTC VNF to test the vTC VNF in the emulator (UPB).
+* `sonata-vtc-service-emu`: Service with single vTC VNF to test the vTC VNF in the emulator (UPB) [Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-4).
 
 ### Naming scheme
 
