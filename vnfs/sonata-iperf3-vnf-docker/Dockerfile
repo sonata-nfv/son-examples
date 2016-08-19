@@ -6,7 +6,8 @@ RUN	apt-get update && apt-get install -y \
 	iproute \
 	inetutils-ping \
 	iperf3 \
-	nmap
+	nmap \
+	ssh
 
 # set entry point for emulator gatekeeper
 ENV SON_EMU_CMD echo "iperf3 VNF ready"
