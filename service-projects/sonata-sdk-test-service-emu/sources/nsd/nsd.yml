@@ -49,21 +49,16 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
-      - "ubuntu_vnf1:port"
+      - "ubuntu_vnf1:port1"
   - id: "link-12"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ubuntu_vnf1:port"
-      - "ubuntu_vnf2:port"
-  - id: "link-21"
-    connectivity_type: "E-Line"
-    connection_points_reference:
-      - "ubuntu_vnf2:port"
-      - "ubuntu_vnf1:port"
+      - "ubuntu_vnf1:port2"
+      - "ubuntu_vnf2:port2"
   - id: "link-output"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ubuntu_vnf2:port"
+      - "ubuntu_vnf2:port1"
       - "ns:output"
 
 ##
@@ -88,10 +83,29 @@ forwarding_graphs:
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "ubuntu_vnf1:port"
+          - connection_point_ref: "ubuntu_vnf1:port1"
             position: 2
-          - connection_point_ref: "ubuntu_vnf2:port"
+          - connection_point_ref: "ubuntu_vnf1:port2"
             position: 3
-          - connection_point_ref: "ns:output"
+          - connection_point_ref: "ubuntu_vnf2:port2"
             position: 4
+          - connection_point_ref: "ubuntu_vnf2:port1"
+            position: 5
+          - connection_point_ref: "ns:output"
+            position: 6
+
+##
+## Metrics to monitor (currently used by son-monitor).
+##
+monitoring_parameters:
+  - desc: "cpu (ubuntu_vnf1)"
+    metric: "sum(rate(container_cpu_usage_seconds_total{name=\"mn.ubuntu_vnf1\"}[10s]))"
+  - desc: "cpu (ubuntu_vnf2)"
+    metric: "sum(rate(container_cpu_usage_seconds_total{name=\"mn.ubuntu_vnf2\"}[10s]))"
+  - desc: "packet_rate_tx (ubuntu_vnf1:port2)"
+    metric: "(rate(container_network_transmit_packets_total{name=\"mn.ubuntu_vnf1\",interface=\"port2\"}[10s]))"
+  - desc: "packet_rate_tx (ubuntu_vnf2:port2)"
+    metric: "(rate(container_network_transmit_packets_total{name=\"mn.ubuntu_vnf2\",interface=\"port2\"}[10s]))"
+
+
 
