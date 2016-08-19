@@ -14,12 +14,14 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 	ebtables \
 	bridge-utils \
 	ethtool \
+	vim \
 	snort
 
 ADD snort.conf /etc/snort/snort.conf
-ADD sonata.rules /rules/sonata.rules
 ADD start.sh start.sh
 RUN chmod +x start.sh
+ADD restart_snort.sh restart_snort.sh
+RUN chmod +x restart_snort.sh
 RUN mkdir /snort-logs
 
 # set entry point for emulator gatekeeper
