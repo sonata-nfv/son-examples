@@ -31,6 +31,8 @@ virtual_deployment_units:
         type: "interface"
       - id: "vdu01:cp02"
         type: "interface"
+      - id: "vdu01:cp03"
+        type: "interface"
 
 ##
 ## The virtual links that interconnect
@@ -42,11 +44,16 @@ virtual_links:
     connection_points_reference:
       - "vdu01:cp01"
       - "mgmt"
-  - id: "port"
+  - id: "port1"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:cp02"
-      - "port"
+      - "port1"
+  - id: "port2"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:cp03"
+      - "port2"
 
 ##
 ## The VNF connection points to the 
@@ -55,6 +62,8 @@ virtual_links:
 connection_points:
   - id: "mgmt"
     type: "interface"
-  - id: "port"
+  - id: "port1"
+    type: "interface"
+  - id: "port2"
     type: "interface"
 

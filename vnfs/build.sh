@@ -23,5 +23,9 @@ docker build -t $target_repo/sonata-ovs1-vnf -f sonata-ovs1-vnf-docker/Dockerfil
 # Ryu controller vnf
 docker build -t $target_repo/sonata-ryu-vnf -f sonata-ryu-vnf-docker/Dockerfile sonata-ryu-vnf-docker
 
+# son-emu-sap vnf
+docker build -t $target_repo/son-emu-sap -f sonata-son-emu-sap-docker/Dockerfile sonata-son-emu-sap-docker
+
 # vTC vnf
 docker build -t $target_repo/sonata-vtc-vnf -f sonata-vtc-vnf-docker/Dockerfile sonata-vtc-vnf-docker
+
