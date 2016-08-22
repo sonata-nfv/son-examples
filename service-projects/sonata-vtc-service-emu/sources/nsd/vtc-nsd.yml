@@ -1,0 +1,79 @@
+
+---
+descriptor_version: "1.0"
+
+vendor: "eu.sonata-nfv"
+name: "sonata-vtc-service"
+version: "0.1"
+author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
+description: "Service to test vTC VNF. This service only contains a single vTC DPI VNF."
+
+##
+## The various network functions this service
+## is composed of.
+##
+network_functions:
+  - vnf_id: "vtc_vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "vtc-vnf"
+    vnf_version: "0.1"
+
+##
+## The NS connection points to the 
+## outside world.
+##
+connection_points:
+  - id: "ns:mgmt"
+    type: "interface"
+  - id: "ns:input"
+    type: "interface"
+  - id: "ns:output"
+    type: "interface"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vtc_vnf:mgmt"
+      - "ns:mgmt"
+  - id: "link-input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "ns:input"
+      - "vtc_vnf:input"
+  - id: "link-output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vtc_vnf:output"
+      - "ns:output"
+
+##
+## The forwarding graphs.
+##
+forwarding_graphs:
+  - fg_id: "ns:fg01"
+    number_of_endpoints: 2
+    number_of_virtual_links: 4
+    constituent_virtual_links: 
+      - "mgmt"
+      - "link-input"
+      - "link-output"
+    constituent_vnfs:
+      - "vtc_vnf"
+    network_forwarding_paths:
+      - fp_id: "ns:fg01:fp01"
+        policy: "none"
+        connection_points:
+          - connection_point_ref: "ns:input"
+            position: 1
+          - connection_point_ref: "vtc_vnf:input"
+            position: 2
+          - connection_point_ref: "vtc_vnf:output"
+            position: 3
+          - connection_point_ref: "ns:output"
+            position: 4
+

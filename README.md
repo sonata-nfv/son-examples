@@ -8,10 +8,11 @@ This repository contains several example network services and their correspondin
 
 Example service projects that include NSDs, VNFDs, etc. The projects are given as source code and have to be packed before they can be pushed to the service platform or the emulator.
 
-* `sonata-empty-service-emu`: Simple service chain with three empty VNFs.
-* `sonata-snort-service-emu`: Service with a single Snort VNF.
-* `sonata-sdk-test-service-emu`: Service with 2 empty ubuntu VNFs chained to each other.
-* `sonata-ovs-service-emu`: Service with an ovs switch and a Ryu openflow controller.
+* `sonata-empty-service-emu`: Simple service chain with three empty VNFs (UPB) [Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-2).
+* `sonata-snort-service-emu`: Service with a single Snort VNF (UPB)[Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-3).
+* `sonata-sdk-test-service-emu`: Service with 2 empty ubuntu VNFs chained to each other (iMinds).
+* `sonata-ovs-service-emu`: Service with an ovs switch and a Ryu openflow controller (iMinds).
+* `sonata-vtc-service-emu`: Service with single vTC VNF to test the vTC VNF in the emulator (UPB) [Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-4).
 
 ### Naming scheme
 
@@ -40,11 +41,12 @@ The created service packages can be found in:
 
 Example VNF implementations. Most of them are given as Docker container configurations so that they can directly be used in the emulator. But the Docker containers can also be included and executed within VM images to run them on the service platform.
 
-* `sonata-empty-vnf-docker`: Minimalistic empty VNF.
-* `sonata-iperf3-vnf-docker`: Iperf3 traffic generator.
-* `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system.
-* `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container).
-* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support to be included).
+* `sonata-empty-vnf-docker`: Minimalistic empty VNF (UPB).
+* `sonata-iperf3-vnf-docker`: Iperf3 traffic generator (UPB).
+* `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system (UPB).
+* `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container) (iMinds).
+* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support to be included) (iMinds).
+* `sonata-vtc-vnf-docker`: nDPI based traffic classifier (requieres PF_RING to be installed on the host machine) (NCSRD).
 
 ### Naming scheme
 
@@ -56,9 +58,9 @@ Example VNF implementations. Most of them are given as Docker container configur
 In `vnfs/` do ...
 
 ```
-./build.sh [opt. target repository name (default=registry.sonata-nfv.eu:5000)]
+./build.sh [opt. target repository name (default=sonatanfv)]
 
-./push.sh [opt. target repository name (default=registry.sonata-nfv.eu:5000)]
+./push.sh [opt. target repository name (default=sonatanfv)]
 ```
 
 ## Usage

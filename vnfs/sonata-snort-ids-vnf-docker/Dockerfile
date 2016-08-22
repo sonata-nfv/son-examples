@@ -17,6 +17,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
 	snort
 
 ADD snort.conf /etc/snort/snort.conf
+ADD sonata.rules /rules/sonata.rules
 ADD start.sh start.sh
 RUN chmod +x start.sh
 RUN mkdir /snort-logs
