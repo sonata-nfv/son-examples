@@ -58,6 +58,11 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
+      - "fw_ovs_vnf:port0"
+  - id: "link-interconnect"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "fw_ovs_vnf:port1"
       - "vtc_vnf:input"
   - id: "link-output"
     connectivity_type: "E-Line"
@@ -71,12 +76,14 @@ virtual_links:
 forwarding_graphs:
   - fg_id: "ns:fg01"
     number_of_endpoints: 2
-    number_of_virtual_links: 4
+    number_of_virtual_links: 6
     constituent_virtual_links: 
       - "mgmt"
       - "link-input"
+      - "link-interconnect"
       - "link-output"
     constituent_vnfs:
+      - "fw_ovs_vnf"
       - "vtc_vnf"
     network_forwarding_paths:
       - fp_id: "ns:fg01:fp01"
@@ -84,10 +91,14 @@ forwarding_graphs:
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "vtc_vnf:input"
+          - connection_point_ref: "fw_ovs_vnf:port0"
             position: 2
-          - connection_point_ref: "vtc_vnf:output"
+          - connection_point_ref: "fw_ovs_vnf:port1"
             position: 3
-          - connection_point_ref: "ns:output"
+          - connection_point_ref: "vtc_vnf:input"
             position: 4
+          - connection_point_ref: "vtc_vnf:output"
+            position: 5
+          - connection_point_ref: "ns:output"
+            position: 6
 
