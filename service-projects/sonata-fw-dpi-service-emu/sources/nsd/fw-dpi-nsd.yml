@@ -1,0 +1,100 @@
+
+---
+descriptor_version: "1.0"
+
+vendor: "eu.sonata-nfv"
+name: "sonata-fw-dpi-service"
+version: "0.1"
+author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de Steven Van Rossem, steven.vanrossem@intec.ugent.be"
+description: "Example firewall+ dpi (Snort+Ryu+OvS)  service"
+
+##
+## The various network functions this service
+## is composed of.
+##
+network_functions:
+  - vnf_id: "snort"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "snort-vnf"
+    vnf_version: "0.1"
+  - vnf_id: "ovs1"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "ovs1-vnf"
+    vnf_version: "0.1"
+  - vnf_id: "ctrl"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "ctrl-vnf"
+    vnf_version: "0.1"
+##
+## The NS connection points to the 
+## outside world.
+##
+connection_points:
+  - id: "ns:mgmt"
+    type: "interface"
+  - id: "ns:input"
+    type: "interface"
+  - id: "ns:output"
+    type: "interface"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
+virtual_links:
+  - id: "ctrl-lan"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "ctrl:ctrl-port"
+      - "ovs1:ctrl-port"
+      - "snort:output"
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "snort:mgmt"
+      - "ovs1:mgmt"
+      - "ctrl:mgmt"
+      - "ns:mgmt"
+  - id: "link-input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "ns:input"
+      - "ovs1:port0"
+  - id: "link-output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "ovs1:port1"
+      - "ns:output"
+  - id: "ctrl-lan"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "ovs1:port2"
+      - "snort:input"
+
+##
+## The forwarding graphs.
+##
+forwarding_graphs:
+  - fg_id: "ns:fg01"
+    number_of_endpoints: 2
+    number_of_virtual_links: 4
+    constituent_virtual_links: 
+      - "mgmt"
+      - "link-input"
+      - "link-output"
+      - "ctrl-lan"
+    constituent_vnfs:
+      - "ovs1"
+    network_forwarding_paths:
+      - fp_id: "ns:fg01:fp01"
+        policy: "none"
+        connection_points:
+          - connection_point_ref: "ns:input"
+            position: 1
+          - connection_point_ref: "ovs1:port0"
+            position: 2
+          - connection_point_ref: "ovs2:port1"
+            position: 3
+          - connection_point_ref: "ns:output"
+            position: 4
+
