@@ -28,3 +28,6 @@ docker push $target_repo/son-emu-sap
 # vtc vnf
 docker push $target_repo/sonata-vtc-vnf
 
+# snort IDS ovs vnf
+docker push $target_repo/sonata-snort-ovs-vnf
+
