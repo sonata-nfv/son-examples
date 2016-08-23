@@ -29,3 +29,7 @@ docker build -t $target_repo/son-emu-sap -f sonata-son-emu-sap-docker/Dockerfile
 # vTC vnf
 docker build -t $target_repo/sonata-vtc-vnf -f sonata-vtc-vnf-docker/Dockerfile sonata-vtc-vnf-docker
 
+# snort IDS ovs vnf
+docker build -t $target_repo/sonata-snort-ovs-vnf -f sonata-snort-ovs-vnf-docker/Dockerfile sonata-snort-ovs-vnf-docker
+
+
