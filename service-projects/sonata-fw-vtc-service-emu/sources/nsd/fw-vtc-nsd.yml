@@ -13,10 +13,22 @@ description: "SONATA Y1 review demo service: FW/vTC"
 ## is composed of.
 ##
 network_functions:
+  - vnf_id: "fw_ovs_vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "fw-ovs-vnf"
+    vnf_version: "0.1"
+  - vnf_id: "fw_ctrl_vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "fw-ctrl-vnf"
+    vnf_version: "0.1"
   - vnf_id: "vtc_vnf"
     vnf_vendor: "eu.sonata-nfv"
     vnf_name: "vtc-vnf"
     vnf_version: "0.1"
+  #- vnf_id: "vtc_dashboard_vnf"
+  #  vnf_vendor: "eu.sonata-nfv"
+  #  vnf_name: "vtc-dashboard-vnf"
+  #  vnf_version: "0.1"
 
 ##
 ## The NS connection points to the 
