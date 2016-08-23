@@ -14,6 +14,7 @@ Example service projects that include NSDs, VNFDs, etc. The projects are given a
 * `sonata-ovs-service-emu`: Service with an ovs switch and a Ryu openflow controller (iMinds).
 * `sonata-vtc-service-emu`: Service with single vTC VNF to test the vTC VNF in the emulator (UPB) [Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-4).
 * `sonata-fw-vtc-service-emu`: This will be the service for the Y1 review of son-emu (UPB).
+* `sonata-fw-dpi-service-emu`: Service with a Firewall (ovs+Ryu) and DPI (Snort) (iMinds).
 
 ### Naming scheme
 
@@ -46,8 +47,10 @@ Example VNF implementations. Most of them are given as Docker container configur
 * `sonata-iperf3-vnf-docker`: Iperf3 traffic generator (UPB).
 * `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system (UPB).
 * `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container) (iMinds).
-* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support to be included) (iMinds).
+* `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support and rest API included) (iMinds).
 * `sonata-vtc-vnf-docker`: nDPI based traffic classifier (requieres PF_RING to be installed on the host machine) (NCSRD).
+* `sonata-snort-ovs-docker`: Snort intrusion detection system, extended with an interface to send alerts to a Ryu openflow controller (iMinds).
+* `sonata-son-emu-sap-docker`: Generic container that can be used to be deployed as SAP (Service Access Point) for a service deployed in the SONATA SDK emulator. This container has some basic functionality to generate and capture traffic (iMinds).
 
 ### Naming scheme
 
@@ -94,6 +97,8 @@ Son-examples is published under Apache 2.0 license. Please see the LICENSE file 
 ## Useful Links
 
 * [Snort IDS](https://www.snort.org)
+* [SNORT IDS + Ryu](http://ryu.readthedocs.io/en/latest/snort_integrate.html)
+* [Ryu REST api](http://ryu.readthedocs.io/en/latest/app/ofctl_rest.html)
 
 ## Contributing
 Contributing to the son-examples is really easy. You must:
