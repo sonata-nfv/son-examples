@@ -51,6 +51,8 @@ virtual_links:
     connectivity_type: "E-LAN"
     connection_points_reference:
       - "vtc_vnf:mgmt"
+      - "fw_ctrl_vnf:mgmt"
+      - "fw_ovs_vnf:mgmt"
       - "ns:mgmt"
   - id: "link-input"
     connectivity_type: "E-Line"
