@@ -1,9 +1,13 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER steven.vanrossem@intec.ugent.be
 
 RUN	apt-get update && apt-get install -y \
 	net-tools \
-	iproute 
+	iproute \
+	inetutils-ping \
+	iperf3 \
+	nmap \
+	ssh
 
 RUN apt-get install -y software-properties-common openssh-server
 RUN echo 'root:root' | chpasswd
