@@ -8,7 +8,7 @@
 set -e
 
 # install requirements
-apt-get install git libpcap-dev libnuma-dev pkg-config libtool gcc linux-headers-$(uname -r)
+apt-get install -y git libpcap-dev libnuma-dev pkg-config libtool gcc linux-headers-$(uname -r)
 
 # build PF_RING module
 cd PF_RING/kernel
