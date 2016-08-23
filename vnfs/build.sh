@@ -20,6 +20,9 @@ docker build -t $target_repo/sonata-snort-ids-vnf -f sonata-snort-ids-vnf-docker
 # OVS vnf
 docker build -t $target_repo/sonata-ovs1-vnf -f sonata-ovs1-vnf-docker/Dockerfile sonata-ovs1-vnf-docker
 
+# Ryu controller vnf with snort support
+docker build -t $target_repo/sonata-ryu-snort-vnf -f sonata-ryu-snort-vnf-docker/Dockerfile sonata-ryu-snort-vnf-docker
+
 # Ryu controller vnf
 docker build -t $target_repo/sonata-ryu-vnf -f sonata-ryu-vnf-docker/Dockerfile sonata-ryu-vnf-docker
 

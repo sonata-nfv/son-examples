@@ -20,7 +20,7 @@ docker push $target_repo/sonata-snort-ids-vnf
 docker push $target_repo/sonata-ovs1-vnf
 
 # ryu vnf
-docker push $target_repo/sonata-ryu-vnf
+docker push $target_repo/sonata-ryu-snort-vnf
 
 # son-emu-sap vnf
 docker push $target_repo/son-emu-sap

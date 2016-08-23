@@ -12,8 +12,12 @@ OVS_DPID="0000000000000001"
 
 # declare an array variable holding the ovs port names
 # the interfaces are expected to be configured from the vnfd or nsd
-declare -a PORTS=("port0" "port1" "port2")
+#declare -a PORTS=("port0" "port1" "port2")
 
+# get lists of ports (assume the interfaces for the ovs ports are named port[0-9]*)
+PORTS=( $(ifconfig -a | egrep -o '^port[0-9]*') )
+echo "detected ports:"
+printf "%s\n" "${PORTS[@]}"
 
 #echo "setup ovs bridge"
 ovs-vsctl add-br $NAME
@@ -26,13 +30,10 @@ ovs-vsctl set bridge $NAME other-config:datapath-id=$OVS_DPID
 ## now loop through the PORTS array
 for i in "${PORTS[@]}"
 do
-   echo "$i"
+   echo "added port $i to switch $NAME"
    ovs-vsctl add-port $NAME $i
    # or do whatever with individual element of the array
 done
-
-
-
 
 
 
