@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER steven.vanrossem@intec.ugent.be
 
 RUN	apt-get update && apt-get install -y \
