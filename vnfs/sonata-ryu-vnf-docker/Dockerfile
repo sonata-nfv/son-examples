@@ -7,8 +7,10 @@ RUN	apt-get update && apt-get install -y \
 	inetutils-ping
 
 
-ADD start_ryu.sh start.sh
+ADD start_ryu_snort.sh start.sh
 RUN chmod +x start.sh
+
+ADD simple_switch_snort_sonata.py simple_switch_snort_sonata.py
 
 # set entry point for emulator gatekeeper
 ENV SON_EMU_CMD "./start.sh"

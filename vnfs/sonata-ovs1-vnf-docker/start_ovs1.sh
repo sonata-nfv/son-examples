@@ -9,25 +9,10 @@ service openvswitch-switch start
 # also controller ip address should be configured by a service controller after vnfs are deployed and assigned an ip address
 NAME="ovs1"
 OVS_DPID="0000000000000001"
-CONTROLLER="tcp:10.0.10.1:6633"
+
 # declare an array variable holding the ovs port names
 # the interfaces are expected to be configured from the vnfd or nsd
 declare -a PORTS=("port0" "port1" "port2")
-
-
-# rename the ovs interfaces
-#ip link set dev eth2 down
-#ip link set dev eth2 name ${NAME}_eth0
-#ip link set dev ${NAME}_eth0 up
-#ip link set dev eth3 down
-#ip link set dev eth3 name ${NAME}_eth1
-#ip link set dev ${NAME}_eth1 up
-#ip link set dev eth4 down
-#ip link set dev eth4 name ${NAME}_eth2
-#ip link set dev ${NAME}_eth2 up
-#ip link set dev eth5 down
-#ip link set dev eth5 name ${NAME}_eth3
-#ip link set dev ${NAME}_eth3 up
 
 
 #echo "setup ovs bridge"
@@ -46,14 +31,13 @@ do
    # or do whatever with individual element of the array
 done
 
-# the interfaces are expected to be configured from the vnfd or nsd
-#ovs-vsctl add-port $NAME ${NAME}_eth0
-#ovs-vsctl add-port $NAME ${NAME}_eth1
-#ovs-vsctl add-port $NAME ${NAME}_eth2
-#ovs-vsctl add-port $NAME ${NAME}_eth3
 
-#tcp:10.0.10.100:6633
+
+
+
+
+# configuration after startup (needs CONTROLLER_IP):
+CONTROLLER_IP="10.0.10.1"
+CONTROLLER="tcp:$CONTROLLER_IP:6633"
 ovs-vsctl set-controller $NAME $CONTROLLER
-
-
 
