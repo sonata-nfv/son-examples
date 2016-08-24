@@ -6,7 +6,7 @@ vendor: "eu.sonata-nfv"
 name: "sonata-fw-vtc-service"
 version: "0.1"
 author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
-description: "SONATA Y1 review demo service: FW/vTC"
+description: "SONATA Y1 review demo service: Firewall/vTC"
 
 ##
 ## The various network functions this service
@@ -49,16 +49,17 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
-      - "vtc_vnf:input"
+      
+      - "fw_vnf:port0"
   - id: "link-interconnect"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vtc_vnf:output"
-      - "fw_vnf:port0"
+      - "fw_vnf:port1"
+      - "vtc_vnf:input"
   - id: "link-output"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "fw_vnf:port1"
+      - "vtc_vnf:output"
       - "ns:output"
 
 ##
@@ -82,13 +83,13 @@ forwarding_graphs:
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "vtc_vnf:input"
-            position: 2
-          - connection_point_ref: "vtc_vnf:output"
-            position: 3
           - connection_point_ref: "fw_vnf:port0"
-            position: 4
+            position: 2
           - connection_point_ref: "fw_vnf:port1"
+            position: 3
+          - connection_point_ref: "vtc_vnf:input"
+            position: 4
+          - connection_point_ref: "vtc_vnf:output"
             position: 5
           - connection_point_ref: "ns:output"
             position: 6
