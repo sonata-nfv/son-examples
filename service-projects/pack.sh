@@ -27,7 +27,7 @@ son-package --workspace test_ws --project sonata-empty-service-emu -n sonata-emp
 son-package --workspace test_ws --project sonata-snort-service-emu -n sonata-snort-service
 son-package --workspace test_ws --project sonata-sdk-test-service-emu -n sonata-sdk-test-service
 son-package --workspace test_ws --project sonata-vtc-service-emu -n sonata-vtc-service
-son-package --workspace test_ws --project sonata-vtc-fw-service-emu -n sonata-vtc-fw-service
+son-package --workspace test_ws --project sonata-fw-vtc-service-emu -n sonata-fw-vtc-service
 son-package --workspace test_ws --project sonata-fw-dpi-service-emu -n sonata-fw-dpi-service
 son-package --workspace test_ws --project sonata-ovs-service-emu -n sonata-ovs-service
 son-package --workspace test_ws --project sonata-fw-service-emu -n sonata-fw-service
