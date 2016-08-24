@@ -44,36 +44,21 @@ virtual_links:
     connection_points_reference:
       - "ctrl:ctrl-port"
       - "ovs1:ctrl-port"
-  - id: "link-port0in"
+  - id: "link-port0"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:port0"
       - "ovs1:port0"
-  - id: "link-port0out"
-    connectivity_type: "E-Line"
-    connection_points_reference:
-      - "ovs1:ovs1_port0"
-      - "ns:port0"
-  - id: "link-port1in"
+  - id: "link-port1"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:port1"
       - "ovs1:port1"
-  - id: "link-port1out"
-    connectivity_type: "E-Line"
-    connection_points_reference:
-      - "ovs1:port1"
-      - "ns:port1"
-  - id: "link-port2in"
+  - id: "link-port2"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:port2"
       - "ovs1:port2"
-  - id: "link-port2out"
-    connectivity_type: "E-Line"
-    connection_points_reference:
-      - "ovs1:port2"
-      - "ns:port2"
 
 ##
 ## The forwarding graphs.
@@ -84,12 +69,9 @@ forwarding_graphs:
     number_of_virtual_links: 7
     constituent_virtual_links: 
       - "ctrl-lan"
-      - "link-port0in"
-      - "link-port0out"
-      - "link-port1in"
-      - "link-port1out"
-      - "link-port2in"
-      - "link-port2out"
+      - "link-port0"
+      - "link-port1"
+      - "link-port2"
     constituent_vnfs:
       - "ovs1"
       - "ctrl"
