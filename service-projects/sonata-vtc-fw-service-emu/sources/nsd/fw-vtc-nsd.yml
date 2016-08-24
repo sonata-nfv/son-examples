@@ -13,22 +13,14 @@ description: "SONATA Y1 review demo service: FW/vTC"
 ## is composed of.
 ##
 network_functions:
-  - vnf_id: "fw_ovs_vnf"
+  - vnf_id: "fw_vnf"
     vnf_vendor: "eu.sonata-nfv"
-    vnf_name: "fw-ovs-vnf"
-    vnf_version: "0.1"
-  - vnf_id: "fw_ctrl_vnf"
-    vnf_vendor: "eu.sonata-nfv"
-    vnf_name: "fw-ctrl-vnf"
+    vnf_name: "fw-vnf"
     vnf_version: "0.1"
   - vnf_id: "vtc_vnf"
     vnf_vendor: "eu.sonata-nfv"
     vnf_name: "vtc-vnf"
     vnf_version: "0.1"
-  #- vnf_id: "vtc_dashboard_vnf"
-  #  vnf_vendor: "eu.sonata-nfv"
-  #  vnf_name: "vtc-dashboard-vnf"
-  #  vnf_version: "0.1"
 
 ##
 ## The NS connection points to the 
@@ -50,24 +42,23 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "fw_ctrl_vnf:mgmt"
-      - "fw_ovs_vnf:mgmt"
+      - "fw_vnf:mgmt"
       - "vtc_vnf:mgmt"
       - "ns:mgmt"
   - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
-      - "fw_ovs_vnf:port0"
+      - "vtc_vnf:input"
   - id: "link-interconnect"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "fw_ovs_vnf:port1"
-      - "vtc_vnf:input"
+      - "vtc_vnf:output"
+      - "fw_vnf:port0"
   - id: "link-output"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vtc_vnf:output"
+      - "fw_vnf:port1"
       - "ns:output"
 
 ##
@@ -83,21 +74,21 @@ forwarding_graphs:
       - "link-interconnect"
       - "link-output"
     constituent_vnfs:
-      - "fw_ovs_vnf"
       - "vtc_vnf"
+      - "fw_vnf"
     network_forwarding_paths:
       - fp_id: "ns:fg01:fp01"
         policy: "none"
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "fw_ovs_vnf:port0"
-            position: 2
-          - connection_point_ref: "fw_ovs_vnf:port1"
-            position: 3
           - connection_point_ref: "vtc_vnf:input"
-            position: 4
+            position: 2
           - connection_point_ref: "vtc_vnf:output"
+            position: 3
+          - connection_point_ref: "fw_vnf:port0"
+            position: 4
+          - connection_point_ref: "fw_vnf:port1"
             position: 5
           - connection_point_ref: "ns:output"
             position: 6

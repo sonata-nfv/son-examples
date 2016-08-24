@@ -6,10 +6,10 @@
 ##
 descriptor_version: "vnfd-schema-01"
 vendor: "eu.sonata-nfv"
-name: "fw-ovs-vnf"
+name: "fw-vnf"
 version: "0.1"
 author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
-description: "An openflow switch (3 ports + controller port) VNF based on OvS"
+description: "An openflow switch (2 ports + controller port) VNF based on OvS"
 ##
 ## The virtual deployment unit.
 ##
