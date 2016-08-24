@@ -15,7 +15,7 @@ description: "An Openflow controller VNF based on Ryu"
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "registry.sonata-nfv.eu:5000/sonata-ryu-vnf"
+    vm_image: "sonatanfv/sonata-ryu-snort-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:

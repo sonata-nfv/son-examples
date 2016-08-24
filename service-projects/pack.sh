@@ -29,6 +29,7 @@ son-package --workspace test_ws --project sonata-sdk-test-service-emu -n sonata-
 son-package --workspace test_ws --project sonata-vtc-service-emu -n sonata-vtc-service
 son-package --workspace test_ws --project sonata-fw-vtc-service-emu -n sonata-fw-vtc-service
 son-package --workspace test_ws --project sonata-fw-dpi-service-emu -n sonata-fw-dpi-service
+son-package --workspace test_ws --project sonata-ovs-service-emu -n sonata-ovs-service
 
 # leave venv
 deactivate

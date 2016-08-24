@@ -47,6 +47,7 @@ Example VNF implementations. Most of them are given as Docker container configur
 * `sonata-iperf3-vnf-docker`: Iperf3 traffic generator (UPB).
 * `sonata-snort-ids-vnf-docker`: Snort 2.9 intrusion detection system (UPB).
 * `sonata-ovs1-vnf-docker`: OpenvSwitch inside Docker container (Packets are processed in userspace inside the vswitch daemon running in the container) (iMinds).
+* `sonata-ryu-snort-vnf-docker`: Ryu Openflow controller, running as a learning switch (rest API included) (iMinds).
 * `sonata-ryu-vnf-docker`: Ryu Openflow controller, running as a learning switch (Snort support and rest API included) (iMinds).
 * `sonata-vtc-vnf-docker`: nDPI based traffic classifier (requieres PF_RING to be installed on the host machine) (NCSRD).
 * `sonata-snort-ovs-docker`: Snort intrusion detection system, extended with an interface to send alerts to a Ryu openflow controller (iMinds).
