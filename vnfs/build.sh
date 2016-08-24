@@ -35,4 +35,6 @@ docker build -t $target_repo/sonata-vtc-vnf -f sonata-vtc-vnf-docker/Dockerfile 
 # snort IDS ovs vnf
 docker build -t $target_repo/sonata-snort-ovs-vnf -f sonata-snort-ovs-vnf-docker/Dockerfile sonata-snort-ovs-vnf-docker
 
+# FW vnf
+docker build -t $target_repo/sonata-fw-vnf -f sonata-fw-vnf-docker/Dockerfile sonata-fw-vnf-docker
 

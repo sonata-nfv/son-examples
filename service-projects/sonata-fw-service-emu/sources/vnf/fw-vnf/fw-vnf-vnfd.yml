@@ -9,7 +9,7 @@ vendor: "eu.sonata-nfv"
 name: "fw-vnf"
 version: "0.1"
 author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
-description: "A firewall based on Ryu Openflow controller + openvswitch (2 ports: input+output) in a single VNF"
+description: "Firewall VNF based on an Openflow controller Ryu + OpenVswitch"
 ##
 ## The virtual deployment unit.
 ##
@@ -27,11 +27,11 @@ virtual_deployment_units:
         size: 1
         size_unit: "GB"
     connection_points:
-      - id: "vdu01:cp01"
+      - id: "vdu01:eth0"
         type: "interface"
-      - id: "vdu01:cp02"
+      - id: "vdu01:eth1"
         type: "interface"
-      - id: "vdu01:cp03"
+      - id: "vdu01:eth2"
         type: "interface"
 
 ##
@@ -42,18 +42,19 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "vdu01:cp01"
+      - "vdu01:eth0"
       - "mgmt"
-  - id: "port0"
+  - id: "input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:cp02"
-      - "port0"
-  - id: "port1"
+      - "vdu01:eth1"
+      - "input"
+  - id: "output"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:cp03"
-      - "port1"
+      - "vdu01:eth2"
+      - "output"
+
 
 ##
 ## The VNF connection points to the 
@@ -62,9 +63,10 @@ virtual_links:
 connection_points:
   - id: "mgmt"
     type: "interface"
-  - id: "port0"
+  - id: "input"
     type: "interface"
-  - id: "port1"
+  - id: "output"
     type: "interface"
+
 
 

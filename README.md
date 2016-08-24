@@ -15,6 +15,7 @@ Example service projects that include NSDs, VNFDs, etc. The projects are given a
 * `sonata-vtc-service-emu`: Service with single vTC VNF to test the vTC VNF in the emulator (UPB) [Tutorial](https://github.com/sonata-nfv/son-emu/wiki/Example-4).
 * `sonata-fw-vtc-service-emu`: This will be the service for the Y1 review of son-emu (UPB).
 * `sonata-fw-dpi-service-emu`: Service with a Firewall (ovs+Ryu) and DPI (Snort) (iMinds).
+* `sonata-fw-service-emu` : Service with a single firewall VNF to test the firewall in the emulator (iMinds).
 
 ### Naming scheme
 
@@ -52,6 +53,7 @@ Example VNF implementations. Most of them are given as Docker container configur
 * `sonata-vtc-vnf-docker`: nDPI based traffic classifier (requieres PF_RING to be installed on the host machine) (NCSRD).
 * `sonata-snort-ovs-docker`: Snort intrusion detection system, extended with an interface to send alerts to a Ryu openflow controller (iMinds).
 * `sonata-son-emu-sap-docker`: Generic container that can be used to be deployed as SAP (Service Access Point) for a service deployed in the SONATA SDK emulator. This container has some basic functionality to generate and capture traffic (iMinds).
+* `sonata-fw-vnf-docker` : Firewall implemented by a Ryu Openflow controller and OpenVSwithc in one single VNF (iMinds).
 
 ### Naming scheme
 
