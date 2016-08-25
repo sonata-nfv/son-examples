@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Stavros Kolometsos <stkolome@iit.demokritos.gr>
+MAINTAINER Akis Kourtis <akis.kourtis@iit.demokritos.gr> and Stavros Kolometsos <stkolome@iit.demokritos.gr>
 
 ENV IFMNG mgmt
 ENV IFIN input
