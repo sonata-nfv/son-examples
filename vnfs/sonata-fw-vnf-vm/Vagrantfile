@@ -1,0 +1,56 @@
+
+memory=512
+cores=1
+name="sonata-fw"
+
+Vagrant.configure(2) do |config|
+
+  config.vm.box = "bento/ubuntu-14.04"
+  config.vm.hostname = "#{name}"
+  
+  config.vm.provider "virtualbox" do |v|
+      v.memory = "#{memory}"
+      v.cpus = "#{cores}"
+	  v.name = "#{name}"
+  end
+  
+  # Vagrant provides a default interface eth0 (eg. used for ssh login)
+  # VirtualBox maps this this to its NAT engine
+  # This is the mgmt interface (needs to be renamed to mgmt)
+
+  # Vagrant provides these as normal dhcp configured interfaces in ubuntu/trusty64
+  # these are ports eth1, eth2 (need to be renamed to -> input, output)
+  config.vm.network "private_network", type: "dhcp"
+  config.vm.network "private_network", type: "dhcp"
+  
+  config.vm.provision "shell", inline: <<-SHELL
+	apt-get update
+
+	# Install some usefull tools:
+	apt-get install -y net-tools iproute inetutils-ping build-essential
+	
+  SHELL
+  
+  # these files are basically the install commands used in the Dockerfile
+  config.vm.provision "shell", path: "install_ryu.sh"
+  config.vm.provision "shell", path: "install_ovs.sh"
+  
+  
+  # these files are basically the start.sh files used in the Dockerfile
+  config.vm.provision "shell", path: "start_ryu.sh"
+  # copy the script to the VM because it needs to be executed upon re-boot
+  config.vm.provision "file", source: "start_ryu.sh", destination: "start_ryu.sh"
+  # make sure its executable
+  config.vm.provision "shell", inline: <<-SHELL
+		sudo chmod a+rwx start_ryu.sh
+  SHELL
+  # copy the new rc.local file that starts ryu on startup
+  config.vm.provision "shell", inline: <<-SHELL
+		sudo chmod a+rwx /etc/rc.local
+  SHELL
+  config.vm.provision "file", source: "rc.local", destination: "/etc/rc.local"
+  
+  # create the ovs switch 
+  config.vm.provision "shell", path: "start_ovs.sh"
+
+end

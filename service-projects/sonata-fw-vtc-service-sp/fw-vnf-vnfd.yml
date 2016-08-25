@@ -15,8 +15,8 @@ description: "A firewall based on Ryu Openflow controller + openvswitch (2 ports
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "sonatanfv/sonata-fw-vnf"
-    vm_image_format: "docker"
+    vm_image: "sonata-fw.format"
+    vm_image_format: "VM-image"
     resource_requirements:
       cpu:
         vcpus: 1
