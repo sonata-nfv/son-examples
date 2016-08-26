@@ -60,11 +60,11 @@ virtual_links:
 ## outside world.
 ##
 connection_points:
-  - id: "mgmt"
+  - id: "vnf:mgmt"
     type: "interface"
-  - id: "port0"
+  - id: "vnf:port0"
     type: "interface"
-  - id: "port1"
+  - id: "vnf:port1"
     type: "interface"
 
 

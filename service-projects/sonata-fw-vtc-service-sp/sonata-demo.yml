@@ -56,11 +56,11 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
-      - "vnf_firewall:input"
+      - "vnf_firewall:port0"
   - id: "fw-2-vtc"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vnf_firewall:output"
+      - "vnf_firewall:port1"
       - "vnf_vtc:input"
   - id: "vtc-2-output"
     connectivity_type: "E-Line"
@@ -82,9 +82,9 @@ forwarding_graphs:
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "vnf_firewall:input"
+          - connection_point_ref: "vnf_firewall:port0"
             position: 2
-          - connection_point_ref: "vnf_firewall:output"
+          - connection_point_ref: "vnf_firewall:port1"
             position: 3
           - connection_point_ref: "vnf_vtc:input"
             position: 4
