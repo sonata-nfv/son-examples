@@ -27,7 +27,7 @@ network_functions:
     vnf_version: "0.1"
   - vnf_id: "vnf_firewall"
     vnf_vendor: "eu.sonata-nfv"
-    vnf_name: "firewall-vnf"
+    vnf_name: "fw-vnf"
     vnf_version: "0.1"
 ##
 ## The NS connection points to the
@@ -56,11 +56,11 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ns:input"
-      - "vnf_firewall:port0"
+      - "vnf_firewall:input"
   - id: "fw-2-vtc"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vnf_firewall:port1"
+      - "vnf_firewall:output"
       - "vnf_vtc:input"
   - id: "vtc-2-output"
     connectivity_type: "E-Line"
@@ -82,9 +82,9 @@ forwarding_graphs:
         connection_points:
           - connection_point_ref: "ns:input"
             position: 1
-          - connection_point_ref: "vnf_firewall:port0"
+          - connection_point_ref: "vnf_firewall:input"
             position: 2
-          - connection_point_ref: "vnf_firewall:port1"
+          - connection_point_ref: "vnf_firewall:output"
             position: 3
           - connection_point_ref: "vnf_vtc:input"
             position: 4
@@ -92,3 +92,4 @@ forwarding_graphs:
             position: 5
           - connection_point_ref: "ns:output"
             position: 6
+
