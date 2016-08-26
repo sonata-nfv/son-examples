@@ -1,35 +1,34 @@
+ls
 FROM ubuntu:14.04
-MAINTAINER Akis Kourtis <akis.kourtis@iit.demokritos.gr>
+MAINTAINER Stavros Kolometsos <stkolome@iit.demokritos.gr>
 
-# define interface names (should be the same as in VNFD)
+ENV IFMNG mgmt
 ENV IFIN input
 ENV IFOUT output
- 
-# Install dev tools
-RUN apt-get update && apt-get install -y git net-tools inetutils-ping iproute screen ca-certificates git-core ssh automake build-essential libnuma-dev libpcap-dev pkg-config libtool libjson0-dev libcurl4-gnutls-dev
+
+RUN apt-get update && apt-get install -y git net-tools inetutils-ping iproute screen ca-certificates git-core ssh automake build-essential libnuma-dev libpcap-dev pkg-config libtool libjson0-dev libcurl4-gnutls-dev curl git 
 RUN apt-get clean -y
  
 # Fixes empty home
 ENV HOME /root
 
-# Copy the files
-ADD PF_RING /vTC/PF_RING
-ADD nDPI /vTC/nDPI
-ADD start.sh /vTC/PF_RING/userland/examples/
-RUN chmod +x /vTC/PF_RING/userland/examples/start.sh
+#Copy the files 
+ADD Scripts /vTC/scripts
+ADD vtc_dashboard /root/gowork/src/vtc_dashboard
+ADD pfring_web_api /root/gowork/src/pfring_web_api
+ADD start.sh /vTC/scripts
+RUN chmod +x /vTC/scripts/start.sh
 
-# build
-WORKDIR /vTC/nDPI
-RUN ./autogen.sh
-RUN ./configure
-RUN make
-RUN make install
- 
-WORKDIR /vTC/PF_RING/userland/examples
-#RUN make
-
-# set entry point for emulator gatekeeper
+WORKDIR /vTC/scripts
+RUN chmod +x pfring_install1.sh
+RUN chmod +x pfring_install2.sh
+RUN chmod +x dashboard_install1.sh
+RUN chmod +x dashboard_install2.sh
+RUN ./pfring_install1.sh
+RUN ./pfring_install2.sh
+RUN ./dashboard_install1.sh
+RUN ./dashboard_install2.sh
+RUN ./start.sh
 ENV SON_EMU_CMD ./start.sh
 
-# normal entry point
 CMD /bin/bash
