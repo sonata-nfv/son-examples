@@ -1,38 +1,39 @@
 #!/bin/sh
- apt-get -y install wget
-pt-get -y install curl
-pt-get -y install make 
-pt-get install -y git build-essential gcc libnuma-dev flex byacc libjson0-dev libcurl4-gnutls-dev jq dh-autoreconf libpcap-dev libpulse-dev libtool pkg-config
+#set -e # we want to stop on error
+apt-get -y install wget
+apt-get -y install curl
+apt-get -y install make 
+apt-get install -y git build-essential gcc libnuma-dev flex byacc libjson0-dev libcurl4-gnutls-dev jq dh-autoreconf libpcap-dev libpulse-dev libtool pkg-config
 
-rintf "auto eth1\niface eth1 inet dhcp\n" >> /etc/network/interfaces
-rintf "auto eth2\niface eth2 inet dhcp\n" >> /etc/network/interfaces
-fup eth1
-fup eth2
+printf "auto eth1\niface eth1 inet dhcp\n" >> /etc/network/interfaces
+printf "auto eth2\niface eth2 inet dhcp\n" >> /etc/network/interfaces
+ifup eth1
+ifup eth2
 
       #==================================================================================================
       #	  2. Go (lang)
       #==================================================================================================
-get "https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz"			# download
-ar -C /usr/local -xzf go1.5.2.linux-amd64.tar.gz								# extract files
-cho 'export PATH=$PATH:/usr/local/go/bin' >> /.profile					# add /usr/local/go/bin to PATH
-kdir -pv /root/gowork/src/github.com											          # create workspace folders
-cho 'export GOPATH=/root/gowork' >> /.profile								        # update GOPATH
-cho 'export PATH=$PATH:$GOPATH/bin' >> /.profile						   	# update PATH
- /.profile 															                    	# apply changes
+wget "https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz"			# download
+tar -C /usr/local -xzf go1.5.2.linux-amd64.tar.gz								# extract files
+echo 'export PATH=$PATH:/usr/local/go/bin' >> /.profile					# add /usr/local/go/bin to PATH
+mkdir -pv /root/gowork/src/github.com											          # create workspace folders
+echo 'export GOPATH=/root/gowork' >> /.profile								        # update GOPATH
+echo 'export PATH=$PATH:$GOPATH/bin' >> /.profile						   	# update PATH
+. /.profile 															                    	# apply changes
     
 
       #==================================================================================================
       #	  3. Beego (framework)
       #==================================================================================================
-o get github.com/astaxie/beego
-o get github.com/beego/bee
+go get github.com/astaxie/beego
+go get github.com/beego/bee
     
     
       #==================================================================================================
       #   4. Clone PF_ring (web api & library bundled together)
       #==================================================================================================
-d /root/gowork/src
-it clone https://mnlab-ncsrd:mnlabs0nata@bitbucket.org/mnlab-ncsrd/pfring_web_api
+cd /root/gowork/src
+git clone https://mnlab-ncsrd:mnlabs0nata@bitbucket.org/mnlab-ncsrd/pfring_web_api
     
     
       #==================================================================================================

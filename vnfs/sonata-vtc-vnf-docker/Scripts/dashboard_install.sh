@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -e # we want to stop on error
 apt-get -y install openssh-client
 apt-get -y install openssh-server
 apt-get -y install curl
