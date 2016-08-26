@@ -27,7 +27,7 @@ function_specific_managers:
 virtual_deployment_units:
   - id: "vdu01"
     description: "VNFC for the dashboard and the time-series database"
-    vm_image: "TBD"
+    vm_image: "pfring_and_dashboard_final"
     vm_image_format: "qcow2"
     resource_requirements:
       cpu:
