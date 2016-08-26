@@ -1,4 +1,4 @@
-ls
+
 FROM ubuntu:14.04
 MAINTAINER Stavros Kolometsos <stkolome@iit.demokritos.gr>
 
