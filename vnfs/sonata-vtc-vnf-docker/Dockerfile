@@ -28,7 +28,7 @@ RUN ./pfring_install1.sh
 RUN ./pfring_install2.sh
 RUN ./dashboard_install1.sh
 RUN ./dashboard_install2.sh
-RUN ./start.sh
+#RUN ./start.sh
 ENV SON_EMU_CMD ./start.sh
 
 CMD /bin/bash
