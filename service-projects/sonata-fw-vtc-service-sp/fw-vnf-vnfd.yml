@@ -1,3 +1,4 @@
+
 ---
 ##
 ## Some general information regarding this
@@ -43,16 +44,16 @@ virtual_links:
     connection_points_reference:
       - "vdu01:eth0"
       - "mgmt"
-  - id: "in"
+  - id: "input"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth1"
-      - "input"
-  - id: "out"
+      - "vnf:input"
+  - id: "output"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth2"
-      - "output"
+      - "vnf:output"
 
 ##
 ## The VNF connection points to the 
