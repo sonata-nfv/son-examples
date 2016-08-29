@@ -15,8 +15,8 @@ description: "A firewall based on Ryu Openflow controller + openvswitch (2 ports
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "sonata-fw.format"
-    vm_image_format: "VM-image"
+    vm_image: "sonata-vfw"
+    vm_image_format: "qcow2"
     resource_requirements:
       cpu:
         vcpus: 1
@@ -44,27 +44,25 @@ virtual_links:
     connection_points_reference:
       - "vdu01:eth0"
       - "mgmt"
-  - id: "port0"
+  - id: "input"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth1"
-      - "port0"
-  - id: "port1"
+      - "vnf:input"
+  - id: "output"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth2"
-      - "port1"
+      - "vnf:output"
 
 ##
 ## The VNF connection points to the 
 ## outside world.
 ##
 connection_points:
-  - id: "mgmt"
+  - id: "vnf:mgmt"
     type: "interface"
-  - id: "port0"
+  - id: "vnf:input"
     type: "interface"
-  - id: "port1"
+  - id: "vnf:output"
     type: "interface"
-
-
