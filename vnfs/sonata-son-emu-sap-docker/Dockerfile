@@ -17,10 +17,22 @@ ADD authorized_keys /root/.ssh/authorized_keys
 RUN chmod 700 /root/.ssh
 RUN chmod 600 /root/.ssh/authorized_keys
 
+# expose port 22 for ssh 
+EXPOSE 22
+
+# install prometheus_client so we can export metrics to Prometheus Pushgateway
+RUN apt-get install -y python-pip
+RUN pip install prometheus_client
+
 RUN apt-get install -y iperf
 
 RUN apt-get install -y tcpdump
 RUN mv /usr/sbin/tcpdump /usr/bin/tcpdump
+
+ADD iperf_server.py iperf_server.py
+RUN chmod +x iperf_server.py
+ADD start_iperf.sh start_iperf.sh
+RUN chmod +x iperf_server.py
 
 ADD start_sap.sh start.sh
 RUN chmod +x start.sh
@@ -29,3 +41,4 @@ RUN chmod +x start.sh
 ENV SON_EMU_CMD "./start.sh"
 
 CMD /bin/bash
+#ENTRYPOINT [ "python", "./iperf_server.py"]

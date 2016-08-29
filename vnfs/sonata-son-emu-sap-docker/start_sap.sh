@@ -3,6 +3,11 @@
 echo "start ssh"
 service ssh start
 
+echo "start iperf server"
+# this must be started from a bash script,
+# so the iperf output can be read by the script.
+#bash start_iperf.sh &
+
 # delete default route (it is the docker0 interface)
 ip route del default
 
