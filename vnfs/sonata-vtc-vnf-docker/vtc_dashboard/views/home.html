@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VTC dashboard</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <!-- <link href="../static/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet"> -->
+
+    <!-- Timeline CSS -->
+    <!-- <link href="../static/dist/css/timeline.css" rel="stylesheet"> -->
+
+    <!-- Custom CSS -->
+    <link href="../static/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../static/css/proto.io.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <!-- <link href="../static/bower_components/morrisjs/morris.css" rel="stylesheet"> -->
+
+    <!-- Custom Fonts -->
+    <!-- <link href="../static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+
+    <!-- C3.js -->
+    <!-- <link href="../static/bower_components/c3/c3.min.css" rel="stylesheet" type="text/css"> -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">VTC dashboard</a>
+            </div>
+
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <div class="area-wrapper krnl-mod-state-wrapper">
+                        <p class="title">PF_ring module</p>
+
+                        <div class="onoffswitch pfring-onoffswitch">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                            <label class="onoffswitch-label" for="myonoffswitch">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                        
+                        
+                        <!-- PF_ring - cannot get info from server message -->
+                        <div class="alert alert-danger alert-dismissable pf-ring-no-info hidden">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Could not receive information from server about PF_ring module.
+                        </div>
+                        <!-- PF_ring - could not load module -->
+                        <div class="alert alert-danger alert-dismissable pf-ring-could-not-load hidden">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Could not load PF_ring module.
+                        </div>
+                        <!-- PF_ring - could not remove module -->
+                        <div class="alert alert-danger alert-dismissable pf-ring-could-not-load hidden">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Could not remove PF_ring module.
+                        </div>
+                    </div>
+
+                    <div class="area-wrapper interface-settings-wrapper">
+                        <p class="title">Network interfaces</p>
+
+                        <!-- Network interfaces - cannot get info from server message -->
+                        <div class="alert alert-danger alert-dismissable net-iface-no-info hidden">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Could not receive information from server about network interfaces.
+                        </div>
+                        
+                        <div class="iface-details">
+                            <div class="cf row row-header">
+                                <div class="box box-left"><p class="title">name</p></div>
+                                <div class="box box-mid"><p class="title">status</p></div>
+                                <div class="box box-right"><p class="title">promisc</p></div>
+                            </div>
+
+                            <div class="ifaces-content">
+                                <script id="ifaces-template" type="text/x-handlebars-template">
+                                    {{#each this}}
+                                        <div class="cf row">
+                                            <div class="box box-left"><p class="title iface-name">{{name}}</p></div>
+                                            <div class="box box-mid"><p class="title iface-status">{{status}}</p></div>
+                                            <div class="box box-right">
+                                                <div class="iface-switch">
+                                                    <div class="onoffswitch promisc-onoffswitch {{name}}-promisc-onoffswitch">
+                                                        <input type="checkbox" name="{{name}}-onoffswitch" class="onoffswitch-checkbox" id="{{name}}-onoffswitch" data-iface="{{name}}" {{#if promisc}}checked{{/if}}>
+                                                        <label class="onoffswitch-label" for="{{name}}-onoffswitch">
+                                                            <span class="onoffswitch-inner"></span>
+                                                            <span class="onoffswitch-switch"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="area-wrapper interface-selector-wrapper">
+                        <p class="title">Capture settings</p>
+
+                        <!-- Capture settings - no selected interfaces -->
+                        <div class="alert alert-danger alert-dismissable no-selected-iface hidden">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Select in/out interfaces.
+                        </div>
+
+                        <div class="sl-wrap in-sl-wrap">
+                            <span class="side-title">IN:</span>
+                            <select name="" id="in-selector" class="iface-select">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="sl-wrap out-sl-wrap">
+                            <span class="side-title">OUT:</span>
+                            <select name="" id="out-selector" class="iface-select">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="btn-wrapper">
+                        <button class="btn btn-success btn-block" disabled>START</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <iframe src="http://10.143.0.230:3000/dashboard/db/pfbridge" frameborder="0"></iframe>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../static/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Handlebars.js -->
+    <script src="../static/bower_components/handlebars/handlebars-v4.0.2.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <!-- <script src="../static/bower_components/metisMenu/dist/metisMenu.min.js"></script> -->
+
+    <!-- Morris Charts JavaScript -->
+    <!-- <script src="../static/bower_components/raphael/raphael-min.js"></script> -->
+    <!-- <script src="../static/bower_components/morrisjs/morris.min.js"></script> -->
+    <!-- <script src="../static/js/morris-data.js"></script> -->
+
+    <!-- D3.js Charts Javascript (used by C3.js) -->
+    <!-- <script src="../static/bower_components/d3/d3.min.js"></script> -->
+
+    <!-- C3.js Charts Javascript -->
+    <!-- <script src="../static/bower_components/c3/c3.min.js"></script> -->
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../static/dist/js/sb-admin-2.js"></script>
+
+
+    <!-- Page specific js file-->
+    <script src="../static/js/page_specific/home.js"></script>
+
+</body>
+
+</html>

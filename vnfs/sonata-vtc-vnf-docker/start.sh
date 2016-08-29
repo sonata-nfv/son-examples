@@ -37,7 +37,9 @@ ip addr flush dev $IFOUT
 sleep 1
 
 # run pfbridge with interfaces specified in Dockerfile (run non-blocking!)
-screen -d -m -s "pfbridge" ./pfbridge -a $IFIN -b $IFOUT -p -v
+cd /root/gowork/src/pfring_web_api/vtc/PF_RING/userland/examples
+./pfbridge -a $IFIN -b $IFOUT -d "http://"$IPP":8086" &
+
 
 echo "VTC_VNF: pfbrdige was started in a screen session"
-echo "VTC_VNF: attach to the container and do 'screen -r' to see its outputs"
+

@@ -1,0 +1,17 @@
+{  
+    "id":1,
+    "orgId":1,
+    "name":"data from PFring",
+    "type":"influxdb",
+    "access":"direct",
+    "url":"http://localhost:8086",
+    "password":"admin",
+    "user":"admin",
+    "database":"flows",
+    "basicAuth":false,
+    "basicAuthUser":"",
+    "basicAuthPassword":"",
+    "withCredentials":false,
+    "isDefault":false,
+    "jsonData":null
+}

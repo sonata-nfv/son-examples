@@ -1,0 +1,2 @@
+0x4141faec	pf_ring_inject_packet_to_ring	/home/tgogos3/gowork/src/pfring_web_api/vtc/PF_RING/kernel/pf_ring	EXPORT_SYMBOL
+0x2bc09a00	pf_ring_add_module_dependency	/home/tgogos3/gowork/src/pfring_web_api/vtc/PF_RING/kernel/pf_ring	EXPORT_SYMBOL
