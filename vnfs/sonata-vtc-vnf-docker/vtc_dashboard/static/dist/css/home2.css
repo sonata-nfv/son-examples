@@ -1,0 +1,50 @@
+.icheck-wrapper { padding-top: 60px; }
+.icheck-wrapper .icheck-box { padding: 3px 25px; }
+.page-wrapper {position: relative;}
+
+.black-layer { pointer-events: none; position: absolute; width: 100%; height: 100%; background-color: #161616; transition: background-color .4s; }
+
+
+
+.black-layer > span
+{
+	width: 40px;
+	height: 40px;
+	color: transparent;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 25px;
+	line-height: 40px;
+	text-align: center;
+	transition: color .4s;
+	-webkit-animation-name:             rotate; 
+	-webkit-animation-duration:         1s; 
+	-webkit-animation-iteration-count:  infinite;
+	-webkit-animation-timing-function:  linear;
+
+	-moz-animation-name:             rotate; 
+	-moz-animation-duration:         1s; 
+	-moz-animation-iteration-count:  infinite;
+	-moz-animation-timing-function:  linear;
+}
+
+
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to { 
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes rotate {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to { 
+    -moz-transform: rotate(360deg);
+  }
+}

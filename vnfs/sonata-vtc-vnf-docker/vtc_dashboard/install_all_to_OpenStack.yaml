@@ -1,0 +1,427 @@
+heat_template_version: 2014-10-16
+
+description: Template to deploy one instance with a private network developed on the spot
+
+parameters: #this section is if you want to give the parameters when you are creating the stack
+ image: # choose the image you want to be used
+  type: string
+  label: Image name or ID
+  description: Image to be used for compute instance
+  default: tgo_ubuntu-server-14.04-cloud-init #this is the one used if you don't define it
+ flavor: #the flavor used
+  type: string
+  label: flavor
+  description: flavor to be used
+  default: m1.small
+ demo_network: #the public network to be used
+  type: string
+  label: Public network name or ID
+  description: Public network
+  default: 70cd74c9-8044-4fb1-a3bb-6205a4e290f2
+ public_net:
+  type: string
+  label: public
+  description: ok
+  default: ff8a3cd2-c11d-405c-99d3-9d099477ae81
+ demo_subnet:
+  type: string
+  label: public
+  description: ok
+  default: 937e7077-2975-498b-a449-66344c5f020a
+ public_subnet:
+  type: string
+  label: public
+  description: ok
+  default: c7ad064a-4883-4c2e-abab-5795ec51ead9
+ traf_net:
+  type: string
+  label: public
+  description: traffic network
+  default: ae4de7c4-7182-42af-8aab-04990b95ebdf
+ traf_subnet:
+  type: string
+  label: public
+  description: ok
+  default: ce80e132-5530-4353-b7da-43ea50db1705
+ out_net:
+  type: string
+  label: public
+  description: out network
+  default: 2caf6323-a170-4c8c-8d6c-ec46713abade
+ out_subnet:
+  type: string
+  label: public
+  description: ok
+  default: 3f5df0f8-a621-4c72-bb16-f63b61811be6
+
+resources: #in this section, the resources are defined
+
+
+ vtc_boot_script:
+  type: OS::Heat::SoftwareConfig
+  properties:
+   group: ungrouped
+   config:
+    str_replace:
+     template:  |
+      #!/bin/bash
+      apt-get update
+      apt-get -y install openssh-client
+      apt-get -y install openssh-server
+
+      #==================================================================================================
+      #   1. Git
+      #==================================================================================================
+
+      apt-get -y install git
+
+      #==================================================================================================
+      #   2. Go (lang)
+      #==================================================================================================
+
+      wget "https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz"		# download
+      tar -C /usr/local -xzf go1.5.2.linux-amd64.tar.gz								# extract files
+      echo 'export PATH=$PATH:/usr/local/go/bin' >> /.profile					# add /usr/local/go/bin to PATH
+      mkdir -pv /root/gowork/src/github.com									          		# create workspace folders
+      echo 'export GOPATH=/root/gowork' >> /.profile			          				# update GOPATH
+      echo 'export PATH=$PATH:$GOPATH/bin' >> /.profile			    			# update PATH
+      . /.profile 														                    		# apply changes
+      
+      #==================================================================================================
+      #   3. Beego (framework)
+      #==================================================================================================
+     
+      go get github.com/astaxie/beego
+      go get github.com/beego/bee
+
+      #==================================================================================================
+      #   4. influxDB
+      #==================================================================================================
+
+      wget http://influxdb.s3.amazonaws.com/influxdb_0.9.5.1_amd64.deb					# download
+      dpkg -i influxdb_0.9.5.1_amd64.deb												# install
+      service influxdb start															# start service
+      sleep 3s
+      curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE flows"	# create db 'flows'
+
+      #==================================================================================================
+      #   5. Grafana
+      #==================================================================================================
+
+      wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.5.0_amd64.deb		# download
+      apt-get install -y adduser libfontconfig
+      dpkg -i grafana_2.5.0_amd64.deb
+      service grafana-server start						# start service
+      sudo netstat -tnlp > netstat.txt
+      update-rc.d grafana-server defaults 95 10     # To configure the Grafana server to start at boot time
+      cd /root/gowork/src/vtc_dashboard
+      
+      printf "0\n-------------------\n" > netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n5 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n10 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n15 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n20 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n25 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n30 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n35 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n40 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n45 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n50 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n55 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n60 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n65 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n70 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n75 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+      printf "\n\n\n80 sec\n-------------------\n" >> netstat.txt
+      netstat -tnlp >> netstat.txt
+      sleep 5s
+
+
+      #==================================================================================================
+      #	  6. app source code
+      #==================================================================================================
+
+      cd /root/gowork/src/
+      git clone https://mnlab-ncsrd:ii70mseq@bitbucket.org/mnlab-ncsrd/vtc_dashboard.git
+
+      #==================================================================================================
+      #	  7. configure app (Grafana, VTC host)
+      #==================================================================================================
+
+      cd /root/gowork/src/vtc_dashboard/static/json/
+      # add data source and initialize dashboard using the Grafana API:
+      sed -i 's/localhost/$val1/g' grafana_init_datasources.json
+      service grafana-server status
+      sudo netstat -tnlp > netstat.txt
+      curl -X POST --connect-timeout 60 --data-binary @grafana_init_datasources.json -H 'Content-Type:application/json' -H 'Accept: application/json' http://admin:admin@$val1:3000/api/datasources
+      sleep 5s
+      curl -X POST --connect-timeout 60 --data-binary @grafana_init_dashboard.json -H 'Content-Type:application/json' -H 'Accept: application/json' http://admin:admin@$val1:3000/api/dashboards/db
+      sleep 5s
+      curl -X POST --connect-timeout 60 -d '{"role":"Admin","name":"apikey"}' -H 'Content-Type:application/json' -H 'Accept: application/json' http://admin:admin@$val1:3000/api/auth/keys > /root/gowork/src/vtc_dashboard/controllers/grafana_key.json
+      echo "{ \"url\": \"http://$val1:3000\" }" > /root/gowork/src/vtc_dashboard/static/json/grafana.json
+      #read -p "Type the ip:port for PFring API: " PFRING
+      echo "{ \"url\": \"http://$val2:8080\" }" > /root/gowork/src/vtc_dashboard/static/json/vtcHost.json
+      # configure cron to start the vtc-dashboard after reboot
+      # first, create a folder where the script will be placed
+      mkdir -pv /usr/scripts
+      cp /root/gowork/src/vtc_dashboard/start.sh /usr/scripts/start_vtc.sh
+      chmod +x /usr/scripts/start_vtc.sh
+      # second, add the script to contrab
+      (crontab -l; echo "@reboot /usr/scripts/start_vtc.sh") | crontab -
+      # run
+      cd /root/gowork/src/vtc_dashboard
+      bee run watchall
+     params:
+      $val1 : {get_attr: [floating_ip1, floating_ip_address] }
+      #$val2 : {get_attr: [floating_ip2, floating_ip_address] }
+      $val2 : {get_attr: [instance2_server_port, fixed_ips, 0, ip_address]}
+
+
+
+ pfring_boot_script:
+  type: OS::Heat::SoftwareConfig
+  properties:
+   group: ungrouped
+   config:
+    str_replace:
+     template:  |
+      #!/bin/sh
+      apt-get update
+      apt-get -y install openssh-client
+      apt-get -y install openssh-server
+      apt-get install -y git build-essential gcc libnuma-dev flex byacc libjson0-dev libcurl4-gnutls-dev jq dh-autoreconf libpcap-dev libpulse-dev libtool pkg-config
+
+      printf "auto eth1\niface eth1 inet dhcp\n" >> /etc/network/interfaces
+      printf "auto eth2\niface eth2 inet dhcp\n" >> /etc/network/interfaces
+      ifup eth1
+      ifup eth2
+
+      #==================================================================================================
+      #	  1. Git
+      #==================================================================================================
+      apt-get -y install git
+
+
+      #==================================================================================================
+      #	  2. Go (lang)
+      #==================================================================================================
+      wget "https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz"			# download
+      tar -C /usr/local -xzf go1.5.2.linux-amd64.tar.gz								# extract files
+      echo 'export PATH=$PATH:/usr/local/go/bin' >> /.profile					# add /usr/local/go/bin to PATH
+      mkdir -pv /root/gowork/src/github.com											          # create workspace folders
+      echo 'export GOPATH=/root/gowork' >> /.profile								        # update GOPATH
+      echo 'export PATH=$PATH:$GOPATH/bin' >> /.profile						   	# update PATH
+      . /.profile 															                    	# apply changes
+    
+
+      #==================================================================================================
+      #	  3. Beego (framework)
+      #==================================================================================================
+      go get github.com/astaxie/beego
+      go get github.com/beego/bee
+    
+    
+      #==================================================================================================
+      #   4. Clone PF_ring (web api & library bundled together)
+      #==================================================================================================
+      cd /root/gowork/src
+      git clone https://mnlab-ncsrd:ii70mseq@bitbucket.org/mnlab-ncsrd/pfring_web_api
+    
+    
+      #==================================================================================================
+      #   5. build PFring library
+      #==================================================================================================
+      cd /root/gowork/src/pfring_web_api/vtc
+      #Build nDPI library
+      cd nDPI
+      NDPI_DIR=$(pwd)
+      echo $NDPI_DIR
+      NDPI_INCLUDE=$(pwd)/src/include
+      echo $NDPI_INCLUDE
+      ./autogen.sh
+      ./configure
+      make
+      make install
+      #Build PF_RING library
+      cd ..
+      cd PF_RING
+      make
+      #Build PF_RING examples, including the modified pfbridge, with nDPI integrated.
+      cd userland/examples/
+      sed -i 's#EXTRA_LIBS =#EXTRA_LIBS='"${NDPI_DIR}"'/src/lib/.libs/libndpi.a -ljson-c -lcurl#' ./Makefile
+      sed -i 's# -Ithird-party# -Ithird-party/ -I'"$NDPI_INCLUDE"' -I'"$NDPI_DIR"'#' ./Makefile
+      echo $NDPI_DIR
+      make
+
+      #==================================================================================================
+      #   6. configure app (influxDB)
+      #==================================================================================================
+      #read -p "Type the ip:port for influxDB (define IP address and avoid using 'localhost:port'): " INFLUXDB
+      echo "{ \"url\": \"http://val3:8086\" }" > /root/gowork/src/pfring_web_api/controllers/influxDB.json
+      # configure cron to start the pfring-web-api after reboot
+      # first, create a folder where the script will be placed
+      mkdir -pv /usr/scripts
+      # write start.sh
+      printf '#!/bin/sh\n. /.profile\ncd /root/gowork/src/pfring_web_api\nbee run watchall > allout.txt 2>&1\n' > /root/gowork/src/pfring_web_api/start.sh
+      cp /root/gowork/src/pfring_web_api/start.sh /usr/scripts/start_pfring.sh
+      chmod +x /usr/scripts/start_pfring.sh
+      # second, add the script to contrab
+      (crontab -l; echo "@reboot /usr/scripts/start_pfring.sh") | crontab -
+      # run
+      cd /root/gowork/src/pfring_web_api
+      bee run watchall
+
+     params:
+      val3 : {get_attr: [instance1_server_port_ext, fixed_ips, 0, ip_address]}
+
+
+
+#-----------------------------------------------------------------
+# instance 1: vtc_dashboard
+#-----------------------------------------------------------------
+ instance1:
+  type: OS::Nova::Server
+  properties:
+   image: { get_param: image }
+   name: vtc_dashboard
+   flavor: { get_param: flavor }
+   networks:
+    # - network: { get_param: demo_network }
+    # - port: { get_resource: instance1_server_port }
+    - port: { get_resource: instance1_server_port_ext }
+   user_data_format: RAW
+   user_data: {get_resource: vtc_boot_script}
+
+
+ instance1_server_port_ext:
+  type: OS::Neutron::Port
+  properties:
+   network_id: {get_param: demo_network}
+   fixed_ips:
+    - subnet_id: {get_param: demo_subnet}
+
+ floating_ip1:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: {get_param: public_net}
+      port_id: { get_resource: instance1_server_port_ext }
+
+
+
+ # instance1_server_port:
+ #    type: OS::Neutron::Port
+ #    properties:
+ #      network_id: {get_param: demo_network}
+
+ # instance1_server_port_ext:
+ #    type: OS::Neutron::Port
+ #    properties:
+ #      network_id: {get_param: public_net}
+
+ # floating_ip1:
+ #    properties:
+ #      floating_network: {get_param: public_net}
+ #    type: OS::Neutron::FloatingIP
+
+ # association:
+ #     type: OS::Nova::FloatingIPAssociation
+ #     properties:
+ #       floating_ip: { get_resource: floating_ip1 }
+ #       server_id: { get_resource: instance1 }
+
+
+
+#-----------------------------------------------------------------
+# instance 2: pfring api & module
+#-----------------------------------------------------------------
+ instance2:
+  type: OS::Nova::Server
+  properties:
+   image: { get_param: image }
+   name: pfring_api_module
+   flavor: { get_param: flavor }
+   networks:
+    #- network: { get_param: demo_network }
+    - port: { get_resource: instance2_server_port }
+    - port: { get_resource: instance2_server_port2 }
+    - port: { get_resource: instance2_server_port3 }
+   user_data_format: RAW
+   user_data: {get_resource: pfring_boot_script}
+
+
+ # instance2_server_port_ext:
+ #  type: OS::Neutron::Port
+ #  properties:
+ #   network_id: {get_param: demo_network}
+ #   fixed_ips:
+ #    - subnet_id: {get_param: demo_subnet}
+
+ # floating_ip2:
+ #    type: OS::Neutron::FloatingIP
+ #    properties:
+ #      floating_network: {get_param: public_net}
+ #      port_id: { get_resource: instance2_server_port_ext }
+
+
+ instance2_server_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: {get_param: demo_network}
+
+ instance2_server_port2:
+    type: OS::Neutron::Port
+    properties:
+      network_id: {get_param: traf_net}
+
+ instance2_server_port3:
+    type: OS::Neutron::Port
+    properties:
+      network_id: {get_param: out_net}
