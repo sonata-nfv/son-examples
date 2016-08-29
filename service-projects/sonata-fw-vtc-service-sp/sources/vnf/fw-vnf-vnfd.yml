@@ -31,9 +31,9 @@ virtual_deployment_units:
         unit: "Percentage"
       - name: "vm_mem_perc"
         unit: "Percentage"
-      - name: "vm_net_rx_Bps"
+      - name: "vm_net_rx_bps"
         unit: "bps"
-      - name: "vm_net_tx_Bps"
+      - name: "vm_net_tx_bps"
         unit: "bps"
     connection_points:
       - id: "vdu01:eth0"
@@ -96,14 +96,14 @@ monitoring_rules:
   - name: "mon:rule:rx"
     duration: 2
     duration_unit: "s"
-    condition: "vdu01:vm_net_rx_Bps > 5000"
+    condition: "vdu01:vm_net_rx_bps > 500000"
     notification:
       - name: "notification03"
         type: "rabbitmq_message"
   - name: "mon:rule:tx"
     duration: 2
     duration_unit: "s"
-    condition: "vdu01:vm_net_tx_Bps > 5000"
+    condition: "vdu01:vm_net_tx_bps > 500000"
     notification:
       - name: "notification04"
         type: "rabbitmq_message"
