@@ -5,7 +5,7 @@ ENV IFMNG mgmt
 ENV IFIN input
 ENV IFOUT output
 
-RUN apt-get update && apt-get install -y git net-tools inetutils-ping iproute screen ca-certificates git-core ssh automake build-essential libnuma-$
+RUN apt-get update && apt-get install -y git net-tools inetutils-ping iproute screen ca-certificates git-core ssh automake build-essential libnuma-dev libpcap-dev pkg-config libtool libjson0-dev libcurl4-gnutls-dev curl git
 RUN apt-get clean -y
 
 # Fixes empty home
