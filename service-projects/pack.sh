@@ -23,6 +23,7 @@ son-workspace --init --workspace test_ws
 
 # package all example service projects
 which son-package
+# emulator projects
 son-package --workspace test_ws --project sonata-empty-service-emu -n sonata-empty-service
 son-package --workspace test_ws --project sonata-snort-service-emu -n sonata-snort-service
 son-package --workspace test_ws --project sonata-sdk-test-service-emu -n sonata-sdk-test-service
@@ -31,6 +32,9 @@ son-package --workspace test_ws --project sonata-fw-vtc-service-emu -n sonata-fw
 son-package --workspace test_ws --project sonata-fw-dpi-service-emu -n sonata-fw-dpi-service
 son-package --workspace test_ws --project sonata-ovs-service-emu -n sonata-ovs-service
 son-package --workspace test_ws --project sonata-fw-service-emu -n sonata-fw-service
+
+# service platform projects
+son-package --workspace test_ws --project sonata-fw-vtc-service-sp -n sonata-fw-vtc-service
 
 # leave venv
 deactivate
