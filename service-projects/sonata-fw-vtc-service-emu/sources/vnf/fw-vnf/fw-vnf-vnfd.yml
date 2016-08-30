@@ -44,16 +44,16 @@ virtual_links:
     connection_points_reference:
       - "vdu01:eth0"
       - "mgmt"
-  - id: "port0"
+  - id: "input"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth1"
-      - "port0"
-  - id: "port1"
+      - "input"
+  - id: "output"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth2"
-      - "port1"
+      - "output"
 
 ##
 ## The VNF connection points to the 
@@ -62,9 +62,9 @@ virtual_links:
 connection_points:
   - id: "mgmt"
     type: "interface"
-  - id: "port0"
+  - id: "input"
     type: "interface"
-  - id: "port1"
+  - id: "output"
     type: "interface"
 
 
