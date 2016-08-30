@@ -65,7 +65,7 @@ virtual_links:
     connection_points_reference:
       - "ovs1:port1"
       - "ns:output"
-  - id: "ctrl-lan"
+  - id: "snort-input"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ovs1:port2"
@@ -83,6 +83,7 @@ forwarding_graphs:
       - "link-input"
       - "link-output"
       - "ctrl-lan"
+      - "snort-input"
     constituent_vnfs:
       - "ovs1"
     network_forwarding_paths:

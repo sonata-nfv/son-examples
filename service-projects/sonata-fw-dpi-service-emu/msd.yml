@@ -1,0 +1,104 @@
+
+---
+service_name: "sonata-fw-dpi-service"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "Monitor descriptor for an example service with two chained ubuntu VNFs"
+dashboard: "son-monitor-fw-dpi-service"
+
+
+##
+## Metrics for a single VNF
+##
+vnf_metrics:
+  - type: "cpu"
+    desc: "cpu load (%)"
+    vnf_ids:
+      - "ctrl" 
+      - "ovs1" 
+      - "snort" 
+  - type: "mem"
+    desc: "memory usage (bytes)"
+    vnf_ids:
+      - "ctrl" 
+      - "ovs1" 
+      - "snort" 
+  - type: "packet_rate"
+    desc: "packet rate (packets/sec)"
+    vnf_ids:
+      - vnf: "snort:input"
+        direction: "rx"
+      - vnf: "ovs1:port0"
+        direction: "rx"
+      - vnf: "ovs1:port1"
+        direction: "tx"
+      - vnf: "ctrl:ctrl-port"
+        direction: "rx"
+
+##
+## Metrics for an NSD link
+##
+nsd_links:
+  - link_id: "snort_input"
+    source: "ovs1:port2"
+    destination: "snort:input"
+    metric_type: "rx_packet_count"
+    desc: "snort:input  rx_packet_count"
+    metrics:
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+      - desc: "arp messages" 
+        type: "flow"
+        match: "dl_type=0x0806"   
+      - desc: "iperf traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=17,udp_dst=5001"  
+  - link_id: "ctrl-lan"
+    source: "ovs1:ctrl-port"
+    destination: "ctrl:ctrl-port"
+    metric_type: "rx_packet_count"
+    desc: "Ryu ctrl  rx_packet_count"
+    metrics: 
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "openflow tcp traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=6,tcp_dst=6633"  
+  - link_id: "link-input"
+    source: "ns_input:input"
+    destination: "ovs1:port0"
+    metric_type: "rx_packet_count"
+    desc: "firewall input  packet_count"
+    metrics: 
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+  - link_id: "link-output"
+    source: "ovs1:port1"
+    destination: "ns_output:output"
+    metric_type: "rx_packet_count"
+    desc: "firewall output  packet_count"
+    metrics: 
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+
+
+
+
