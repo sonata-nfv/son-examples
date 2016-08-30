@@ -1,0 +1,99 @@
+
+---
+service_name: "sonata-sdk-test-service"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "Monitor descriptor for an example service with two chained ubuntu VNFs"
+dashboard: "son-monitor-test1"
+
+##
+## The commands that should be given in one of the SAPs 
+## to generate traffic
+##
+saps:
+  - sap_name: "ns_input"
+    method: "son-emu-VM-ssh"
+    wait: False
+    commands:
+      - "ping 202.0.0.2"
+      - "iperf -c 202.0.0.2 -u -t1000" 
+
+
+##
+## Metrics for a single VNF
+##
+vnf_metrics:
+  - type: "cpu"
+    desc: "cpu load (%)"
+    vnf_ids:
+      - "ubuntu_vnf1" 
+      - "ubuntu_vnf2" 
+  - type: "mem"
+    desc: "memory usage (bytes)"
+    vnf_ids:
+      - "ubuntu_vnf1" 
+      - "ubuntu_vnf2" 
+  - type: "packet_rate"
+    desc: "packet rate (packets/sec)"
+    vnf_ids:
+      - vnf: "ubuntu_vnf1:port1"
+        direction: "rx"
+      - vnf: "ubuntu_vnf1:port2"
+        direction: "tx"
+      - vnf: "ubuntu_vnf2:port2"
+        direction: "rx"
+      - vnf: "ubuntu_vnf2:port1"
+        direction: "tx"
+
+##
+## Metrics for an NSD link
+##
+nsd_links:
+  - link_id: "link_12"
+    source: "ubuntu_vnf1:port2"
+    destination: "ubuntu_vnf2:port2"
+    metric_type: "rx_packet_count"
+    desc: "ubuntu_vnf2:port2  rx_packet_count"
+    metrics:
+      - desc: "total rx packets from cAdvisor"
+        type: "total"
+      - desc: "total rx packets from ovs"
+        type: "flow_total"
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+      - desc: "arp messages" 
+        type: "flow"
+        match: "dl_type=0x0806"   
+      - desc: "iperf traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=17,udp_dst=5001"  
+  - link_id: "link_12"
+    source: "ubuntu_vnf2:port2"
+    destination: "ubuntu_vnf1:port2"
+    metric_type: "rx_packet_count"
+    desc: "ubuntu_vnf1:port2  rx_packet_count"
+    metrics:
+      - desc: "total rx packets from cAdvisor"
+        type: "total"
+      - desc: "total rx packets from ovs"
+        type: "flow_total"
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+      - desc: "arp messages" 
+        type: "flow"
+        match: "dl_type=0x0806"   
+      - desc: "iperf traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=17,udp_dst=5001"  
+
+
+
+
