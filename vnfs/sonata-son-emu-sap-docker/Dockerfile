@@ -6,6 +6,7 @@ RUN	apt-get update && apt-get install -y \
 	iproute \
 	inetutils-ping \
 	iperf3 \
+	tcpreplay \
 	nmap \
 	curl \
 	ssh
