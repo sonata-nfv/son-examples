@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM mpeuster/sonata-pcap-container:latest
 MAINTAINER steven.vanrossem@intec.ugent.be
 
 RUN	apt-get update && apt-get install -y \
@@ -6,6 +6,7 @@ RUN	apt-get update && apt-get install -y \
 	iproute \
 	inetutils-ping \
 	iperf3 \
+	tcpreplay \
 	nmap \
 	curl \
 	ssh
