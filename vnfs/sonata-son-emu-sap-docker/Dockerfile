@@ -8,6 +8,7 @@ RUN	apt-get update && apt-get install -y \
 	iperf3 \
 	nmap \
 	curl \
+	netcat \
 	ssh
 
 RUN apt-get install -y software-properties-common openssh-server
