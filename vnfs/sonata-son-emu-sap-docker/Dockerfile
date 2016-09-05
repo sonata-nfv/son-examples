@@ -9,6 +9,8 @@ RUN	apt-get update && apt-get install -y \
 	tcpreplay \
 	nmap \
 	curl \
+	tcpdump \
+	bmon \
 	netcat \
 	ssh
 
