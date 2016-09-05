@@ -11,6 +11,7 @@ RUN	apt-get update && apt-get install -y \
 	curl \
 	tcpdump \
 	bmon \
+	netcat \
 	ssh
 
 RUN apt-get install -y software-properties-common openssh-server
