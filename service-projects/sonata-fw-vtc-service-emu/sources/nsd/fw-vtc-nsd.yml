@@ -48,13 +48,12 @@ virtual_links:
   - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:servicein"
-      
-      - "fw_vnf:input"
+      - "ns:servicein"    
+      - "fw_vnf:fwin"
   - id: "link-interconnect"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "fw_vnf:output"
+      - "fw_vnf:fwout"
       - "vtc_vnf:input"
   - id: "link-output"
     connectivity_type: "E-Line"
@@ -83,9 +82,9 @@ forwarding_graphs:
         connection_points:
           - connection_point_ref: "ns:servicein"
             position: 1
-          - connection_point_ref: "fw_vnf:input"
+          - connection_point_ref: "fw_vnf:fwin"
             position: 2
-          - connection_point_ref: "fw_vnf:output"
+          - connection_point_ref: "fw_vnf:fwout"
             position: 3
           - connection_point_ref: "vtc_vnf:input"
             position: 4

@@ -17,7 +17,7 @@ OVS_DPID="0000000000000001"
 
 # declare an array variable holding the ovs port names
 # the interfaces are expected to be configured from the vnfd or nsd
-declare -a PORTS=("input" "output")
+declare -a PORTS=("fwin" "fwout")
 
 echo "setup ovs bridge"
 ovs-vsctl add-br $NAME
