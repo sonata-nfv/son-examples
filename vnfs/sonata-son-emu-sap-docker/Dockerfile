@@ -9,6 +9,9 @@ RUN	apt-get update && apt-get install -y \
 	tcpreplay \
 	nmap \
 	curl \
+	tcpdump \
+	bmon \
+	netcat \
 	ssh
 
 RUN apt-get install -y software-properties-common openssh-server
