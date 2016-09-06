@@ -29,9 +29,9 @@ network_functions:
 connection_points:
   - id: "ns:mgmt"
     type: "interface"
-  - id: "ns:input"
+  - id: "ns:servicein"
     type: "interface"
-  - id: "ns:output"
+  - id: "ns:serviceout"
     type: "interface"
 
 ##
@@ -48,7 +48,7 @@ virtual_links:
   - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:input"
+      - "ns:servicein"
       
       - "fw_vnf:input"
   - id: "link-interconnect"
@@ -60,7 +60,7 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vtc_vnf:output"
-      - "ns:output"
+      - "ns:serviceout"
 
 ##
 ## The forwarding graphs.
@@ -81,7 +81,7 @@ forwarding_graphs:
       - fp_id: "ns:fg01:fp01"
         policy: "none"
         connection_points:
-          - connection_point_ref: "ns:input"
+          - connection_point_ref: "ns:servicein"
             position: 1
           - connection_point_ref: "fw_vnf:input"
             position: 2
@@ -91,6 +91,6 @@ forwarding_graphs:
             position: 4
           - connection_point_ref: "vtc_vnf:output"
             position: 5
-          - connection_point_ref: "ns:output"
+          - connection_point_ref: "ns:serviceout"
             position: 6
 
