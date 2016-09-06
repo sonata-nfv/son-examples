@@ -42,6 +42,16 @@ RUN chmod +x iperf_server.py
 ADD start_sap.sh start.sh
 RUN chmod +x start.sh
 
+# prepare pcap replay for SONATA Y1 demo
+WORKDIR /pcap
+RUN tcpprep --auto=client --pcap=getall.pcap --cachefile=input.cache
+RUN tcprewrite --endpoints=200.0.0.1:200.0.0.2 --skipbroadcast --cachefile=input.cache -i getall.pcap -o output.pcap
+
+WORKDIR /
+
+ADD start_pcap_replay.sh start_pcap_replay.sh
+RUN chmod +x start_pcap_replay.sh
+
 # set entry point for emulator gatekeeper
 ENV SON_EMU_CMD "./start.sh"
 
