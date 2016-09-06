@@ -3,7 +3,7 @@
       #==================================================================================================
 
 cd /root/gowork/src/vtc_dashboard/static/json/
-IPP=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
+IPP="localhost" #$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 # add data source and initialize dashboard using the Grafana API:
 sed -i 's/localhost/'$IPP'/g' grafana_init_datasources.json
 service grafana-server status
