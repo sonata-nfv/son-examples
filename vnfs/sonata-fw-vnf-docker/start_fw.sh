@@ -36,6 +36,10 @@ do
 done
 
 
+echo "setup generic forwarding for PCAP traffic"
+ovs-ofctl add-flow ovs1 'priority=2,in_port=1,action=output:2'
+ovs-ofctl add-flow ovs1 'priority=2,in_port=2,action=output:1'
+
 # configuration after startup (needs CONTROLLER_IP):
 # use localhost as interface for ryu <-> ovs 
 # since both are running in the same VNF
