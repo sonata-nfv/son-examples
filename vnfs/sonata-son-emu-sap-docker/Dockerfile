@@ -45,7 +45,7 @@ RUN chmod +x start.sh
 # prepare pcap replay for SONATA Y1 demo
 WORKDIR /pcap
 RUN tcpprep --auto=client --pcap=getall.pcap --cachefile=input.cache
-RUN tcprewrite --endpoints=200.0.0.1:202.0.0.2 --skipbroadcast --cachefile=input.cache -i getall.pcap -o output.pcap
+RUN tcprewrite --endpoints=203.0.0.2:203.0.0.1 --skipbroadcast --cachefile=input.cache -i getall.pcap -o output.pcap
 
 WORKDIR /
 

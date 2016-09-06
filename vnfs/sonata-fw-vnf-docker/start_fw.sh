@@ -43,4 +43,10 @@ CONTROLLER_IP="127.0.0.1"
 CONTROLLER="tcp:$CONTROLLER_IP:6633"
 ovs-vsctl set-controller $NAME $CONTROLLER
 
+sleep 2
+echo "setup generic forwarding for PCAP traffic"
+ovs-ofctl add-flow ovs1 'priority=2,in_port=1,action=output:2'
+sleep 1
+ovs-ofctl add-flow ovs1 'priority=2,in_port=2,action=output:1'
+
 

@@ -60,6 +60,11 @@ virtual_links:
     connection_points_reference:
       - "vtc_vnf:output"
       - "ns:serviceout"
+  - id: "link-back"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "ns:serviceout"
+      - "ns:servicein"
 
 ##
 ## The forwarding graphs.
@@ -73,6 +78,7 @@ forwarding_graphs:
       - "link-input"
       - "link-interconnect"
       - "link-output"
+      - "link-back"
     constituent_vnfs:
       - "vtc_vnf"
       - "fw_vnf"
@@ -92,4 +98,6 @@ forwarding_graphs:
             position: 5
           - connection_point_ref: "ns:serviceout"
             position: 6
+          - connection_point_ref: "ns:servicein"
+            position: 7
 
