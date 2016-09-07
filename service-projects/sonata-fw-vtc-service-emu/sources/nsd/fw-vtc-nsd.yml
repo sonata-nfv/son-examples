@@ -6,7 +6,7 @@ vendor: "eu.sonata-nfv"
 name: "sonata-fw-vtc-service"
 version: "0.1"
 author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
-description: "SONATA Y1 review demo service: Firewall/vTC"
+description: "SONATA Y1 review demo service: firewall/vTC"
 
 ##
 ## The various network functions this service
