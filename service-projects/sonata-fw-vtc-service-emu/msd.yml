@@ -1,0 +1,103 @@
+
+---
+service_name: "sonata-fw-vtc-service"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "SONATA Y1 demo firewall + vTC"
+dashboard: "son-monitor-fw-vtc-service"
+
+
+##
+## Metrics for a single VNF
+##
+vnf_metrics:
+  - type: "cpu"
+    desc: "cpu load (%)"
+    vnf_ids:
+      - "fw_vnf" 
+      - "vtc_vnf" 
+  - type: "mem"
+    desc: "memory usage (bytes)"
+    vnf_ids:
+      - "fw_vnf" 
+      - "vtc_vnf" 
+  - type: "packet_rate"
+    desc: "packet rate (packets/sec)"
+    vnf_ids:
+      - vnf: "fw_vnf:fwin"
+        direction: "rx"
+      - vnf: "fw_vnf:fwout"
+        direction: "tx"
+      - vnf: "vtc_vnf:input"
+        direction: "rx"
+      - vnf: "vtc_vnf:output"
+        direction: "tx"
+
+##
+## Metrics for an NSD link
+##
+nsd_links:
+  - link_id: "link-interconnect"
+    source: "fw_vnf:fwout"
+    destination: "vtc_vnf:input"
+    metric_type: "rx_packet_count"
+    desc: "vTC:input  rx_packet_count"
+    metrics:
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "arp messages" 
+        type: "flow"
+        match: "dl_type=0x0806"   
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+      - desc: "iperf traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=17,udp_dst=5001"  
+  - link_id: "link-input"
+    source: "ns_servicein:servicein"
+    destination: "fw_vnf:fwin"
+    metric_type: "rx_packet_count"
+    desc: "firewall input  packet_count"
+    metrics: 
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "arp messages" 
+        type: "flow"
+        match: "dl_type=0x0806"   
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+      - desc: "iperf traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=17,udp_dst=5001"  
+  - link_id: "link-output"
+    source: "vtc_vnf:output"
+    destination: "ns_serviceout:serviceout"
+    metric_type: "rx_packet_count"
+    desc: "vTC output  packet_count"
+    metrics: 
+      - desc: "total rx packets"
+        type: "flow_total"
+      - desc: "arp messages" 
+        type: "flow"
+        match: "dl_type=0x0806"   
+      - desc: "icmpv4 ping request messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=8"   
+      - desc: "icmpv4 ping echo messages" 
+        type: "flow"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+      - desc: "iperf traffic" 
+        type: "flow"
+        match: "dl_type=0x0800,nw_proto=17,udp_dst=5001"  
+
+
+
+
