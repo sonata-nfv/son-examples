@@ -34,7 +34,7 @@ go get github.com/beego/bee
 wget http://influxdb.s3.amazonaws.com/influxdb_0.9.5.1_amd64.deb					# download
 dpkg -i influxdb_0.9.5.1_amd64.deb												# install
 service influxdb start															# start service
-sleep 3s
+sleep 10s
 curl -G http://localhost:8086/query --data-urlencode "q=CREATE DATABASE flows"	# create db 'flows'
 
       #==================================================================================================
@@ -51,7 +51,7 @@ cd /root/gowork/src/vtc_dashboard
 
 printf "0\n-------------------\n" > netstat.txt
 netstat -tnlp >> netstat.txt
-sleep 5s
+sleep 10s
 
       #==================================================================================================
       #
