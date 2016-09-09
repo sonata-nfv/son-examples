@@ -48,7 +48,7 @@ service_specific_managers:
 ##
 #service_specific_managers:
 #  - id: "ssmsmart"
-#    description: "An empty example SSM."
+#    description: "This SSM reconfigures vFW"
 #    image: "sonatanfv/ssmsmart"
 #    options:
 #      - key: "myKey"
