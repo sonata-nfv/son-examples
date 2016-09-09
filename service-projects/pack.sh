@@ -35,6 +35,7 @@ son-package --workspace test_ws --project sonata-fw-service-emu -n sonata-fw-ser
 
 # service platform projects
 son-package --workspace test_ws --project sonata-fw-vtc-service-sp -n sonata-fw-vtc-service-sp
+son-package --workspace test_ws --project sonata-fw-vtc-service-update-sp -n sonata-fw-vtc-service-update-sp
 
 # leave venv
 deactivate

@@ -1,0 +1,116 @@
+descriptor_version: "vnfd-schema-01"
+vendor: "eu.sonata-nfv"
+name: "vtc-vnf"
+version: "0.1"
+author: "George Xilouris, NCSRD"
+description: >
+  "Virtual traffic classifier (vTC) descriptor file. vTC uses ndpi library for the implementation of the vTC"
+
+function_specific_managers:
+  - id: "fsm00"
+    description: "FSM for controlling the classification capabilities of the vTC"
+    image: "pfring_api_module"
+    options:
+      - key: "myKey"
+        value: "myValue"
+  - id: "fsm01"
+    description: "FSM for management of the start/stop lifecycle of the vTC"
+    image: "vtc_dashboard"
+    resource_requirements:
+      docker_version: "1.12"
+    options:
+      - key: "myKey"
+        value: "myValue"
+      - key: "myOhterKey"
+        value: "myOtherValue"
+
+virtual_deployment_units:
+  - id: "vdu01"
+    description: "VNFC for the dashboard and the time-series database"
+    vm_image: "sonata-vtc"
+    vm_image_format: "qcow2"
+    resource_requirements:
+      cpu:
+        vcpus: 1
+      memory:
+        size: 2
+        size_unit: "GB"
+      storage:
+        size: 20
+        size_unit: "GB"
+    monitoring_parameters:
+      - name: "vm_cpu_perc"
+        unit: "Percentage"
+      - name: "vm_mem_perc"
+        unit: "Percentage"
+      - name: "vm_net_rx_bps"
+        unit: "bps"
+      - name: "vm_net_tx_bps"
+        unit: "bps"
+    connection_points:
+      - id: "vdu01:eth0"
+        type: "interface"
+      - id: "vdu01:eth1"
+        type: "interface"
+      - id: "vdu01:eth2"
+        type: "interface"
+
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vdu01:eth0"
+      - "vnf:mgmt"
+    dhcp: True
+  - id: "input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:eth1"
+      - "vnf:input"
+    dhcp: True
+  - id: "output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:eth2"
+      - "vnf:output"
+    dhcp: True
+
+connection_points:
+- id: "vnf:mgmt"
+  type: interface
+- id: "vnf:input"
+  type: interface
+- id: "vnf:output"
+  type: interface
+
+monitoring_rules:
+  - name: "mon:rule:vm_cpu_perc"
+    description: "Trigger events if CPU load is above 85 percent."
+    duration: 2
+    duration_unit: "s"
+    condition: "vdu01:vm_cpu_perc > 85"
+    notification:
+      - name: "notification01"
+        type: "rabbitmq_message"
+  - name: "mon:rule:vm_mem_perc"
+    description: "Trigger events if memory consumption is above 85 percent."
+    duration: 2
+    duration_unit: "s"
+    condition: "vdu01:vm_mem_perc > 85"
+    notification:
+      - name: "notification02"
+        type: "rabbitmq_message"
+  - name: "mon:rule:rx"
+    duration: 2
+    duration_unit: "s"
+    condition: "vdu01:vm_net_rx_bps > 500000"
+    notification:
+      - name: "notification03"
+        type: "rabbitmq_message"
+  - name: "mon:rule:tx"
+    duration: 2
+    duration_unit: "s"
+    condition: "vdu01:vm_net_tx_bps > 500000"
+    notification:
+      - name: "notification04"
+        type: "rabbitmq_message"
