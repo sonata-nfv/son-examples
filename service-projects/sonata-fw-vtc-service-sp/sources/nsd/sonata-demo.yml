@@ -29,6 +29,31 @@ network_functions:
     vnf_vendor: "eu.sonata-nfv"
     vnf_name: "fw-vnf"
     vnf_version: "0.1"
+
+##
+## Some service specific managers.
+## image: Specifies the DockerHub URI (user/image name) to fetch the SSM image from.
+##
+service_specific_managers:
+  - id: "ssmdumb"
+    description: "An empty example SSM."
+    image: "sonatanfv/ssmdumb"
+    options:
+      - key: "myKey"
+        value: "myValue"
+
+##
+## Some service specific managers.
+## image: Specifies the DockerHub URI (user/image name) to fetch the SSM image from.
+##
+#service_specific_managers:
+#  - id: "ssmsmart"
+#    description: "This SSM reconfigures vFW"
+#    image: "sonatanfv/ssmsmart"
+#    options:
+#      - key: "myKey"
+#        value: "myValue"
+
 ##
 ## The NS connection points to the
 ## outside world.
