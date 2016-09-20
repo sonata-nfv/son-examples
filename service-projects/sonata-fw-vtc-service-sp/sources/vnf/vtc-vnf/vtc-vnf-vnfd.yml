@@ -86,7 +86,7 @@ connection_points:
 monitoring_rules:
   - name: "mon:rule:vm_cpu_usage_85_perc"
     description: "Trigger events if CPU load is above 85 percent."
-    duration: 20
+    duration: 10
     duration_unit: "s"
     condition: "vdu01:vm_cpu_perc > 85"
     notification:
