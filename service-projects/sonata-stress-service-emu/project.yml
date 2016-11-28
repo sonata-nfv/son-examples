@@ -1,0 +1,7 @@
+catalogues: [personal]
+description: "Example service with multiple vnfs showcasing different resource limits using the stress program"
+maintainer: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
+name: sonata-stress-service
+publish_to: [personal]
+vendor: eu.sonata-nfv.package
+version: '0.3'

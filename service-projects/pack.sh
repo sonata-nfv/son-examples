@@ -32,6 +32,7 @@ son-package --workspace test_ws --project sonata-fw-vtc-service-emu -n sonata-fw
 son-package --workspace test_ws --project sonata-fw-dpi-service-emu -n sonata-fw-dpi-service
 son-package --workspace test_ws --project sonata-ovs-service-emu -n sonata-ovs-service
 son-package --workspace test_ws --project sonata-fw-service-emu -n sonata-fw-service
+son-package --workspace test_ws --project sonata-stress-service-emu -n sonata-stress-service
 
 # service platform projects
 son-package --workspace test_ws --project sonata-fw-vtc-service-sp -n sonata-fw-vtc-service-sp

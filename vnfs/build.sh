@@ -38,3 +38,5 @@ docker build -t $target_repo/sonata-snort-ovs-vnf -f sonata-snort-ovs-vnf-docker
 # FW vnf
 docker build -t $target_repo/sonata-fw-vnf -f sonata-fw-vnf-docker/Dockerfile sonata-fw-vnf-docker
 
+# stress vnf
+docker build -t $target_repo/sonata-stress-vnf -f sonata-stress-vnf-docker/Dockerfile sonata-stress-vnf-docker

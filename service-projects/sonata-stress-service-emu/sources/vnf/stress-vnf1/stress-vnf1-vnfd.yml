@@ -1,0 +1,30 @@
+
+---
+##
+## Some general information regarding this
+## VNF descriptor.
+##
+descriptor_version: "vnfd-schema-01"
+vendor: "eu.sonata-nfv"
+name: "stress-vnf1"
+version: "0.1"
+author: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
+description: "A sample vnf using 0.3 CPU bandwidth of 1 cpu and 1.5GB of memory"
+##
+## The virtual deployment unit.
+##
+virtual_deployment_units:
+  - id: "1"
+    vm_image: "sonatanfv/sonata-stress-vnf"
+    vm_image_format: "docker"
+    resource_requirements:
+      cpu:
+        vcpus: 1
+        cores: "1"
+        cpu_bw: 0.3
+      memory:
+        size: 1.5
+        size_unit: "GB"
+      storage:
+        size: 10
+        size_unit: "GB"

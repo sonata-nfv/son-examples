@@ -37,3 +37,5 @@ docker push $target_repo/sonata-snort-ovs-vnf
 # fw vnf
 docker push $target_repo/sonata-fw-vnf
 
+# stress vnf
+docker push $target_repo/sonata-stress-vnf
