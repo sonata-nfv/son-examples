@@ -4,4 +4,5 @@ maintainer: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.b
 name: sonata-sdk-test-service
 publish_to: [personal]
 vendor: eu.sonata-nfv.package
-version: '0.3'
+version: '0.4'
+descriptor_extension: "yml"
