@@ -5,3 +5,4 @@ name: sonata-fw-vtc-service
 publish_to: [personal]
 vendor: eu.sonata-nfv.package
 version: '0.4'
+descriptor_extension: "yml"
