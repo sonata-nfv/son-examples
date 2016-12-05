@@ -1,0 +1,27 @@
+
+---
+descriptor_version: "1.0"
+
+vendor: "eu.sonata-nfv"
+name: "sonata-stress-service"
+version: "0.1"
+author: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
+description: "Example service with multiple vnfs showcasing different resource limits using the stress program"
+
+##
+## The various network functions this service
+## is composed of.
+##
+network_functions:
+  - vnf_id: "stress_vnf1"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "stress-vnf1"
+    vnf_version: "0.1"
+  - vnf_id: "stress_vnf2"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "stress-vnf2"
+    vnf_version: "0.1"
+  - vnf_id: "stress_vnf3"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "stress-vnf3"
+    vnf_version: "0.1"
