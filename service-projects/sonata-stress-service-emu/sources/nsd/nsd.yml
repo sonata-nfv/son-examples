@@ -13,15 +13,15 @@ description: "Example service with multiple vnfs showcasing different resource l
 ## is composed of.
 ##
 network_functions:
-  - vnf_id: "stress_vnf1"
+  - vnf_id: "stressvnf1"
     vnf_vendor: "eu.sonata-nfv"
     vnf_name: "stress-vnf1"
     vnf_version: "0.1"
-  - vnf_id: "stress_vnf2"
+  - vnf_id: "stressvnf2"
     vnf_vendor: "eu.sonata-nfv"
     vnf_name: "stress-vnf2"
     vnf_version: "0.1"
-  - vnf_id: "stress_vnf3"
+  - vnf_id: "stressvnf3"
     vnf_vendor: "eu.sonata-nfv"
     vnf_name: "stress-vnf3"
     vnf_version: "0.1"
