@@ -20,7 +20,7 @@ virtual_deployment_units:
     resource_requirements:
       cpu:
         vcpus: 2
-        cores: "2,3"
+        cores: "1"
         cpu_bw: 0.33
       memory:
         size: 0.56
