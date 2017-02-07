@@ -18,6 +18,8 @@ docker push $target_repo/sonata-snort-ids-vnf
 
 # ovs1 vnf
 docker push $target_repo/sonata-ovs1-vnf
+# ovs-userspace vnf
+docker push $target_repo/sonata-ovs-user-vnf
 
 # ryu-snort vnf
 docker push $target_repo/sonata-ryu-snort-vnf
