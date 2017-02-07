@@ -1,0 +1,18 @@
+
+---
+service_name: "sonata-ovs-user-service"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "Monitor descriptor for an example service with two chained ubuntu VNFs"
+dashboard: "son-monitor-ovs-user-service"
+
+##
+## Metrics for a single VNF
+##
+vnf_metrics:
+  - metric_type: "packet_rate"
+    description: "packet rate (packets/sec)"
+    vnf_ids:
+      - vnf: "ovs1:port0"
+        direction: "rx"
+
