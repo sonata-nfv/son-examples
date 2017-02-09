@@ -1,8 +1,11 @@
 # Simple empty VNF
 
-This VNF is an example for the most simple container to be used with son-emu.
+This VNF is an OpenvSwitch deployed in kernel space.
+This means that OpenvSwitch kernel module should be loaded in the host.
 
-It has the `net-tools` and `iproute` packages installed to allow son-emu to use the `ifoncifg` and `ip` commands to configure the container's network interfaces.
+The startup script is `start_ovs1.sh`.
 
+The siwtch instance is named `ovs1`.
 
+Container interfaces named `port#` are automatically added to to `ovs1`.
 
