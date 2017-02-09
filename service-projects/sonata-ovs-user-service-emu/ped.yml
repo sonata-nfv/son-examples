@@ -15,7 +15,7 @@ description: "This is an example profiling experiment descriptor (PED)."
 service_package: "./sonata-fw-vtc-service.son"
 
 #
-# Firs type of experiments: Service level experiments
+# First type of experiments: Service level experiments
 #
 service_experiments:
   - name: "service_throughput"
@@ -31,13 +31,13 @@ service_experiments:
         container: "sonata-son-emu-sap:latest"
         configuration:
           - "ethtool -K port0 tx off"
-        cmd: 'iperf -c 205.0.0.2 -t999 -u -b${200}M'
+        cmd: 'iperf -c 205.0.0.2 -t999 -u -b${10, 200}M'
       - name: "ns_port1"
         connection_point: "ns:servicein"
         container: "sonata-son-emu-sap:latest"
         configuration:
           - "ethtool -K port1 tx off"
-        cmd: "python iperf_server.py"
+        cmd: 'python iperf_server.py "-s -u -i -fm"'
     overload_detection:
       - "ovs1"
       - "ns_port0"

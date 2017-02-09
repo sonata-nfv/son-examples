@@ -91,7 +91,12 @@ nsd_links:
         destination: "ns_port1:port1"
         direction: "rx"
         match: "dl_type=0x0800,ip_proto=6,tcp_dst=5002"  
-
+      - description: "icmpv4 ping echo messages" 
+        link_id: "link-port1-b"
+        source: "ovs1:port1"
+        destination: "ns_port1:port1"
+        direction: "rx"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
 
 
 

@@ -8,6 +8,7 @@ from time import sleep
 import pty
 import os
 import re
+import sys
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -142,7 +143,7 @@ class iperf():
             return 0
 
     def parse_packets(self, iperf_line):
-        match = re.search('(\d+)\/(\d+)', iperf_line)
+        match = re.search('(\d+)\/\s*(\d+)\s*\(', iperf_line)
         if match:
             lost = match.group(1)
             total = match.group(2)
@@ -194,5 +195,7 @@ if __name__ == "__main__":
 
     #min is 12bytes
     #iperf_server = iperf('-s -u -l18 -i -fm')
-    iperf_server = iperf('-s -u -i -fm')
+    iperf_cmd = sys.argv[1]
+    iperf_server = iperf(iperf_cmd)
+    #iperf_server = iperf('-s -u -i -fm')
     #iperf_client = iperf('-c localhost -u -i1')
