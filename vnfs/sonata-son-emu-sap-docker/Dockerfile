@@ -12,7 +12,8 @@ RUN	apt-get update && apt-get install -y \
 	tcpdump \
 	bmon \
 	netcat \
-	ssh
+	ssh \
+        ethtool
 
 RUN apt-get install -y software-properties-common openssh-server
 RUN echo 'root:root' | chpasswd
