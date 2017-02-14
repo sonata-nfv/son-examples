@@ -11,7 +11,7 @@ set -e
 
 git clone https://github.com/sonata-nfv/son-cli.git
 cd son-cli
-virtualenv -p /usr/bin/python3.4 venv
+virtualenv -p /usr/bin/python3 venv
 source venv/bin/activate
 python bootstrap.py
 bin/buildout
