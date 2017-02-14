@@ -1,0 +1,32 @@
+
+---
+service_name: "sonata-ovs-user-service"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "Monitor descriptor for an example service with two chained ubuntu VNFs"
+dashboard: "son-monitor-ovs-user-service"
+
+##
+## Metrics for a single VNF
+##
+vnf_metrics:
+  - metric_type: "cpu"
+    description: "cpu load (%)"
+    vnf_ids:
+      - vnf: "ns_port0" 
+      - vnf: "ovs1" 
+      - vnf: "ns_port1" 
+      - vnf: "ctrl" 
+  - metric_type: "mem"
+    description: "memory usage (bytes)"
+    vnf_ids:
+      - vnf: "ns_port0" 
+      - vnf: "ovs1" 
+      - vnf: "ns_port1" 
+      - vnf: "ctrl" 
+  - metric_type: "throughput"
+    description: "throughput (Mbits/sec)"
+    vnf_ids:
+      - vnf: "ns_port1"
+
+

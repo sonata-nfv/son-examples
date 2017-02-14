@@ -1,0 +1,103 @@
+
+---
+service_name: "sonata-ovs-user-service"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+description: "Monitor descriptor for an example service with two chained ubuntu VNFs"
+dashboard: "son-monitor-ovs-user-service"
+
+##
+## The commands that should be given in one of the SAPs 
+## to generate traffic
+##
+#saps:
+#  - sap_name: "ns_output"
+#    method: "son-emu-VM-ssh"
+#    wait: False
+#    commands:
+#      - "bash start_iperf.sh" 
+#      - "bash iperf -s -p5002"
+#  - sap_name: "ns_input"
+#    method: "son-emu-VM-ssh"
+#    wait: True
+#    commands:
+#      - "bash transmit_loop.sh" 
+#      - "iperf -c 203.0.0.1 -u -i1 -b1M -t20" 
+#      - "iperf -c 203.0.0.1 -u -i1 -b5M -t20"
+#      - "iperf -c 203.0.0.1 -u -i1 -b10M -t20"
+#      - "iperf -c 203.0.0.1 -u -i1 -b30M -t20"
+
+##
+## Metrics for a single VNF
+##
+vnf_metrics:
+  - metric_type: "cpu"
+    description: "cpu load (%)"
+    vnf_ids:
+      - vnf: "ns_port0" 
+      - vnf: "ovs1" 
+      - vnf: "ns_port1" 
+      - vnf: "ctrl" 
+  - metric_type: "mem"
+    description: "memory usage (bytes)"
+    vnf_ids:
+      - vnf: "ns_port0" 
+      - vnf: "ovs1" 
+      - vnf: "ns_port1" 
+      - vnf: "ctrl" 
+  - metric_type: "packet_rate"
+    description: "packet rate (packets/sec)"
+    vnf_ids:
+      - vnf: "ovs1:port0"
+        direction: "rx"
+      - vnf: "ovs1:port1"
+        direction: "tx"
+      - vnf: "ns_port0:port0"
+        direction: "tx"
+      - vnf: "ns_port1:port1"
+        direction: "rx"
+
+
+##
+## Metrics for an NSD link
+##
+nsd_links:
+  - metric_type: "packet_count"
+    description: "packet_count of links"
+    link_ids:
+      - description: "link0 tx packets"
+        link_id: "link-port0"
+        source: "ns_port0:port0"
+        destination: "ovs1:port0"
+        direction: "tx"
+      - description: "link0 rx packets"
+        link_id: "link-port0"
+        source: "ns_port0:port0"
+        destination: "ovs1:port0"
+        direction: "rx"
+      - description: "link1 tx packets" 
+        link_id: "link-port1-b"
+        source: "ovs1:port1"
+        destination: "ns_port1:port1"
+        direction: "tx"
+      - description: "link1 rx packets" 
+        link_id: "link-port1-b"
+        source: "ovs1:port1"
+        destination: "ns_port1:port1"
+        direction: "rx"
+      - description: "test traffic" 
+        link_id: "link-port1-b"
+        source: "ovs1:port1"
+        destination: "ns_port1:port1"
+        direction: "rx"
+        match: "dl_type=0x0800,ip_proto=6,tcp_dst=5002"  
+      - description: "icmpv4 ping echo messages" 
+        link_id: "link-port1-b"
+        source: "ovs1:port1"
+        destination: "ns_port1:port1"
+        direction: "rx"
+        match: "dl_type=0x0800,ip_proto=1,icmpv4_type=0" 
+
+
+
+

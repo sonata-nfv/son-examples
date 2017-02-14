@@ -11,8 +11,11 @@ set -e
 
 git clone https://github.com/sonata-nfv/son-cli.git
 cd son-cli
-virtualenv -p /usr/bin/python3.4 venv
+virtualenv -p /usr/bin/python3 venv
 source venv/bin/activate
+pip3 install numpy
+pip3 install scipy
+pip3 install docker==2.0.2
 python bootstrap.py
 bin/buildout
 python setup.py develop
@@ -31,6 +34,7 @@ son-package --workspace test_ws --project sonata-vtc-service-emu -n sonata-vtc-s
 son-package --workspace test_ws --project sonata-fw-vtc-service-emu -n sonata-fw-vtc-service
 son-package --workspace test_ws --project sonata-fw-dpi-service-emu -n sonata-fw-dpi-service
 son-package --workspace test_ws --project sonata-ovs-service-emu -n sonata-ovs-service
+son-package --workspace test_ws --project sonata-ovs-user-service-emu -n sonata-ovs-user-service
 son-package --workspace test_ws --project sonata-fw-service-emu -n sonata-fw-service
 son-package --workspace test_ws --project sonata-stress-service-emu -n sonata-stress-service
 

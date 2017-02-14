@@ -8,6 +8,8 @@ from time import sleep
 import pty
 import os
 import re
+import sys
+from math import isnan
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -15,7 +17,7 @@ logging.basicConfig(level=logging.INFO)
 MAX_READ = 1024
 
 # vnf configuration parameters
-vnf_name = 'profile_sink'
+vnf_name = os.environ.get('VNF_NAME')
 #pushgateway = 'localhost:9091'
 pushgateway = '172.17.0.1:9091'
 
@@ -59,6 +61,13 @@ class iperf():
         self.prom_jitter = Gauge('sonemu_jitter_ms', 'iperf jitter (ms)',
                                        ['vnf_name'], registry=self.registry)
 
+
+        self.prom_bandwith.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_loss.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_packets_total.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_packets_loss.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_jitter.labels(vnf_name=vnf_name).set(float('nan'))
+
         while True:
             data = self.readline()
             if data :
@@ -68,27 +77,29 @@ class iperf():
                 if not self.test_end:
 
                     bw = self.parse_bandwith(data)
-                    if bw > 0:
-                        self.prom_bandwith.labels({'vnf_name': vnf_name}).set(bw)
+
+                    if not isnan(bw):
+                        self.prom_bandwith.labels(vnf_name=vnf_name).set(bw)
                     else:
+                        self.prom_bandwith.labels(vnf_name=vnf_name).set(bw)
                         # end of iperf test, no real measurement
                         continue
 
                     loss = self.parse_loss(data)
-                    self.prom_loss.labels({'vnf_name': vnf_name}).set(loss)
+                    self.prom_loss.labels(vnf_name=vnf_name).set(loss)
 
                     lost, total = self.parse_packets(data)
                     if lost and total:
-                        self.prom_packets_total.labels({'vnf_name': vnf_name}).set(total)
-                        self.prom_packets_loss.labels({'vnf_name': vnf_name}).set(lost)
+                        self.prom_packets_total.labels(vnf_name=vnf_name).set(total)
+                        self.prom_packets_loss.labels(vnf_name=vnf_name).set(lost)
 
                     jitter = self.parse_jitter(data)
-                    self.prom_jitter.labels({'vnf_name': vnf_name}).set(jitter)
+                    self.prom_jitter.labels(vnf_name=vnf_name).set(jitter)
             else:
-                self.prom_loss.labels({'vnf_name': vnf_name}).set(float('nan'))
-                self.prom_jitter.labels({'vnf_name': vnf_name}).set(float('nan'))
+                self.prom_loss.labels(vnf_name=vnf_name).set(float('nan'))
+                self.prom_jitter.labels(vnf_name=vnf_name).set(float('nan'))
 
-            pushadd_to_gateway(pushgateway, job='sonemu-profiler', registry=self.registry)
+            pushadd_to_gateway(pushgateway, job='sonemu-profile_sink', registry=self.registry)
 
 
     def read( self, maxbytes=MAX_READ ):
@@ -139,10 +150,10 @@ class iperf():
             logging.info('bw: {0} Mbits/sec'.format(bw.group(1)))
             return float(bw.group(1))
         else:
-            return 0
+            return float('nan')
 
     def parse_packets(self, iperf_line):
-        match = re.search('(\d+)\/(\d+)', iperf_line)
+        match = re.search('(\d+)\/\s*(\d+)\s*\(', iperf_line)
         if match:
             lost = match.group(1)
             total = match.group(2)
@@ -194,5 +205,7 @@ if __name__ == "__main__":
 
     #min is 12bytes
     #iperf_server = iperf('-s -u -l18 -i -fm')
-    iperf_server = iperf('-s -u -i -fm')
+    iperf_cmd = sys.argv[1]
+    iperf_server = iperf(iperf_cmd)
+    #iperf_server = iperf('-s -u -i -fm')
     #iperf_client = iperf('-c localhost -u -i1')
