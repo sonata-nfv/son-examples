@@ -31,24 +31,22 @@ service_experiments:
         container: "sonata-son-emu-sap:latest"
         configuration:
           - "ethtool -K port1 tx off"
-        cmd: 'python iperf_server.py "-s -i -fm"'
+        cmd: 'python iperf_server.py "-s -i1 -fm"'
+        cmd_order: 1
       - name: "ns_port0"
         connection_point: "ns:serviceout"
         container: "sonata-son-emu-sap:latest"
         configuration:
           - "ethtool -K port0 tx off"
         cmd: 'iperf -c 205.0.0.2 -t999'
-    overload_detection:
-      - "ovs1"
-      - "ns_port0"
-      - "ns_port1"
+        cmd_order: 2
     input_metrics: "msd_input.yml"
     output_metrics: "msd_output2.yml"
     # resource configurations to be tested during profiling run (defined per VNF)
     resource_limitations:
       # again: SONATA-like references
       - function: "ovs1"
-        cpu_bw: "${0.4 to 0.6 step 0.1}"
+        cpu_bw: "${0.4 to 0.8 step 0.1}"
         cpu_cores: 1
         #mem_limit: "${256, 512}m"
         mem_limit: 256m

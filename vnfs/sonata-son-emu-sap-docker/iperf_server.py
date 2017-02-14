@@ -61,6 +61,13 @@ class iperf():
         self.prom_jitter = Gauge('sonemu_jitter_ms', 'iperf jitter (ms)',
                                        ['vnf_name'], registry=self.registry)
 
+
+        self.prom_bandwith.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_loss.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_packets_total.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_packets_loss.labels(vnf_name=vnf_name).set(float('nan'))
+        self.prom_jitter.labels(vnf_name=vnf_name).set(float('nan'))
+
         while True:
             data = self.readline()
             if data :
