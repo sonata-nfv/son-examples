@@ -28,11 +28,14 @@ virtual_deployment_units:
         size_unit: "GB"
     connection_points:
       - id: "vdu01:eth0"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
       - id: "vdu01:eth1"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
       - id: "vdu01:eth2"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
 
 ##
 ## The virtual links that interconnect
@@ -61,10 +64,13 @@ virtual_links:
 ##
 connection_points:
   - id: "mgmt"
-    type: "interface"
+    interface: "ipv4"
+    type: "management"
   - id: "fwin"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
   - id: "fwout"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
 
 
