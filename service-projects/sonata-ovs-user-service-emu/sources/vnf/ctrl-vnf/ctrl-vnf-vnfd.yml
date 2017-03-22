@@ -28,7 +28,8 @@ virtual_deployment_units:
         size_unit: "GB"
     connection_points:
       - id: "vdu01:cp01"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
 
 ##
 ## The virtual links that interconnect
@@ -48,6 +49,7 @@ virtual_links:
 ##
 connection_points:
   - id: "ctrl-port"
-    type: "interface"
+    interface: "ipv4"
+    type: "management"
 
 

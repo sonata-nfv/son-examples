@@ -28,11 +28,14 @@ network_functions:
 ##
 connection_points:
   - id: "ns:port0"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
   - id: "ns:port1"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
   - id: "ns:port2"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
 
 ##
 ## The virtual links that interconnect

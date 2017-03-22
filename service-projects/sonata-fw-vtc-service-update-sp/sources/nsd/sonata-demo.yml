@@ -48,11 +48,14 @@ service_specific_managers:
 ##
 connection_points:
   - id: "ns:mgmt"
-    type: "interface"
+    interface: "ipv4"
+    type: "management"
   - id: "ns:input"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
   - id: "ns:output"
-    type: "interface"
+    interface: "ipv4"
+    type: "external"
 
 ##
 ## The virtual links that interconnect

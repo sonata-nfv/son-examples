@@ -49,11 +49,14 @@ virtual_deployment_units:
         unit: "bps"
     connection_points:
       - id: "vdu01:eth0"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
       - id: "vdu01:eth1"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
       - id: "vdu01:eth2"
-        type: "interface"
+        interface: "ipv4"
+        type: "internal"
 
 virtual_links:
   - id: "mgmt"
@@ -77,11 +80,14 @@ virtual_links:
 
 connection_points:
 - id: "vnf:mgmt"
-  type: interface
+  interface: "ipv4"
+  type: "management"
 - id: "vnf:input"
-  type: interface
+  interface: "ipv4"
+  type: "external"
 - id: "vnf:output"
-  type: interface
+  interface: "ipv4"
+  type: "external"
 
 monitoring_rules:
   - name: "mon:rule:vm_cpu_usage_85_perc"
