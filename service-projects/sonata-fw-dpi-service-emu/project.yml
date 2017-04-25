@@ -1,8 +1,8 @@
-catalogues: [personal]
-description: "Example FW (OvS + Ryu) + IDS (Snort) service"
-maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de, Steven Van Rossem, steven.vannrossem@intec.ugent.be"
-name: sonata-fw-dpi-service
-publish_to: [personal]
-vendor: eu.sonata-nfv.package
-version: '0.4'
+package:
+  description: "Example FW (OvS + Ryu) + IDS (Snort) service"
+  maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de, Steven Van Rossem, steven.vannrossem@intec.ugent.be"
+  name: sonata-fw-dpi-service
+  vendor: eu.sonata-nfv.package
+  version: '0.4'
 descriptor_extension: "yml"
+version: '0.5'

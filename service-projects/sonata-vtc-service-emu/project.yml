@@ -1,8 +1,8 @@
-catalogues: [personal]
-description: "SONATA vTC test service"
-maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
-name: sonata-vtc-service
-publish_to: [personal]
-vendor: eu.sonata-nfv.package
-version: '0.4'
+package:
+  description: "SONATA vTC test service"
+  maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
+  name: sonata-vtc-service
+  vendor: eu.sonata-nfv.package
+  version: '0.4'
 descriptor_extension: "yml"
+version: '0.5'
