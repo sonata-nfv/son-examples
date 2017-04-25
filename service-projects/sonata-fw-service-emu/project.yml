@@ -1,8 +1,8 @@
-catalogues: [personal]
-description: "Example  firewall service as a single VNF with an ovs switch and ryu openflow controller"
-maintainer: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
-name: sonata-fw-service
-publish_to: [personal]
-vendor: eu.sonata-nfv.package
-version: '0.4'
+package:
+  description: "Example  firewall service as a single VNF with an ovs switch and ryu openflow controller"
+  maintainer: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
+  name: sonata-fw-service
+  vendor: eu.sonata-nfv.package
+  version: '0.4'
 descriptor_extension: "yml"
+version: '0.5'
