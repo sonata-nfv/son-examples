@@ -1,0 +1,402 @@
+- input_metrics:
+  - CI_high: 137999.8235999852
+    CI_low: 98026.91036761113
+    average: 118013.36698379816
+    desc: ovs1:port0:rx
+    name: rx_byte_rate@ovs1:port0
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 55.25093298754366
+    CI_low: 8.404709788301698
+    average: 31.82782138792268
+    desc: ctrl:ctrl-port:rx
+    name: rx_byte_rate@ctrl:ctrl-port
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 91.38346427284517
+    CI_low: 64.89599532804417
+    average: 78.13972980044467
+    desc: ovs1:port0:rx
+    name: rx_packet_rate@ovs1:port0
+    type: rx_packet_rate
+    unit: packets/sec
+  - CI_high: 0.7892990426791953
+    CI_low: 0.12006728269002431
+    average: 0.4546831626846098
+    desc: ctrl:ctrl-port:rx
+    name: rx_packet_rate@ctrl:ctrl-port
+    type: rx_packet_rate
+    unit: packets/sec
+  name: service_throughput1
+  output_metrics:
+  - CI_high: .nan
+    CI_low: .nan
+    average: 0.0
+    desc: ns_port1
+    name: packet_loss@ns_port1
+    type: packet_loss
+    unit: '%'
+  - CI_high: 3.3286323989433417
+    CI_low: 2.1088423856442104
+    average: 2.718737392293776
+    desc: ovs1
+    name: cpu@ovs1
+    type: cpu
+    unit: '%'
+  - CI_high: 0.045557369669378275
+    CI_low: 0.009968420549643083
+    average: 0.027762895109510678
+    desc: ctrl
+    name: cpu@ctrl
+    type: cpu
+    unit: '%'
+  - CI_high: 21.008384000000007
+    CI_low: 21.008384
+    average: 21.008384000000003
+    desc: ovs1
+    name: mem@ovs1
+    type: mem
+    unit: MB
+  - CI_high: 57.163776
+    CI_low: 57.163775999999984
+    average: 57.16377599999999
+    desc: ctrl
+    name: mem@ctrl
+    type: mem
+    unit: MB
+  resource_alloc: {}
+- input_metrics:
+  - CI_high: 417522.8756160488
+    CI_low: 268239.2571971534
+    average: 342881.0664066011
+    desc: ovs1:port0:rx
+    name: rx_byte_rate@ovs1:port0
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 40.028108403209345
+    CI_low: -1.852650677526725
+    average: 19.08772886284131
+    desc: ctrl:ctrl-port:rx
+    name: rx_byte_rate@ctrl:ctrl-port
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 276.1954169297368
+    CI_low: 177.43687000586374
+    average: 226.81614346780026
+    desc: ovs1:port0:rx
+    name: rx_packet_rate@ovs1:port0
+    type: rx_packet_rate
+    unit: packets/sec
+  - CI_high: 0.5718301200458478
+    CI_low: -0.026466438250381863
+    average: 0.27268184089773295
+    desc: ctrl:ctrl-port:rx
+    name: rx_packet_rate@ctrl:ctrl-port
+    type: rx_packet_rate
+    unit: packets/sec
+  name: service_throughput2
+  output_metrics:
+  - CI_high: 3.1460707178577167
+    CI_low: -1.1460707178577167
+    average: 1.0
+    desc: ns_port1
+    name: packet_loss@ns_port1
+    type: packet_loss
+    unit: '%'
+  - CI_high: 7.666697390215536
+    CI_low: 4.4405202583137475
+    average: 6.053608824264642
+    desc: ovs1
+    name: cpu@ovs1
+    type: cpu
+    unit: '%'
+  - CI_high: 0.07051998754068121
+    CI_low: 0.02785340592784327
+    average: 0.04918669673426224
+    desc: ctrl
+    name: cpu@ctrl
+    type: cpu
+    unit: '%'
+  - CI_high: 21.008384000000007
+    CI_low: 21.008384
+    average: 21.008384000000003
+    desc: ovs1
+    name: mem@ovs1
+    type: mem
+    unit: MB
+  - CI_high: 57.163776
+    CI_low: 57.163775999999984
+    average: 57.16377599999999
+    desc: ctrl
+    name: mem@ctrl
+    type: mem
+    unit: MB
+  resource_alloc: {}
+- input_metrics:
+  - CI_high: 696672.6452215246
+    CI_low: 462626.67683724547
+    average: 579649.661029385
+    desc: ovs1:port0:rx
+    name: rx_byte_rate@ovs1:port0
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 48.03458751680239
+    CI_low: 2.830081684455102
+    average: 25.432334600628746
+    desc: ctrl:ctrl-port:rx
+    name: rx_byte_rate@ctrl:ctrl-port
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 460.8182140621857
+    CI_low: 306.002525635173
+    average: 383.41036984867935
+    desc: ovs1:port0:rx
+    name: rx_packet_rate@ovs1:port0
+    type: rx_packet_rate
+    unit: packets/sec
+  - CI_high: 0.686208393097177
+    CI_low: 0.040429738349358535
+    average: 0.3633190657232678
+    desc: ctrl:ctrl-port:rx
+    name: rx_packet_rate@ctrl:ctrl-port
+    type: rx_packet_rate
+    unit: packets/sec
+  name: service_throughput3
+  output_metrics:
+  - CI_high: 2.8404063990847197
+    CI_low: -1.0222245809029014
+    average: 0.9090909090909091
+    desc: ns_port1
+    name: packet_loss@ns_port1
+    type: packet_loss
+    unit: '%'
+  - CI_high: 11.687618897533882
+    CI_low: 7.505816550157503
+    average: 9.596717723845693
+    desc: ovs1
+    name: cpu@ovs1
+    type: cpu
+    unit: '%'
+  - CI_high: 0.051962533362411883
+    CI_low: 0.013986192398483078
+    average: 0.03297436288044748
+    desc: ctrl
+    name: cpu@ctrl
+    type: cpu
+    unit: '%'
+  - CI_high: 21.008384000000007
+    CI_low: 21.008384
+    average: 21.008384000000003
+    desc: ovs1
+    name: mem@ovs1
+    type: mem
+    unit: MB
+  - CI_high: 57.163776
+    CI_low: 57.163775999999984
+    average: 57.16377599999999
+    desc: ctrl
+    name: mem@ctrl
+    type: mem
+    unit: MB
+  resource_alloc: {}
+- input_metrics:
+  - CI_high: 1404883.55696805
+    CI_low: 1018916.0742548644
+    average: 1211899.8156114572
+    desc: ovs1:port0:rx
+    name: rx_byte_rate@ovs1:port0
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 48.08252965622428
+    CI_low: 2.832934436278105
+    average: 25.457732046251195
+    desc: ctrl:ctrl-port:rx
+    name: rx_byte_rate@ctrl:ctrl-port
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 929.1557916455358
+    CI_low: 673.8862924966036
+    average: 801.5210420710697
+    desc: ovs1:port0:rx
+    name: rx_packet_rate@ovs1:port0
+    type: rx_packet_rate
+    unit: packets/sec
+  - CI_high: 0.686893280803204
+    CI_low: 0.04047049194683011
+    average: 0.363681886375017
+    desc: ctrl:ctrl-port:rx
+    name: rx_packet_rate@ctrl:ctrl-port
+    type: rx_packet_rate
+    unit: packets/sec
+  name: service_throughput4
+  output_metrics:
+  - CI_high: .nan
+    CI_low: .nan
+    average: 0.0
+    desc: ns_port1
+    name: packet_loss@ns_port1
+    type: packet_loss
+    unit: '%'
+  - CI_high: 18.377008355237336
+    CI_low: 12.279961412478286
+    average: 15.328484883857811
+    desc: ovs1
+    name: cpu@ovs1
+    type: cpu
+    unit: '%'
+  - CI_high: 0.03870937695194239
+    CI_low: 0.008342678753587558
+    average: 0.023526027852764975
+    desc: ctrl
+    name: cpu@ctrl
+    type: cpu
+    unit: '%'
+  - CI_high: 21.008384000000007
+    CI_low: 21.008384
+    average: 21.008384000000003
+    desc: ovs1
+    name: mem@ovs1
+    type: mem
+    unit: MB
+  - CI_high: 57.163776
+    CI_low: 57.163775999999984
+    average: 57.16377599999999
+    desc: ctrl
+    name: mem@ctrl
+    type: mem
+    unit: MB
+  resource_alloc: {}
+- input_metrics:
+  - CI_high: 4062436.83165029
+    CI_low: 3455971.829828966
+    average: 3759204.330739628
+    desc: ovs1:port0:rx
+    name: rx_byte_rate@ovs1:port0
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 55.23966473319666
+    CI_low: 8.403065722940497
+    average: 31.82136522806858
+    desc: ctrl:ctrl-port:rx
+    name: rx_byte_rate@ctrl:ctrl-port
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 2686.9058586012734
+    CI_low: 2285.763410053838
+    average: 2486.3346343275557
+    desc: ovs1:port0:rx
+    name: rx_packet_rate@ovs1:port0
+    type: rx_packet_rate
+    unit: packets/sec
+  - CI_high: 0.7891380676170952
+    CI_low: 0.12004379604200716
+    average: 0.4545909318295511
+    desc: ctrl:ctrl-port:rx
+    name: rx_packet_rate@ctrl:ctrl-port
+    type: rx_packet_rate
+    unit: packets/sec
+  name: service_throughput5
+  output_metrics:
+  - CI_high: 1.2795214390506682
+    CI_low: -0.1306123481415774
+    average: 0.5744545454545454
+    desc: ns_port1
+    name: packet_loss@ns_port1
+    type: packet_loss
+    unit: '%'
+  - CI_high: 38.54532265225886
+    CI_low: 24.95321998964977
+    average: 31.749271320954314
+    desc: ovs1
+    name: cpu@ovs1
+    type: cpu
+    unit: '%'
+  - CI_high: 0.05063418711031528
+    CI_low: 0.006165773404147978
+    average: 0.02839998025723163
+    desc: ctrl
+    name: cpu@ctrl
+    type: cpu
+    unit: '%'
+  - CI_high: 21.008384000000007
+    CI_low: 21.008384
+    average: 21.008384000000003
+    desc: ovs1
+    name: mem@ovs1
+    type: mem
+    unit: MB
+  - CI_high: 57.163776
+    CI_low: 57.163775999999984
+    average: 57.16377599999999
+    desc: ctrl
+    name: mem@ctrl
+    type: mem
+    unit: MB
+  resource_alloc: {}
+- input_metrics:
+  - CI_high: 6830800.110025583
+    CI_low: 5384471.309082866
+    average: 6107635.709554224
+    desc: ovs1:port0:rx
+    name: rx_byte_rate@ovs1:port0
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 52.492611811539746
+    CI_low: 3.46568793419031
+    average: 27.979149872865026
+    desc: ctrl:ctrl-port:rx
+    name: rx_byte_rate@ctrl:ctrl-port
+    type: rx_byte_rate
+    unit: bytes/sec
+  - CI_high: 4512.816549313286
+    CI_low: 3558.2689065850213
+    average: 4035.5427279491532
+    desc: ovs1:port0:rx
+    name: rx_packet_rate@ovs1:port0
+    type: rx_packet_rate
+    unit: packets/sec
+  - CI_high: 0.7498944544505678
+    CI_low: 0.04950982763129008
+    average: 0.39970214104092894
+    desc: ctrl:ctrl-port:rx
+    name: rx_packet_rate@ctrl:ctrl-port
+    type: rx_packet_rate
+    unit: packets/sec
+  name: service_throughput6
+  output_metrics:
+  - CI_high: 7.598920756106539
+    CI_low: 3.7210792438934597
+    average: 5.659999999999999
+    desc: ns_port1
+    name: packet_loss@ns_port1
+    type: packet_loss
+    unit: '%'
+  - CI_high: 55.77787434521075
+    CI_low: 30.51872782943458
+    average: 43.148301087322665
+    desc: ovs1
+    name: cpu@ovs1
+    type: cpu
+    unit: '%'
+  - CI_high: 0.0359260965796314
+    CI_low: 0.01140406155170731
+    average: 0.023665079065669357
+    desc: ctrl
+    name: cpu@ctrl
+    type: cpu
+    unit: '%'
+  - CI_high: 21.011897050943393
+    CI_low: 21.00896694905661
+    average: 21.010432
+    desc: ovs1
+    name: mem@ovs1
+    type: mem
+    unit: MB
+  - CI_high: 57.163776
+    CI_low: 57.163775999999984
+    average: 57.163776
+    desc: ctrl
+    name: mem@ctrl
+    type: mem
+    unit: MB
+  resource_alloc: {}
