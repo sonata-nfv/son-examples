@@ -17,6 +17,7 @@ pip3 install numpy
 pip3 install scipy
 pip3 install matplotlib
 pip3 install docker==2.0.2
+pip3 install Flask
 python bootstrap.py
 bin/buildout
 python setup.py develop
