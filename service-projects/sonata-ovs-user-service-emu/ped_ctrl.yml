@@ -1,0 +1,53 @@
+---
+#
+# This is an example for a profiling experiment descriptor (PED).
+# It defines profiling experiments for the sonata-fw-vtc-service-emu example service.
+#
+descriptor_version: 0.1
+# SONATA-like identifier (just in case we need it)
+vendor: "eu.sonata-nfv"
+name: "ovs-profile-experiment"
+version: "0.1"
+author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
+description: "This is an example profiling experiment descriptor (PED)."
+
+# path to the package of the service we want to profile
+service_package: "./sonata-fw-vtc-service.son"
+
+#
+# First type of experiments: Service level experiments
+#
+service_experiments:
+  - name: "service_throughput"
+    description: "iperf test for entire service"
+    repetitions: 1
+    time_limit: "11"
+    # NSD to be used (SONATA-like vendor.name.version reference)
+    service: "eu.sonata-nfv.sonata-fw-vtc-service.0.1"
+    # additional containers for traffic generation/measurements (like SAPs)
+    measurement_points:
+      - name: "ns_port0"
+        connection_point: "ns:serviceout"
+        container: "sonata-son-emu-sap:latest"
+        configuration:
+          - "ethtool -K port0 tx off"
+          - "arp -s 10.20.30.40 11:22:33:44:55:66"
+        cmd: 'iperf -c 10.20.30.40 -t999 -u -b${1,2,3,5}M'
+        cmd_order: 2
+      - name: "ns_port1"
+        connection_point: "ns:servicein"
+        container: "sonata-son-emu-sap:latest"
+        configuration:
+          - "ethtool -K port1 tx off"
+        cmd: 'python iperf_server.py "-s -u -i1 -fm"'
+        cmd_order: 1
+    input_metrics: "msd_input.yml"
+    output_metrics: "msd_output.yml"
+    profile_calculations:
+      - name: "ovs1_profile"
+        input_metric: "rx_packet_rate@ovs1:port0"
+        output_metric: "cpu@ovs1"
+      - name: "ctrl_profile"
+        input_metric: "rx_packet_rate@ctrl:ctrl-port"
+        output_metric: "cpu@ctrl"
+

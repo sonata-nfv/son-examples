@@ -53,7 +53,7 @@ printf "%s\n" "${PORTS[@]}"
 ovs-vsctl add-br $NAME
 ovs-vsctl set bridge $NAME datapath_type=netdev
 ovs-vsctl set bridge $NAME protocols=OpenFlow10,OpenFlow12,OpenFlow13
-#ovs-vsctl set-fail-mode $NAME secure
+ovs-vsctl set-fail-mode $NAME secure
 ovs-vsctl set bridge $NAME other_config:disable-in-band=true
 ovs-vsctl set bridge $NAME other-config:datapath-id=$OVS_DPID
 
@@ -66,13 +66,4 @@ do
 done
 
 
-
-# configuration after startup (needs CONTROLLER_IP):
-CONTROLLER_IP="201.0.0.2"
-CONTROLLER="tcp:$CONTROLLER_IP:6633"
-ovs-vsctl set-controller $NAME $CONTROLLER
-
-#test flow entries
-ovs-ofctl add-flow $NAME 'in_port=1,actions=output:2'
-ovs-ofctl add-flow $NAME 'in_port=2,actions=output:1'
 

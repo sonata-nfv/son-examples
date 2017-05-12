@@ -27,10 +27,15 @@ RUN chmod +x /usr/local/share/openvswitch/configure-ovs.sh
 RUN ovsdb-tool create /etc/openvswitch/conf.db /usr/local/share/openvswitch/vswitch.ovsschema
 
 
-ADD start_ovs1.sh start.sh
+ADD start_ovs1.sh start_ovs1.sh
+RUN chmod +x start_ovs1.sh
+ADD configure_ovs1.sh configure.sh
+RUN chmod +x configure.sh
+ADD start.sh start.sh
 RUN chmod +x start.sh
 
 # set entry point for emulator gatekeeper
-ENV SON_EMU_CMD "./start.sh"
+ENV SON_EMU_CMD "bash start.sh"
+
 
 CMD /bin/bash

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker cp $2 mn.$1:/
+docker exec -it mn.$1 bash $2
+
+

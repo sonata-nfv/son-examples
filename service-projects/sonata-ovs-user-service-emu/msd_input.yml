@@ -15,8 +15,12 @@ vnf_metrics:
     vnf_ids:
       - vnf: "ovs1:port0"
         direction: "rx"
+      - vnf: "ctrl:ctrl-port"
+        direction: "rx"
   - metric_type: "byte_rate"
     description: "byte rate (bytes/sec)"
     vnf_ids:
       - vnf: "ovs1:port0"
+        direction: "rx"
+      - vnf: "ctrl:ctrl-port"
         direction: "rx"
