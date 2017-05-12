@@ -50,6 +50,6 @@ virtual_links:
 connection_points:
   - id: "ctrl-port"
     interface: "ipv4"
-    type: "management"
+    type: "external"
 
 

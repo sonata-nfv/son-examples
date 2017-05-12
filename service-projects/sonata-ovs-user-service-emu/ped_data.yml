@@ -31,7 +31,7 @@ service_experiments:
         container: "sonata-son-emu-sap:latest"
         configuration:
           - "ethtool -K port0 tx off"
-        cmd: 'iperf -c 10.30.3.2 -t999 -u -b${3,5}M'
+        cmd: 'iperf -c 10.30.3.2 -t999 -u -b${1,2,3,4,5}M'
         cmd_order: 2
       - name: "ns_port1"
         connection_point: "ns:servicein"
