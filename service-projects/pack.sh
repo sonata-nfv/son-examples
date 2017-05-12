@@ -15,6 +15,7 @@ virtualenv -p /usr/bin/python3 venv
 source venv/bin/activate
 pip3 install numpy
 pip3 install scipy
+pip3 install matplotlib
 pip3 install docker==2.0.2
 python bootstrap.py
 bin/buildout
