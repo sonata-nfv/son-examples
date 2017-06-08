@@ -47,16 +47,16 @@ virtual_links:
     connection_points_reference:
       - "vdu01:eth0"
       - "mgmt"
-  - id: "input"
+  - id: "fwin"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth1"
-      - "input"
-  - id: "output"
+      - "fwin"
+  - id: "fwout"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vdu01:eth2"
-      - "output"
+      - "fwout"
 
 
 ##
@@ -67,10 +67,10 @@ connection_points:
   - id: "mgmt"
     interface: "ipv4"
     type: "management"
-  - id: "input"
+  - id: "fwin"
     interface: "ipv4"
     type: "external"
-  - id: "output"
+  - id: "fwout"
     interface: "ipv4"
     type: "external"
 
