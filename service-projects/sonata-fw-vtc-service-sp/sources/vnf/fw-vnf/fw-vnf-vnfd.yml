@@ -14,7 +14,7 @@ description: "A firewall based on Ryu Openflow controller + openvswitch (2 ports
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
-  - id: "1"
+  - id: "vdu01"
     vm_image: "sonata-vfw"
     vm_image_format: "qcow2"
     resource_requirements:
@@ -41,10 +41,10 @@ virtual_deployment_units:
         type: "management"
       - id: "vdu01:eth1"
         interface: "ipv4"
-        type: "external"
+        type: "internal"
       - id: "vdu01:eth2"
         interface: "ipv4"
-        type: "external"
+        type: "internal"
 
 ##
 ## The virtual links that interconnect

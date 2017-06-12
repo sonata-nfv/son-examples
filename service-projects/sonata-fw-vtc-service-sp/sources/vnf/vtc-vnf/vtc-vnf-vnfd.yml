@@ -53,10 +53,10 @@ virtual_deployment_units:
         type: "management"
       - id: "vdu01:eth1"
         interface: "ipv4"
-        type: "external"
+        type: "internal"
       - id: "vdu01:eth2"
         interface: "ipv4"
-        type: "external"
+        type: "internal"
 
 virtual_links:
   - id: "mgmt"
