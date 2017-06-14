@@ -3,6 +3,6 @@ package:
   maintainer: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
   name: sonata-fw-vtc-service
   vendor: eu.sonata-nfv.package
-  version: '0.4'
+  version: '0.5'
 descriptor_extension: "yml"
 version: '0.5'
