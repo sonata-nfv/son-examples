@@ -7,7 +7,7 @@
 descriptor_version: "vnfd-schema-01"
 vendor: "eu.sonata-nfv"
 name: "fw-vnf"
-version: "0.1"
+version: "0.2"
 author: "Steven Van Rossem, Ghent University, steven.vanrossem@intec.ugent.be"
 description: "A firewall based on Ryu Openflow controller + openvswitch (2 ports: input+output) in a single VNF"
 ##
