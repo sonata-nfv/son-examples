@@ -36,7 +36,7 @@ virtual_deployment_units:
         size: 2
         size_unit: "GB"
       storage:
-        size: 20
+        size: 40
         size_unit: "GB"
     monitoring_parameters:
       - name: "vm_cpu_perc"
