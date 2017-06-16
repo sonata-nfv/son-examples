@@ -6,23 +6,24 @@ author: "George Xilouris, NCSRD"
 description: >
   "Virtual traffic classifier (vTC) descriptor file. vTC uses ndpi library for the implementation of the vTC"
 
-function_specific_managers:
-  - id: "fsm00"
-    description: "FSM for controlling the classification capabilities of the vTC"
-    image: "pfring_api_module"
-    options:
-      - key: "myKey"
-        value: "myValue"
-  - id: "fsm01"
-    description: "FSM for management of the start/stop lifecycle of the vTC"
-    image: "vtc_dashboard"
-    resource_requirements:
-      docker_version: "1.12"
-    options:
-      - key: "myKey"
-        value: "myValue"
-      - key: "myOhterKey"
-        value: "myOtherValue"
+# FLM might not be completely ready to deploy FSMs
+#function_specific_managers:
+#  - id: "fsm00"
+#    description: "FSM for controlling the classification capabilities of the vTC"
+#    image: "pfring_api_module"
+#    options:
+#      - key: "myKey"
+#        value: "myValue"
+#  - id: "fsm01"
+#    description: "FSM for management of the start/stop lifecycle of the vTC"
+#    image: "vtc_dashboard"
+#    resource_requirements:
+#      docker_version: "1.12"
+#    options:
+#      - key: "myKey"
+#        value: "myValue"
+#      - key: "myOhterKey"
+#        value: "myOtherValue"
 
 virtual_deployment_units:
   - id: "vdu01"
