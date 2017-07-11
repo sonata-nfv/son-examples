@@ -59,13 +59,13 @@ service_specific_managers:
 ## outside world.
 ##
 connection_points:
-  - id: "ns:mgmt"
+  - id: "mgmt"
     interface: "ipv4"
     type: "management"
-  - id: "ns:input"
+  - id: "input"
     interface: "ipv4"
     type: "external"
-  - id: "ns:output"
+  - id: "output"
     interface: "ipv4"
     type: "external"
 
@@ -79,11 +79,11 @@ virtual_links:
     connection_points_reference:
       - "vnf_vtc:mgmt"
       - "vnf_firewall:mgmt"
-      - "ns:mgmt"
+      - "mgmt"
   - id: "input-2-fw"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:input"
+      - "input"
       - "vnf_firewall:input"
   - id: "fw-2-vtc"
     connectivity_type: "E-Line"
@@ -94,7 +94,7 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vnf_vtc:output"
-      - "ns:output"
+      - "output"
 ##
 ## The forwarding graphs.
 ##
@@ -108,7 +108,7 @@ forwarding_graphs:
       - fp_id: "ns:fg01:fp01"
         policy: "none"
         connection_points:
-          - connection_point_ref: "ns:input"
+          - connection_point_ref: "input"
             position: 1
           - connection_point_ref: "vnf_firewall:input"
             position: 2
@@ -118,6 +118,6 @@ forwarding_graphs:
             position: 4
           - connection_point_ref: "vnf_vtc:output"
             position: 5
-          - connection_point_ref: "ns:output"
+          - connection_point_ref: "output"
             position: 6
 
