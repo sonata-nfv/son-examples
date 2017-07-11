@@ -55,13 +55,13 @@ service_specific_managers:
 ## outside world.
 ##
 connection_points:
-  - id: "ns:mgmt"
+  - id: "mgmt"
     interface: "ipv4"
     type: "management"
-  - id: "ns:input"
+  - id: "input"
     interface: "ipv4"
     type: "external"
-  - id: "ns:output"
+  - id: "output"
     interface: "ipv4"
     type: "external"
 
@@ -74,17 +74,17 @@ virtual_links:
     connectivity_type: "E-LAN"
     connection_points_reference:
       - "vnf_vtc:mgmt"
-      - "ns:mgmt"
+      - "mgmt"
   - id: "input-2-vtc"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:input"
+      - "input"
       - "vnf_vtc:input"
   - id: "vtc-2-output"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vnf_vtc:output"
-      - "ns:output"
+      - "output"
 ##
 ## The forwarding graphs.
 ##
