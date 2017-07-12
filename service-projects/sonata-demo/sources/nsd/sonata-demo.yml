@@ -1,152 +1,109 @@
-author: Michael Bredel, NEC Labs Europe
-connection_points:
-- id: ns:mgmt
-  interface: ipv4
-  type: management
-- id: ns:input
-  interface: ipv4
-  type: external
-- id: ns:output
-  interface: ipv4
-  type: external
-description: "\"The network service descriptor for the SONATA demo,\n comprising iperf,\
-  \ a firewall, and tcpump.\"\n"
-descriptor_version: '1.0'
-forwarding_graphs:
-- constituent_virtual_links:
-  - mgmt
-  - input-2-iperf
-  - iperf-2-firewall
-  - firewall-2-tcpdump
-  - tcpdump-2-output
-  constituent_vnfs:
-  - vnf_iperf
-  - vnf_firewall
-  - vnf_tcpdump
-  fg_id: ns:fg01
-  network_forwarding_paths:
-  - connection_points:
-    - connection_point_ref: ns:input
-      position: 1
-    - connection_point_ref: vnf_iperf:input
-      position: 2
-    - connection_point_ref: vnf_iperf:output
-      position: 3
-    - connection_point_ref: vnf_firewall:input
-      position: 4
-    - connection_point_ref: vnf_firewall:output_vtc
-      position: 5
-    - connection_point_ref: vnf_vtc:input_firewall
-      position: 6
-    - connection_point_ref: vnf_vtc:output
-      position: 7
-    - connection_point_ref: ns:output
-      position: 8
-    fp_id: ns:fg01:fp01
-    policy: none
-  - connection_points:
-    - connection_point_ref: ns:input
-      position: 1
-    - connection_point_ref: vnf_iperf:input
-      position: 2
-    - connection_point_ref: vnf_iperf:output
-      position: 3
-    - connection_point_ref: vnf_firewall:input
-      position: 4
-    - connection_point_ref: vnf_firewall:output_tcpdump
-      position: 5
-    - connection_point_ref: vnf_tcpdump:input
-      position: 6
-    - connection_point_ref: vnf_tcpdump:output
-      position: 7
-    - connection_point_ref: vnf_vtc:input_tcpdump
-      position: 8
-    - connection_point_ref: vnf_vtc:output
-      position: 9
-    - connection_point_ref: ns:output
-      position: 10
-    fp_id: ns:fg01:fp02
-    policy: none
-  - connection_points:
-    - connection_point_ref: vnf_iperf:output
-      position: 1
-    - connection_point_ref: vnf_vtc:input_firewall
-      position: 2
-    fp_id: ns:fg01:fp03
-    policy: none
-  number_of_endpoints: 2
-  number_of_virtual_links: 4
-name: sonata-demo-complex-cycles
+##
+## This is the network service descriptor of the
+## SONATA demo example that comprises a virtual traffic
+## classifier (vTC)
+##
+## @author Felipe Vicens
+##
+---
+descriptor_version: "1.0"
+
+vendor: "eu.sonata-nfv.service-descriptor"
+name: "sonata-demo-vtc"
+version: "0.1"
+author: "Steven Van Rossem, Ghent University"
+description: >
+  "The network service descriptor for the SONATA demo,
+   comprising only a Virtual Traffic Classifier"
+
+##
+## The various network functions this service
+## is composed of.
+##
 network_functions:
-- vnf_id: vnf_firewall
-  vnf_name: firewall-vnf
-  vnf_vendor: eu.sonata-nfv
-  vnf_version: '0.3'
-- vnf_id: vnf_iperf
-  vnf_name: iperf-vnf
-  vnf_vendor: eu.sonata-nfv
-  vnf_version: '0.2'
-- vnf_id: vnf_tcpdump
-  vnf_name: tcpdump-vnf
-  vnf_vendor: eu.sonata-nfv
-  vnf_version: '0.2'
-- vnf_id: vnf_vtc
-  vnf_name: vtc-vnf
-  vnf_vendor: eu.sonata-nfv
-  vnf_version: '0.1'
-vendor: eu.sonata-nfv.service-descriptor
-version: 0.2.1
+  - vnf_id: "vnf_vtc"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "vtc-vnf"
+    vnf_version: "0.1"
+
+##
+## Some service specific managers.
+## image: Specifies the DockerHub URI (user/image name) to fetch the SSM image from.
+##
+service_specific_managers:
+  - id: "ssmdumb"
+    description: "An empty example SSM."
+    image: "sonatanfv/ssmdumb"
+    options:
+      - key: "myKey"
+        value: "myValue"
+
+##
+## Some service specific managers.
+## image: Specifies the DockerHub URI (user/image name) to fetch the SSM image from.
+##
+#service_specific_managers:
+#  - id: "ssmsmart"
+#    description: "This SSM reconfigures vFW"
+#    image: "sonatanfv/ssmsmart"
+#    options:
+#      - key: "myKey"
+#        value: "myValue"
+
+##
+## The NS connection points to the
+## outside world.
+##
+connection_points:
+  - id: "mgmt"
+    interface: "ipv4"
+    type: "management"
+  - id: "input"
+    interface: "ipv4"
+    type: "external"
+  - id: "output"
+    interface: "ipv4"
+    type: "external"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
 virtual_links:
-- connection_points_reference:
-  - vnf_iperf:mgmt
-  - vnf_firewall:mgmt
-  - vnf_tcpdump:mgmt
-  - vnf_vtc:mgmt
-  - ns:mgmt
-  connectivity_type: E-LAN
-  id: mgmt
-- connection_points_reference:
-  - ns:input
-  - vnf_iperf:input
-  connectivity_type: E-Line
-  id: input-2-iperf
-- connection_points_reference:
-  - vnf_iperf:output
-  - vnf_vtc:input_firewall
-  connectivity_type: E-Line
-  id: iperf-2-vtc
-- connection_points_reference:
-  - vnf_iperf:output
-  - vnf_firewall:input
-  connectivity_type: E-Line
-  id: iperf-2-firewall
-- connection_points_reference:
-  - vnf_firewall:output_tcpdump
-  - vnf_tcpdump:input
-  connectivity_type: E-Line
-  id: firewall-2-tcpdump
-- connection_points_reference:
-  - vnf_firewall:output_vtc
-  - vnf_vtc:input_firewall
-  connectivity_type: E-Line
-  id: firewall-2-vtc
-- connection_points_reference:
-  - vnf_tcpdump:output
-  - vnf_vtc:input_tcpdump
-  connectivity_type: E-Line
-  id: tcpdump-2-vtc
-- connection_points_reference:
-  - vnf_vtc:output
-  - ns:output
-  connectivity_type: E-Line
-  id: vtc-2-output
-- connection_points_reference:
-  - ns:input
-  - ns:output
-  connectivity_type: E-Line
-  id: input-output
-- connection_points_reference:
-  - vnf_vtc:input_tcpdump
-  - vnf_vtc:output
-  connectivity_type: E-Line
-  id: vtc_input_tcpdump-output
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vnf_vtc:mgmt"
+      - "mgmt"
+  - id: "input-2-vtc"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "input"
+      - "vnf_vtc:input"
+  - id: "vtc-2-output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vnf_vtc:output"
+      - "output"
+##
+## The forwarding graphs.
+##
+forwarding_graphs:
+  - fg_id: "ns:fg01"
+    number_of_endpoints: 2
+    number_of_virtual_links: 2
+    constituent_vnfs:
+      - "vnf_vtc"
+    network_forwarding_paths:
+      - fp_id: "ns:fg01:fp01"
+        policy: "none"
+        connection_points:
+          - connection_point_ref: "input"
+            position: 1
+          - connection_point_ref: "vnf_vtc:input"
+            position: 2
+          - connection_point_ref: "vnf_vtc:output"
+            position: 3
+          - connection_point_ref: "output"
+            position: 4
+
