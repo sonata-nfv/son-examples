@@ -1,0 +1,8 @@
+package:
+  description: "SONATA demo service"
+  maintainer: "Steven Van Rossem, Ghent University"
+  name: sonata-demo-sp
+  vendor: eu.sonata-nfv.package
+  version: '0.5'
+descriptor_extension: "yml"
+version: '0.5'

@@ -1,0 +1,56 @@
+author: Steven van Rossem, iMinds
+connection_points:
+- id: mgmt
+  interface: ipv4
+  type: management
+- id: input
+  interface: ipv4
+  type: external
+- id: output
+  interface: ipv4
+  type: external
+description: "\"A first iperf VNF descriptor. The iperf VNF\n acts as a traffic source.\"\
+  \n"
+descriptor_version: vnfd-schema-01
+name: iperf-vnf
+vendor: eu.sonata-nfv
+version: '0.2'
+virtual_deployment_units:
+- connection_points:
+  - id: vdu01:cp01
+    interface: ipv4
+    type: internal
+  - id: vdu01:cp02
+    interface: ipv4
+    type: internal
+  - id: vdu01:cp03
+    interface: ipv4
+    type: internal
+  id: vdu01
+  resource_requirements:
+    cpu:
+      vcpus: 1
+    memory:
+      size: 2
+      size_unit: GB
+    storage:
+      size: 10
+      size_unit: GB
+  vm_image: file:///docker_files/iperf/Dockerfile
+  vm_image_format: docker
+virtual_links:
+- connection_points_reference:
+  - vdu01:cp01
+  - mgmt
+  connectivity_type: E-LAN
+  id: mgmt
+- connection_points_reference:
+  - vdu01:cp02
+  - input
+  connectivity_type: E-Line
+  id: input
+- connection_points_reference:
+  - vdu01:cp03
+  - output
+  connectivity_type: E-Line
+  id: output
