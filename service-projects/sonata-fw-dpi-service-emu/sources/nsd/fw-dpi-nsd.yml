@@ -97,7 +97,7 @@ forwarding_graphs:
             position: 1
           - connection_point_ref: "ovs1:port0"
             position: 2
-          - connection_point_ref: "ovs2:port1"
+          - connection_point_ref: "ovs1:port1"
             position: 3
           - connection_point_ref: "output"
             position: 4
