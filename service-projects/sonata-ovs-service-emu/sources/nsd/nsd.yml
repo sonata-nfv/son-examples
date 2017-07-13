@@ -27,13 +27,13 @@ network_functions:
 ## outside world.
 ##
 connection_points:
-  - id: "ns:port0"
+  - id: "port0"
     interface: "ipv4"
     type: "external"
-  - id: "ns:port1"
+  - id: "port1"
     interface: "ipv4"
     type: "external"
-  - id: "ns:port2"
+  - id: "port2"
     interface: "ipv4"
     type: "external"
 
@@ -50,24 +50,24 @@ virtual_links:
   - id: "link-port0"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:port0"
+      - "port0"
       - "ovs1:port0"
   - id: "link-port1"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:port1"
+      - "port1"
       - "ovs1:port1"
   - id: "link-port2"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:port2"
+      - "port2"
       - "ovs1:port2"
 
 ##
 ## The forwarding graphs.
 ##
 forwarding_graphs:
-  - fg_id: "ns:fg01"
+  - fg_id: "fg01"
     number_of_endpoints: 3
     number_of_virtual_links: 7
     constituent_virtual_links: 
@@ -79,15 +79,15 @@ forwarding_graphs:
       - "ovs1"
       - "ctrl"
     network_forwarding_paths:
-      - fp_id: "ns:fg01:fp01"
+      - fp_id: "fg01:fp01"
         policy: "none"
         connection_points:
-          - connection_point_ref: "ns:port1"
+          - connection_point_ref: "port1"
             position: 1
           - connection_point_ref: "ovs1:port1"
             position: 2
           - connection_point_ref: "ovs1:port2"
             position: 3
-          - connection_point_ref: "ns:port2"
+          - connection_point_ref: "port2"
             position: 4
 

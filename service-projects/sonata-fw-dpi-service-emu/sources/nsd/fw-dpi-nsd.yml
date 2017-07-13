@@ -30,13 +30,13 @@ network_functions:
 ## outside world.
 ##
 connection_points:
-  - id: "ns:mgmt"
+  - id: "mgmt"
     interface: "ipv4"
     type: "management"
-  - id: "ns:input"
+  - id: "input"
     interface: "ipv4"
     type: "external"
-  - id: "ns:output"
+  - id: "output"
     interface: "ipv4"
     type: "external"
 
@@ -57,17 +57,17 @@ virtual_links:
       - "snort:mgmt"
       - "ovs1:mgmt"
       - "ctrl:mgmt"
-      - "ns:mgmt"
+      - "mgmt"
   - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:input"
+      - "input"
       - "ovs1:port0"
   - id: "link-output"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "ovs1:port1"
-      - "ns:output"
+      - "output"
   - id: "snort-input"
     connectivity_type: "E-Line"
     connection_points_reference:
@@ -78,7 +78,7 @@ virtual_links:
 ## The forwarding graphs.
 ##
 forwarding_graphs:
-  - fg_id: "ns:fg01"
+  - fg_id: "fg01"
     number_of_endpoints: 2
     number_of_virtual_links: 4
     constituent_virtual_links: 
@@ -90,15 +90,15 @@ forwarding_graphs:
     constituent_vnfs:
       - "ovs1"
     network_forwarding_paths:
-      - fp_id: "ns:fg01:fp01"
+      - fp_id: "fg01:fp01"
         policy: "none"
         connection_points:
-          - connection_point_ref: "ns:input"
+          - connection_point_ref: "input"
             position: 1
           - connection_point_ref: "ovs1:port0"
             position: 2
-          - connection_point_ref: "ovs2:port1"
+          - connection_point_ref: "ovs1:port1"
             position: 3
-          - connection_point_ref: "ns:output"
+          - connection_point_ref: "output"
             position: 4
 
