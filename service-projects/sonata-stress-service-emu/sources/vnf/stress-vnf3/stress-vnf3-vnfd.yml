@@ -14,7 +14,7 @@ description: "A sample vnf which uses 0.07% bandwidth of cpu 3 and 312MB of memo
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
-  - id: "1"
+  - id: "vdu01"
     vm_image: "sonatanfv/sonata-stress-vnf"
     vm_image_format: "docker"
     resource_requirements:

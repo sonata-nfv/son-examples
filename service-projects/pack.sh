@@ -36,7 +36,7 @@ son-validate --workspace test_ws --project sonata-fw-dpi-service-emu
 son-validate --workspace test_ws --project sonata-ovs-service-emu
 son-validate --workspace test_ws --project sonata-ovs-user-service-emu
 son-validate --workspace test_ws --project sonata-fw-service-emu
-son-validate --workspace test_ws --project sonata-stress-service-emu
+#son-validate --workspace test_ws --project sonata-stress-service-emu
 
 # package all example service projects
 which son-package

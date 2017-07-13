@@ -14,7 +14,7 @@ description: "Snort IDS VNF that monitors traffic on br0 configured as L2 bridge
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
-  - id: "1"
+  - id: "vdu01"
     vm_image: "sonatanfv/sonata-snort-ovs-vnf"
     vm_image_format: "docker"
     resource_requirements:
@@ -45,17 +45,17 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "cp01"
+      - "vdu01:cp01"
       - "mgmt"
   - id: "input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "cp02"
+      - "vdu01:cp02"
       - "input"
   - id: "output"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "cp03"
+      - "vdu01:cp03"
       - "output"
 
 ##
