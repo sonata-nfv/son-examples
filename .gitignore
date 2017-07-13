@@ -12,7 +12,7 @@
 /pkg/
 /tmp/
 target/
-
+service-projects/graphs
 ## Environment normalization:
 /.bundle/
 /vendor/bundle
