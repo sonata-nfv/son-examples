@@ -27,19 +27,19 @@ virtual_deployment_units:
         size: 1
         size_unit: "GB"
     connection_points:
-      - id: "vdu01:cp01"
+      - id: "cp01"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:cp02"
+      - id: "cp02"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:cp03"
+      - id: "cp03"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:cp04"
+      - id: "cp04"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:cp05"
+      - id: "cp05"
         interface: "ipv4"
         type: "internal"
 
@@ -51,27 +51,27 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "vdu01:cp01"
+      - "cp01"
       - "mgmt"
   - id: "ctrl-port"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "vdu01:cp02"
+      - "cp02"
       - "ctrl-port"
   - id: "port0"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:cp03"
+      - "cp03"
       - "port0"
   - id: "port1"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:cp04"
+      - "cp04"
       - "port1"
   - id: "port2"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:cp05"
+      - "cp05"
       - "port2"
 
 ##

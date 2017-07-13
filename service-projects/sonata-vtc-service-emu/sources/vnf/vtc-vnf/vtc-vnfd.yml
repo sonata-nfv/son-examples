@@ -38,16 +38,16 @@ virtual_deployment_units:
         unit: "Mbps"
     connection_points:
       #Management interface
-      - id: "vdu01:eth0"
+      - id: "eth0"
         interface: "ipv4"
         type: "internal" #this is the only interface that should get floating IP address. traffic for the other interfaces will be forwarded via the SDN controller" 
         #access: "public" #signal the allocation of public IP from the allocated segment for this tenant. 
       #Data-in interface
-      - id: "vdu01:eth1"
+      - id: "eth1"
         interface: "ipv4"
         type: "internal"
       #Data-out interfaces
-      - id: "vdu01:eth2"
+      - id: "eth2"
         interface: "ipv4"
         type: "internal"
 
@@ -59,17 +59,17 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "vdu01:eth0"
+      - "eth0"
       - "mgmt"
   - id: "input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:eth1"
+      - "eth1"
       - "input"
   - id: "output"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:eth2"
+      - "eth2"
       - "output"
 
 ##

@@ -27,13 +27,13 @@ virtual_deployment_units:
         size: 1
         size_unit: "GB"
     connection_points:
-      - id: "vdu01:eth0"
+      - id: "eth0"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:eth1"
+      - id: "eth1"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:eth2"
+      - id: "eth2"
         interface: "ipv4"
         type: "internal"
 
@@ -45,17 +45,17 @@ virtual_links:
   - id: "mgmt"
     connectivity_type: "E-LAN"
     connection_points_reference:
-      - "vdu01:eth0"
+      - "eth0"
       - "mgmt"
   - id: "fwin"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:eth1"
+      - "eth1"
       - "fwin"
   - id: "fwout"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "vdu01:eth2"
+      - "eth2"
       - "fwout"
 
 
