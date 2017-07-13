@@ -31,13 +31,13 @@ network_functions:
 ## outside world.
 ##
 connection_points:
-  - id: "ns:mgmt"
+  - id: "mgmt"
     interface: "ipv4"
     type: "management"
-  - id: "ns:input"
+  - id: "input"
     interface: "ipv4"
     type: "external"
-  - id: "ns:output"
+  - id: "output"
     interface: "ipv4"
     type: "external"
 
@@ -52,11 +52,11 @@ virtual_links:
       - "empty_vnf1:mgmt"
       - "empty_vnf2:mgmt"
       - "empty_vnf3:mgmt"
-      - "ns:mgmt"
+      - "mgmt"
   - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:input"
+      - "input"
       - "empty_vnf1:input"
   - id: "link-12"
     connectivity_type: "E-Line"
@@ -72,13 +72,13 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "empty_vnf3:output"
-      - "ns:output"
+      - "output"
 
 ##
 ## The forwarding graphs.
 ##
 forwarding_graphs:
-  - fg_id: "ns:fg01"
+  - fg_id: "fg01"
     number_of_endpoints: 2
     number_of_virtual_links: 4
     constituent_virtual_links: 
@@ -92,10 +92,10 @@ forwarding_graphs:
       - "empty_vnf2"
       - "empty_vnf3"
     network_forwarding_paths:
-      - fp_id: "ns:fg01:fp01"
+      - fp_id: "fg01:fp01"
         policy: "none"
         connection_points:
-          - connection_point_ref: "ns:input"
+          - connection_point_ref: "input"
             position: 1
           - connection_point_ref: "empty_vnf1:input"
             position: 2
@@ -109,6 +109,6 @@ forwarding_graphs:
             position: 6
           - connection_point_ref: "empty_vnf3:output"
             position: 7
-          - connection_point_ref: "ns:output"
+          - connection_point_ref: "output"
             position: 8
 
