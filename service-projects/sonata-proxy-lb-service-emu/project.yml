@@ -1,0 +1,8 @@
+package:
+  description: "Example service for active son-cli profile execution."
+  maintainer: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
+  name: sonata-proxy-lb-service-emu
+  vendor: eu.sonata-nfv.package
+  version: '0.4'
+descriptor_extension: "yml"
+version: '0.5'
