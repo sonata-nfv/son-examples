@@ -1,5 +1,5 @@
 #!/bin/bash
-./ipconfig > /mnt/share/ipconfig.log
+./ipconfig.sh > /mnt/share/ipconfig.log
 
 date > /mnt/share/start.txt
 
