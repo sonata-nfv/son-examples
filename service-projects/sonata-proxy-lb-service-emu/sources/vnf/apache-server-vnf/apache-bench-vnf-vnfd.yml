@@ -6,16 +6,16 @@
 ##
 descriptor_version: "vnfd-schema-01"
 vendor: "eu.sonata-nfv"
-name: "apache-bench-vnf"
+name: "apache-server-vnf"
 version: "0.1"
 author: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
-description: "A VNF executing an apache server with apache bench capabilities"
+description: "A VNF running an apache server."
 ##
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "edmaastest/sonata-apache-bench-vnf"
+    vm_image: "edmaastest/sonata-apache-server-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:
