@@ -1,5 +1,4 @@
 #!/bin/bash
 ./ipconfig.sh > /mnt/share/ipconfig.log
-#date > /mnt/share/start.txt
+date > /mnt/share/start.txt
 
-service apache2 start

@@ -9,7 +9,6 @@ RUN	apt-get update && apt-get install -y \
     libaprutil1 \
     libc6 \
     libssl1.0.0 \
-    apache2 \
     apache2-utils
 
 ADD start.sh start.sh
