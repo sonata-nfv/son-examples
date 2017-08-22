@@ -3,22 +3,16 @@
 sleep 1
 
 # IP setup (we need to try different names in different scenarios, but never eth0 which is the docker if)
-declare -a PORTS=("input")
+ifconfig "input" down
+ifconfig "input" 30.0.0.2 netmask 255.255.255.0
+ifconfig "input" up
 
-for p in "${PORTS[@]}"
-do
-    ifconfig $p down
-    ifconfig $p 10.30.0.2 netmask 255.255.255.0
-    ifconfig $p up
-done
+ifconfig "output" down
+ifconfig "output" 40.0.0.1 netmask 255.255.255.0
+ifconfig "output" up
 
-declare -a PORTS2=("output")
-
-for p in "${PORTS2[@]}"
-do
-    ifconfig $p down
-    ifconfig $p 10.0.0.8 netmask 225.255.255.0
-    ifconfig $p up
-done
+ifconfig "mgmt" down
+ifconfig "mgmt" 200.0.0.3 netmask 255.255.255.0
+ifconfig "mgmt" up
 
 ifconfig > /ifconfig.debug
