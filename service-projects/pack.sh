@@ -24,7 +24,7 @@ python setup.py develop
 cd ..
 
 # create a test workspace
-son-workspace --init --workspace test_ws
+son-workspace --init --workspace test_ws --debug
 
 # validate emu example services
 son-validate --workspace test_ws --project sonata-empty-service-emu
@@ -57,12 +57,14 @@ son-validate --workspace test_ws --project sonata-fw-vtc-service-sp
 son-validate --workspace test_ws --project sonata-fw-vtc-service-update-sp
 son-validate --workspace test_ws --project sonata-fw-service-sp
 son-validate --workspace test_ws --project sonata-vtc-service-sp
+son-validate --workspace test_ws --project sonata-vtc-private-service-sp
 
 # service platform projects
 son-package --workspace test_ws --project sonata-fw-vtc-service-sp -n sonata-fw-vtc-service-sp
 son-package --workspace test_ws --project sonata-fw-vtc-service-update-sp -n sonata-fw-vtc-service-update-sp
 son-package --workspace test_ws --project sonata-fw-service-sp -n sonata-fw-service-sp
 son-package --workspace test_ws --project sonata-vtc-service-sp -n sonata-vtc-service-sp
+son-package --workspace test_ws --project sonata-vtc-private-service-sp -n sonata-vtc-private-service-sp
 
 # leave venv
 deactivate
