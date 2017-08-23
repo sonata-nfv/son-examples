@@ -24,7 +24,7 @@ python setup.py develop
 cd ..
 
 # create a test workspace
-son-workspace --init --workspace test_ws
+son-workspace --init --workspace test_ws --debug
 
 # validate emu example services
 son-validate --workspace test_ws --project sonata-empty-service-emu
