@@ -55,16 +55,31 @@ virtual_links:
     connection_points_reference:
       - "ns:input"
       - "squid-vnf:input"
+  - id: "link-input-rev"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "squid-vnf:input"
+      - "ns:input"
   - id: "link-squid-nginx"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "squid-vnf:output"
       - "nginx-lb-vnf:input"
+  - id: "link-squid-nginx-rev"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "nginx-lb-vnf:input"
+      - "squid-vnf:output"
   - id: "link-nginx-apache"
     connectivity_type: "E-Line"
     connection_points_reference:
       - "nginx-lb-vnf:output"
       - "apache-server-vnf:input"
+  - id: "link-nginx-apache-rev"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "apache-server-vnf:input"
+      - "nginx-lb-vnf:output"
 
 ##
 ## The forwarding graphs.
@@ -76,8 +91,11 @@ forwarding_graphs:
     constituent_virtual_links: 
       - "mgmt"
       - "link-input"
+      - "link-input-rev"
       - "link-squid-nginx"
+      - "link-squid-nginx-rev"
       - "link-nginx-apache"
+      - "link-nginx-apache-rev"
     constituent_vnfs:
       - "squid-vnf"
       - "nginx-lb-vnf"
