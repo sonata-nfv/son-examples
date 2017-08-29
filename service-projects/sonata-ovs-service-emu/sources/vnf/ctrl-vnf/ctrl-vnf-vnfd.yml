@@ -14,7 +14,7 @@ description: "An Openflow controller VNF based on Ryu"
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
-  - id: "1"
+  - id: "vdu01"
     vm_image: "sonatanfv/sonata-ryu-vnf"
     vm_image_format: "docker"
     resource_requirements:
@@ -27,7 +27,7 @@ virtual_deployment_units:
         size: 1
         size_unit: "GB"
     connection_points:
-      - id: "vdu01:cp01"
+      - id: "cp01"
         interface: "ipv4"
         type: "internal"
 

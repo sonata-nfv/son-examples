@@ -27,13 +27,13 @@ network_functions:
 ## outside world.
 ##
 connection_points:
-  - id: "ns:mgmt"
+  - id: "mgmt"
     interface: "ipv4"
     type: "management"
-  - id: "ns:input"
+  - id: "servicin"
     interface: "ipv4"
     type: "external"
-  - id: "ns:output"
+  - id: "serviceout"
     interface: "ipv4"
     type: "external"
 
@@ -47,11 +47,11 @@ virtual_links:
     connection_points_reference:
       - "fw_vnf:mgmt"
       - "vtc_vnf:mgmt"
-      - "ns:mgmt"
+      - "mgmt"
   - id: "link-input"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:servicein"    
+      - "servicein"    
       - "fw_vnf:fwin"
   - id: "link-interconnect"
     connectivity_type: "E-Line"
@@ -62,18 +62,18 @@ virtual_links:
     connectivity_type: "E-Line"
     connection_points_reference:
       - "vtc_vnf:output"
-      - "ns:serviceout"
+      - "serviceout"
   - id: "link-back"
     connectivity_type: "E-Line"
     connection_points_reference:
-      - "ns:serviceout"
-      - "ns:servicein"
+      - "serviceout"
+      - "servicein"
 
 ##
 ## The forwarding graphs.
 ##
 forwarding_graphs:
-  - fg_id: "ns:fg01"
+  - fg_id: "fg_id:fg01"
     number_of_endpoints: 2
     number_of_virtual_links: 6
     constituent_virtual_links: 
@@ -86,10 +86,10 @@ forwarding_graphs:
       - "vtc_vnf"
       - "fw_vnf"
     network_forwarding_paths:
-      - fp_id: "ns:fg01:fp01"
+      - fp_id: "fp_id:fg01:fp01"
         policy: "none"
         connection_points:
-          - connection_point_ref: "ns:servicein"
+          - connection_point_ref: "servicein"
             position: 1
           - connection_point_ref: "fw_vnf:fwin"
             position: 2
@@ -99,8 +99,8 @@ forwarding_graphs:
             position: 4
           - connection_point_ref: "vtc_vnf:output"
             position: 5
-          - connection_point_ref: "ns:serviceout"
+          - connection_point_ref: "serviceout"
             position: 6
-          - connection_point_ref: "ns:servicein"
+          - connection_point_ref: "servicein"
             position: 7
 

@@ -14,7 +14,7 @@ description: "An openflow switch (3 ports + controller port) VNF based on OvS"
 ## The virtual deployment unit.
 ##
 virtual_deployment_units:
-  - id: "1"
+  - id: "vdu01"
     vm_image: "sonatanfv/sonata-ovs-user-vnf"
     vm_image_format: "docker"
     resource_requirements:
@@ -27,13 +27,13 @@ virtual_deployment_units:
         size: 1
         size_unit: "GB"
     connection_points:
-      - id: "vdu01:cp01"
+      - id: "cp01"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:cp02"
+      - id: "cp02"
         interface: "ipv4"
         type: "internal"
-      - id: "vdu01:cp03"
+      - id: "cp03"
         interface: "ipv4"
         type: "internal"
 

@@ -9,12 +9,18 @@
 descriptor_version: "1.0"
 
 vendor: "eu.sonata-nfv.service-descriptor"
-name: "sonata-demo-vtc"
+name: "sonata-demo-private-vtc"
 version: "0.1"
 author: "Steven Van Rossem, Ghent University"
 description: >
   "The network service descriptor for the SONATA demo,
-   comprising only a Virtual Traffic Classifier"
+   comprising only a Virtual Traffic Classifier. 
+   This service is defined as private (licence is required)"
+
+## Licences
+licences:
+  - type: "private"
+    url: "https://sp.int3.sonata-nfv.eu/api/v2/licences"
 
 ##
 ## The various network functions this service

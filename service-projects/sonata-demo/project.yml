@@ -1,0 +1,8 @@
+package:
+  description: "SONATA vTC Y1 demo service"
+  maintainer: "José Bonnet, AlticeLabs"
+  name: sonata-semo
+  vendor: eu.sonata-nfv.package
+  version: '0.4'
+descriptor_extension: "yml"
+version: '0.5'
