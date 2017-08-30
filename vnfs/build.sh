@@ -50,8 +50,8 @@ docker build -t $target_repo/sonata-squid-vnf -f sonata-squid-vnf-docker/Dockerf
 docker build -t $target_repo/sonata-nginx-lb-vnf -f sonata-nginx-lb-vnf-docker/Dockerfile sonata-nginx-lb-vnf-docker
 
 # apache bench vnf
-docker build -t $target_repo/sonata-apache-bench-vnf -f sonata-apache-bench-docker/Dockerfile sonata-apache-bench-vnf-docker
+docker build -t $target_repo/sonata-apache-bench-vnf -f sonata-apache-bench-docker/Dockerfile sonata-apache-bench-docker
 
 # apache server vnf
-docker build -t $target_repo/sonata-apache-server-vnf -f sonata-apache-server-docker/Dockerfile sonata-apache-server-vnf-docker
+docker build -t $target_repo/sonata-apache-server-vnf -f sonata-apache-server-docker/Dockerfile sonata-apache-server-docker
 
