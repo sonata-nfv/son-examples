@@ -6,10 +6,10 @@ set -e
 target_repo=${1-sonatanfv}
 
 # empty vnf
-docker pull $target_repo/sonata-empty-vnf 
+docker pull $target_repo/sonata-empty-vnf
 
 # iperf3 vnf
-docker pull $target_repo/sonata-iperf3-vnf 
+docker pull $target_repo/sonata-iperf3-vnf
 
 # snort IDS vnf
 docker pull $target_repo/sonata-snort-ids-vnf
@@ -39,3 +39,15 @@ docker pull $target_repo/sonata-fw-vnf
 
 # stress vnf
 docker pull $target_repo/sonata-stress-vnf
+
+# squid vnf
+docker pull $target_repo/sonata-squid-vnf
+
+# nginx loadbalancer vnf
+docker pull $traget_repo/sonata-nginx-lb-vnf
+
+# apache bench vnf
+docker pull $target_repo/sonata-apache-bench-vnf
+
+# apache server vnf
+docker pull $target_repo/sonata-apache-server-vnf

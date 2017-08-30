@@ -1,0 +1,119 @@
+
+---
+descriptor_version: "1.0"
+
+vendor: "eu.sonata-nfv"
+name: "sonata-active-profiling-service"
+version: "0.1"
+author: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
+description: "Example service with three chained empty VNFs"
+
+##
+## The various network functions this service
+## is composed of.
+##
+network_functions:
+  - vnf_id: "squid-vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "squid-vnf"
+    vnf_version: "0.1"
+  - vnf_id: "nginx-lb-vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "nginx-lb-vnf"
+    vnf_version: "0.1"
+  - vnf_id: "apache-server-vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "apache-server-vnf"
+    vnf_version: "0.1"
+
+##
+## The NS connection points to the 
+## outside world.
+##
+connection_points:
+  - id: "ns:mgmt"
+    interface: "ipv4"
+    type: "management"
+  - id: "ns:input"
+    interface: "ipv4"
+    type: "external"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "squid-vnf:mgmt"
+      - "nginx-lb-vnf:mgmt"
+      - "apache-server-vnf:mgmt"
+      - "ns:mgmt"
+  - id: "link-input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "ns:input"
+      - "squid-vnf:input"
+  - id: "link-input-rev"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "squid-vnf:input"
+      - "ns:input"
+  - id: "link-squid-nginx"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "squid-vnf:output"
+      - "nginx-lb-vnf:input"
+  - id: "link-squid-nginx-rev"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "nginx-lb-vnf:input"
+      - "squid-vnf:output"
+  - id: "link-nginx-apache"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "nginx-lb-vnf:output"
+      - "apache-server-vnf:input"
+  - id: "link-nginx-apache-rev"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "apache-server-vnf:input"
+      - "nginx-lb-vnf:output"
+
+##
+## The forwarding graphs.
+##
+forwarding_graphs:
+  - fg_id: "ns:fg01"
+    number_of_endpoints: 2
+    number_of_virtual_links: 4
+    constituent_virtual_links: 
+      - "mgmt"
+      - "link-input"
+      - "link-input-rev"
+      - "link-squid-nginx"
+      - "link-squid-nginx-rev"
+      - "link-nginx-apache"
+      - "link-nginx-apache-rev"
+    constituent_vnfs:
+      - "squid-vnf"
+      - "nginx-lb-vnf"
+      - "apache-server-vnf"
+    network_forwarding_paths:
+      - fp_id: "ns:fg01:fp01"
+        policy: "none"
+        connection_points:
+          - connection_point_ref: "ns:input"
+            position: 1
+          - connection_point_ref: "squid-vnf:input"
+            position: 2
+          - connection_point_ref: "squid-vnf:output"
+            position: 3
+          - connection_point_ref: "nginx-lb-vnf:input"
+            position: 4
+          - connection_point_ref: "nginx-lb-vnf:output"
+            position: 5
+          - connection_point_ref: "apache-server-vnf:input"
+            position: 6
+

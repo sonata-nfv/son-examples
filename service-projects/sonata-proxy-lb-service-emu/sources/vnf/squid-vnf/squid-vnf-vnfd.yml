@@ -1,0 +1,74 @@
+
+---
+##
+## Some general information regarding this
+## VNF descriptor.
+##
+descriptor_version: "vnfd-schema-01"
+vendor: "eu.sonata-nfv"
+name: "squid-vnf"
+version: "0.1"
+author: "Eduard Maas, Paderborn University, edmaas@mail.uni-paderborn.de"
+description: "a VNF executing squid"
+##
+## The virtual deployment unit.
+##
+virtual_deployment_units:
+  - id: "1"
+    vm_image: "sonatanfv/sonata-squid-vnf"
+    vm_image_format: "docker"
+    resource_requirements:
+      cpu:
+        vcpus: 1
+      memory:
+        size: 2
+        size_unit: "GB"
+      storage:
+        size: 10
+        size_unit: "GB"
+    connection_points:
+      - id: "vdu01:cp01"
+        interface: "ipv4"
+        type: "internal"
+      - id: "vdu01:cp02"
+        interface: "ipv4"
+        type: "internal"
+      - id: "vdu01:cp03"
+        interface: "ipv4"
+        type: "internal"
+
+##
+## The virtual links that interconnect
+## the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vdu01:cp01"
+      - "mgmt"
+  - id: "input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:cp02"
+      - "input"
+  - id: "output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:cp03"
+      - "output   "
+
+##
+## The VNF connection points to the 
+## outside world.
+##
+connection_points:
+  - id: "mgmt"
+    interface: "ipv4"
+    type: "management"
+  - id: "input"
+    interface: "ipv4"
+    type: "external"
+  - id: "output"
+    interface: "ipv4"
+    type: "external"

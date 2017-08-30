@@ -42,3 +42,16 @@ docker build -t $target_repo/sonata-fw-vnf -f sonata-fw-vnf-docker/Dockerfile so
 
 # stress vnf
 docker build -t $target_repo/sonata-stress-vnf -f sonata-stress-vnf-docker/Dockerfile sonata-stress-vnf-docker
+
+# squid vnf
+docker build -t $target_repo/sonata-squid-vnf -f sonata-squid-vnf-docker/Dockerfile sonata-squid-vnf-docker
+
+# nginx loadbalancer vnf
+docker build -t $target_repo/sonata-nginx-lb-vnf -f sonata-nginx-lb-vnf-docker/Dockerfile sonata-nginx-lb-vnf-docker
+
+# apache bench vnf
+docker build -t $target_repo/sonata-apache-bench-vnf -f sonata-apache-bench-docker/Dockerfile sonata-apache-bench-docker
+
+# apache server vnf
+docker build -t $target_repo/sonata-apache-server-vnf -f sonata-apache-server-docker/Dockerfile sonata-apache-server-docker
+
