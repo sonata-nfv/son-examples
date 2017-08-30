@@ -37,6 +37,7 @@ son-validate --workspace test_ws --project sonata-ovs-service-emu
 son-validate --workspace test_ws --project sonata-ovs-user-service-emu
 son-validate --workspace test_ws --project sonata-fw-service-emu
 #son-validate --workspace test_ws --project sonata-stress-service-emu
+son-validate --workspace test_ws --project sonata-proxy-lb-service-emu
 
 # package all example service projects
 which son-package
@@ -51,6 +52,8 @@ son-package --workspace test_ws --project sonata-ovs-service-emu -n sonata-ovs-s
 son-package --workspace test_ws --project sonata-ovs-user-service-emu -n sonata-ovs-user-service
 son-package --workspace test_ws --project sonata-fw-service-emu -n sonata-fw-service
 son-package --workspace test_ws --project sonata-stress-service-emu -n sonata-stress-service
+son-package --workspace test_ws --project sonata-proxy-lb-service-emu -n sonata-proxy-lb-service
+
 
 # validate platform projects
 son-validate --workspace test_ws --project sonata-fw-vtc-service-sp
