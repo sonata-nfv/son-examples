@@ -15,7 +15,7 @@ description: "A VNF executing an nginx loadbalancing server"
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "edmaastest/sonata-nginx-lb-vnf"
+    vm_image: "sonatanfv/sonata-nginx-lb-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:

@@ -15,7 +15,7 @@ description: "A VNF running an apache server."
 ##
 virtual_deployment_units:
   - id: "1"
-    vm_image: "edmaastest/sonata-apache-server-vnf"
+    vm_image: "sonatanfv/sonata-apache-server-vnf"
     vm_image_format: "docker"
     resource_requirements:
       cpu:
