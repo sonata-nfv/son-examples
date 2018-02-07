@@ -1,0 +1,81 @@
+## This is a SONATA network service descriptor of a Rubik Cube Solution Generator.
+## @author Pol Alemany
+---
+
+descriptor_version: "1.0"
+vendor: "eu.sonata-nfv.service-descriptor"
+name: "sonata-rubik-service"
+version: "0.3"
+author: "Pol Alemany, CTTC"
+description: "Network Service Descriptor for the SONATA Rubik Cube Solutions Generator VNF."
+
+##
+## The various network functions this service is composed of.
+##
+network_functions:
+  - vnf_id: "rubik_vnf"
+    vnf_vendor: "eu.sonata-nfv"
+    vnf_name: "rubik-vnf"
+    vnf_version: "0.3"
+
+##
+## The NS connection points to the outside world.
+##
+connection_points:
+  - id: "mgmt"
+    interface: "ipv4"
+    type: "management"
+  - id: "input"
+    interface: "ipv4"
+    type: "external"
+  - id: "output"
+    interface: "ipv4"
+    type: "external"
+
+##
+## The virtual links that interconnect the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "rubik_vnf:mgmt"
+      - "mgmt"
+
+  - id: "link-input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "input"
+      - "rubik_vnf:input"
+
+  - id: "link-output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "rubik_vnf:output"
+      - "output"
+
+##
+## The forwarding graphs.
+##
+##forwarding_graphs:
+##  - fg_id: "fg01"
+##    number_of_endpoints: 2
+##    number_of_virtual_links: 4
+##    constituent_virtual_links:
+##      - "mgmt"
+##      - "link-input"
+##      - "link-output"
+##    constituent_vnfs:
+##      - "rubik_vnf"
+##    network_forwarding_paths:
+##      - fp_id: "fg01:fp01"
+##        policy: "none"
+##        connection_points:
+##          - connection_point_ref: "input"
+##            position: 1
+##          - connection_point_ref: "rubik_vnf:input"
+##            position: 2
+##          - connection_point_ref: "rubik_vnf:output"
+##            position: 3
+##          - connection_point_ref: "output"
+##            position: 4
