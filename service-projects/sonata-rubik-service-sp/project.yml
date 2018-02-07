@@ -1,0 +1,8 @@
+descriptor_extension: yml
+package:
+  description: "SONATA Rubik Cube Solution Generator Service"
+  maintainer: "Pol Alemany Prats & Ricard Vilalta, CTTC"
+  name: sonata-rubik-service
+  vendor: eu.sonata-nfv.package
+  version: '0.3'
+version: '0.5'

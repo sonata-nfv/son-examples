@@ -1,0 +1,74 @@
+## General information regarding to the Rubik Cube Solutions Generator VNF descriptor.
+---
+
+descriptor_version: "vnfd-schema-01"
+vendor: "eu.sonata-nfv"
+name: "rubik-vnf"
+version: "0.3"
+author: "Pol Alemany & Ricard Vilalta, CTTC"
+description: "A Rubik Cube Solution Generator based on the two phase algorithm.
+Code uses the package from https://github.com/muodov/kociemba"
+
+##
+## The virtual deployment unit.
+##
+virtual_deployment_units:
+  - id: "vdu01"
+    vm_image: "http://google.com"
+    vm_image_format: "qcow2"
+    vm_image_md5: '36073299e50a9298a5767105f199ab61'
+    resource_requirements:
+      cpu:
+        vcpus: 1
+      memory:
+        size: 4
+        size_unit: "GB"
+      storage:
+        size: 10
+        size_unit: "GB"
+    connection_points:
+      - id: "cp01"
+        interface: "ipv4"
+        type: "management"
+      - id: "cp02"
+        interface: "ipv4"
+        type: "external"
+      - id: "cp03"
+        interface: "ipv4"
+        type: "external"
+
+##
+## The virtual links that interconnect the different connections points.
+##
+virtual_links:
+  - id: "mgmt"
+    connectivity_type: "E-LAN"
+    connection_points_reference:
+      - "vdu01:cp01"
+      - "mgmt"
+
+  - id: "input"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:cp02"
+      - "input"
+
+  - id: "output"
+    connectivity_type: "E-Line"
+    connection_points_reference:
+      - "vdu01:cp03"
+      - "output"
+
+##
+## The VNF connection points to the outside world.
+##
+connection_points:
+  - id: "mgmt"
+    interface: "ipv4"
+    type: "management"
+  - id: "input"
+    interface: "ipv4"
+    type: "external"
+  - id: "output"
+    interface: "ipv4"
+    type: "external"
