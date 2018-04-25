@@ -6,8 +6,7 @@ vendor: "eu.sonata-nfv"
 name: "rubik-vnf"
 version: "0.3"
 author: "Pol Alemany & Ricard Vilalta, CTTC"
-description: "A Rubik Cube Solution Generator based on the two phase algorithm.
-Code uses the package from https://github.com/muodov/kociemba"
+description: "A Rubik Cube Solution Generator based on the two phase algorithm. Code uses the package from https://github.com/muodov/kociemba"
 
 ##
 ## The virtual deployment unit.
@@ -21,10 +20,10 @@ virtual_deployment_units:
       cpu:
         vcpus: 1
       memory:
-        size: 4
+        size: 2
         size_unit: "GB"
       storage:
-        size: 10
+        size: 20
         size_unit: "GB"
     connection_points:
       - id: "cp01"
