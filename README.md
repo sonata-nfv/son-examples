@@ -59,8 +59,8 @@ Example VNF implementations. Most of them are given as Docker container configur
 * `sonata-vtc-vnf-docker`: nDPI based traffic classifier (requieres PF_RING to be installed on the host machine) (NCSRD).
 * `sonata-snort-ovs-docker`: Snort intrusion detection system, extended with an interface to send alerts to a Ryu openflow controller (iMinds).
 * `sonata-son-emu-sap-docker`: Generic container that can be used to be deployed as SAP (Service Access Point) for a service deployed in the SONATA SDK emulator. This container has some basic functionality to generate and capture traffic (iMinds).
-* `sonata-fw-vnf-docker` : Firewall implemented by a Ryu Openflow controller and OpenVSwithc in one single VNF (iMinds).
-* `sonata-fw-vnf-vm` : Firewall implemented by a Ryu Openflow controller and OpenVSwithc in one single VNF. Exported as a Vagrant-built VM. (iMinds).
+* `sonata-fw-vnf-docker` : Firewall implemented by a Ryu Openflow controller and OpenVSwitch in one single VNF (iMinds).
+* `sonata-fw-vnf-vm` : Firewall implemented by a Ryu Openflow controller and OpenVSwitch in one single VNF. Exported as a Vagrant-built VM. (iMinds).
 ### Naming scheme
 
 * `*-docker`: VNF executed as Docker container (Dockerfile).
